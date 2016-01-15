@@ -1,0 +1,28 @@
+
+/*
+body {
+  background-color: black;
+  color: white;
+}
+*/
+
+@font-face
+{
+font-family:'Amiri';
+src: url('fonts/Amiri-Regular.ttf') format('TrueType');
+}
+
+
+#namesP{
+	text-align: center;
+	font-family:  'Amiri';
+	/* font-family: 'Lateef'; */
+	font-size: 1.5em;
+
+}
+
+#hint{
+	float:right;
+	text-align: right;
+}
+
