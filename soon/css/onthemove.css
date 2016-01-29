@@ -1,0 +1,192 @@
+/*
+@import url(https://fonts.googleapis.com/css?family=Abel);
+
+@import url('http://fonts.googleapis.com/earlyaccess/droidarabickufi.css');
+*/
+@font-face
+{
+font-family:'Kufi';
+src: url('fonts/DroidKufi-Regular.ttf') format('TrueType');
+}
+
+@font-face
+{
+font-family:'Abel';
+src: url('fonts/Abel-Regular.ttf') format('TrueType');
+}
+
+#head{
+
+}
+
+
+
+.fixtotop {	
+	width: 100%;
+	height: 100vh;
+	position: absolute;
+/* position:fixed; means always the same background even as you scroll down; */
+	top: 0;
+	left: 0;
+	z-index: -1;
+
+}
+
+
+/*
+#rowOne{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 0;
+}
+*//*
+#rowTwo{
+	margin-top:-20px;
+	left: 0;
+	z-index: 0;
+}
+*/
+.photocard {    
+    /*height:50%;*/
+    width: 100%;
+    height: auto;
+   /* height:auto;*/
+   /* margin:10px;*/
+  
+}
+
+.photocard1{
+	position: absolute;
+	bottom: 50vh;
+	width: inherit;
+    height: auto;
+	
+	
+}
+
+
+#mybanner{
+  padding: 2%;	
+  background-color:rgba(255,255,255,0.25) ;
+  position: absolute;
+  /*width: 25%;*/
+  height: auto;
+  top: 15%;
+  left: 34.75%;
+  z-index: 3;
+  border-radius: 5px;
+  text-align: center;
+   transition: background-color .75s ease-in-out;
+   -moz-transition: background-color .75s ease-in-out;
+   -webkit-transition: background-color .75s ease-in-out;
+}
+
+#mybanner:hover{
+  background-color:rgba(255,255,255,0.99);
+}
+
+.pinkbar{
+	background-color: #FF25FF;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    width: 100%;
+    height: 1px;
+    /* margin-left: 5%;*/
+}
+
+#sloganEN{
+	font-size: 1.75em;
+	font-family: 'Abel';
+	line-height: 1.2em;
+	text-align: center;
+
+}
+#sloganAR{
+	font-size: 1.5em;
+	direction: rtl;
+	font-family:  'Kufi'; 
+	text-align: center;
+
+}
+.SMicon{
+	width: 15%;
+	height: auto;
+}
+
+.pinkbartitle{
+	width: 100% inherit;
+	background-color: #FF25FF;
+    height: 1px;
+    margin-top: 3.0em;
+}
+
+.section-title{
+	background:rgb(255,255,255);
+	color: #FF25FF;
+	font-family: 'Abel';
+	text-align: center;
+	position: relative;
+}
+
+.section-title::after{
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	background-color: #FF25FF;
+    border-top: 1px solid #FF25FF;
+
+}
+.section-title h1{ 
+    font-size: 4.5em;
+    display: inline-block;
+    color: #FF25FF;
+    text-align: center;
+	font-family: 'Abel';
+}
+.sectionAR{
+    font-size: 3.0em;
+	direction: rtl;
+	font-family:  'Kufi'; 
+	text-align: right;
+
+}
+
+.sectionEN{
+    font-size: 3.0em;
+	font-family:  'Abel'; 
+
+
+}
+/*
+#bg {	
+	width: 100%;
+	height: auto;
+	position: absolute;
+/* position:fixed; means always the same background even as you scroll down; //
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+*/
+
+/*  mobile */
+@media screen and (max-width: 550px) {
+ 
+  .hide-for-mobile{
+    display: none;
+  }
+  .photocard { 
+    width: 100%;
+    height: auto;
+    top: 0;
+    position: absolute;
+  }
+  #mybanner{
+  	position: absolute;
+    width: 70%;
+    top: 10%;
+    left: 15%;
+  }
+}
