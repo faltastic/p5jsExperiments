@@ -8,8 +8,13 @@ body {
 
 @font-face
 {
-font-family:'Amiri';
-src: url('fonts/Amiri-Regular.ttf') format('TrueType');
+/*
+font-family:'texGyreBonum';
+src: url('fonts/tex-gyre-bonum.italic.otf') format('OpenType');
+*/
+font-family:'Schola';
+src: url('fonts/texgyreschola-italic.otf') format('OpenType');
+
 }
 
 
