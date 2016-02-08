@@ -20,6 +20,7 @@ var nMoan = 0, nMeat =0;
 var lastMoan =0, lastMeat = 0;
 
 var logo, hLogo;
+var infoIcn;
 var playIcn, muteIcn;
 ////
 // temp. variables
@@ -35,6 +36,7 @@ var d =0;
 function preload(){
 
  logo = loadImage("images/logo.png");
+ infoIcn = loadImage("images/info.png");
 
  moan[0] = createAudio('sound/stag.mp3');
  moan[1] = createAudio('sound/wolf.mp3');
@@ -168,6 +170,9 @@ function draw() {
     rect(0,0, width,height);
   }
   
+  image(infoIcn,width/2, height-16, 32,32 );
+
+  /* unneccesary
   // sound icon
 
   if(!soundOn){
@@ -179,6 +184,7 @@ function draw() {
     image(playIcn,width - 64, 64-16, 32,32 );
     //console.log("now");
   }
+  */
 
 
 }
@@ -190,7 +196,7 @@ function touchMoved() {
   d = dist(touchX, touchY, width/2, height/2);
   
   if(soundOn && d<dim){
-    if(vol < 0.95){
+    if(vol < 0.99){
       vol = (vol+0.05);  // map(d, 0,dim, 1, 0);
     }
   }
