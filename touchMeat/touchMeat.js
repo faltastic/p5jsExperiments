@@ -11,6 +11,7 @@ var w, h;
 var lastH;
 var dim;
 
+
 var moan = [];
 var meat = [];
 var names = [];
@@ -18,6 +19,7 @@ var names = [];
 var nMoan = 0, nMeat =0;
 var lastMoan =0, lastMeat = 0;
 
+var logo, hLogo;
 var playIcn, muteIcn;
 ////
 // temp. variables
@@ -32,6 +34,7 @@ var d =0;
 
 function preload(){
 
+ logo = loadImage("images/logo.png");
 
  moan[0] = createAudio('sound/stag.mp3');
  moan[1] = createAudio('sound/wolf.mp3');
@@ -81,7 +84,7 @@ function setup() {
 
   N = moan.length;
   
-  w = width/1.5;
+  w = width/1.25;
   
 
   for(var i=0; i<meat.length; i++){
@@ -96,6 +99,8 @@ function setup() {
   nMeat = floor(random(100)%N);
 
   h = meat[nMeat].height* w / meat[nMeat].width;
+
+  hLogo  = logo.height* w / logo.width;
   
   dim= (w+h)/4;
  //dim = sqrt( w*w + h*h)/2;
@@ -114,39 +119,55 @@ function setup() {
   frameRate(10);
 
   bkg = color(hue, 50, 90);
-  background(bkg);
+  //background(bkg);
+  
 }
 
 
 
 function draw() { 
 
-  // background color
-  if( hue != newhue){
-   
-    if(newhue > oldhue){ hue = oldhue++;}
-    else{ hue = oldhue--;}
-    
-    bkg = color(hue, 50, 90);
-    background(bkg);
-  }
+ 
 
   // meat
   
-  if(fadein < 255  && frameCount>100){
+  if(frameCount > 100){
 
-    fadein += 3;
-    //tint(360,0,100,100-fadein);
-    //image(meat[lastMeat], width/2, height/2, w, lastH);
+     // background color
+    if( hue != newhue){
+   
+     if(newhue > oldhue){ hue = oldhue++;}
+     else{ hue = oldhue--;}
     
+     bkg = color(hue, 50, 90);
+    
+    }
+    background(bkg);
+
+    if(fadein < 255 ){
+
+      fadein += 2;
+      //tint(360,0,100,100-fadein);
+      //image(meat[lastMeat], width/2, height/2, w, lastH);
+    
+    }
+  
+    tint(255,100,100,fadein);
+    image(meat[nMeat], width/2, height/2, w, h);
+
+    noTint();
+    text(names[nMeat], width/2, 0.9*height);
+  }
+
+  else{
+
+    if( frameCount<50){
+      image(logo, width/2, height/2, w, hLogo);
+    }
+    fill(hue,50,90, floor(frameCount/2) );
+    rect(0,0, width,height);
   }
   
-  tint(255,100,100,fadein);
-  image(meat[nMeat], width/2, height/2, w, h);
-
-  noTint();
-  text(names[nMeat], width/2, 0.9*height);
-
   // sound icon
 
   if(!soundOn){
