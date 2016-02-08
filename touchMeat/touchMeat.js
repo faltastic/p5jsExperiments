@@ -77,13 +77,11 @@ function setup() {
   console.log(isTouch);
   
 
-  //textStyle(ITALIC);
-
   // prepare data
 
   N = moan.length;
   
-  w = width/3;
+  w = width/1.5;
   
 
   for(var i=0; i<meat.length; i++){
@@ -92,39 +90,31 @@ function setup() {
     //h = meat[i].height* w / meat[i].width;
     //meat[i].resize(w,h); 
     //console.log(w/h);
- }
+  }
  
- nMoan = floor(random(100)%N);
- nMeat = floor(random(100)%N);
+  nMoan = floor(random(100)%N);
+  nMeat = floor(random(100)%N);
 
- h = meat[nMeat].height* w / meat[nMeat].width;
+  h = meat[nMeat].height* w / meat[nMeat].width;
   
- dim= (w+h)/4;
+  dim= (w+h)/4;
  //dim = sqrt( w*w + h*h)/2;
 
- colorMode(HSB, 360, 100, 100, 100);
+  colorMode(HSB, 360, 100, 100, 100);
  
- hue = random(120); // hot
- oldhue = hue;
- newhue = hue;
- bkg = color(hue, 90, 100);
+  hue = random(120); // hot
+  oldhue = hue;
+  newhue = hue;
+  bkg = color(hue, 90, 100);
 
- //moan[nMoan].loop();
- /*
- background(bkg);
- image(meat[nMeat], width/2, height/2, w, h);
-
- fill(0);strokeWeight(0);textSize(20);
- text(names[nMeat], width/2, 0.9*height);
- */
- fill(0);strokeWeight(0);textSize(floor(height/20));
+  fill(0);strokeWeight(0);textSize(floor(height/25));
  
- imageMode(CENTER);
- textAlign(CENTER);
+  imageMode(CENTER);
+  textAlign(CENTER);
   frameRate(10);
 
-   bkg = color(hue, 50, 90);
-    background(bkg);
+  bkg = color(hue, 50, 90);
+  background(bkg);
 }
 
 
@@ -160,6 +150,8 @@ function draw() {
   // sound icon
 
   if(!soundOn){
+    
+    moan[nMoan].volume(0);
     image(muteIcn,width - 64, 64-16, 32,32 );
   }
   else{
@@ -167,32 +159,6 @@ function draw() {
     //console.log("now");
   }
 
-  /*
-  if(mouseX != pmouseX){
-    d = dist(mouseX, mouseY, width/2, height/2);
-    
-    if(soundOn && d<dim){
-      vol = map(d, 0,dim, 1, 0);
-    }
-    else{
-      vol=0;
-    }
-
-    //if(!soundOn){vol = 0;}
-
-    //console.log(d + "  " + vol);
-
-    moan[nMoan].volume(vol);
-  }
-  */
-
-  /*
-  background(bkg);
-  image(meat[nMeat], width/2, height/2, w, h);
-
-  fill(0).strokeWeight(0).textSize(10);
-  text(names[nMeat], width/2, height/2);
-  */
 
 }
 
@@ -211,9 +177,6 @@ function touchMoved() {
     vol=0;
   }
 
-  //if(!soundOn){vol = 0;}
-
-  //console.log(d + "  " + vol);
 
   moan[nMoan].volume(vol);
 
@@ -237,7 +200,7 @@ if( touchX > width-64-16 && touchY < 64 ){
   oldhue = hue;
   newhue = random(120);
   
-  if( d < dim){
+  if( d < dim && frameCount > 200){
  
    nMoan = floor(random(100)%N);
    nMeat = floor(random(100)%N);
