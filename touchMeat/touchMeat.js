@@ -133,9 +133,9 @@ function draw() {
 
   // meat
   
-  if(fadein < 100  && frameCount<100){
+  if(fadein < 255  && frameCount<100){
 
-    fadein += 1;
+    fadein += 3;
     //tint(360,0,100,100-fadein);
     //image(meat[lastMeat], width/2, height/2, w, lastH);
     
@@ -219,6 +219,7 @@ if( touchX > width-64-16 && touchY < 64 ){
 
    moan[lastMoan].stop();
    moan[nMoan].loop();
+   moan[nMoan].volume(0);
    
    dim =(w+h)/4;
    //dim = sqrt(w*w + h*h)/2; //diagonal
