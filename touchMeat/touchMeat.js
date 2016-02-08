@@ -133,7 +133,7 @@ function draw() {
 
   // meat
   
-  if(fadein < 255  && frameCount<100){
+  if(fadein < 255  && frameCount>100){
 
     fadein += 3;
     //tint(360,0,100,100-fadein);
@@ -224,7 +224,7 @@ if( touchX > width-64-16 && touchY < 64 ){
    dim =(w+h)/4;
    //dim = sqrt(w*w + h*h)/2; //diagonal
 
-   fadein = 30;
+   fadein = 10;
 
   }
 }
