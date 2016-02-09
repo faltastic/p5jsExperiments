@@ -62,7 +62,7 @@ function preload(){
  muteIcn = loadImage("images/icns/mute.png"); 
 
 
- textFont("Schola");
+ textFont("Schola-Italic");
 
 
 }
