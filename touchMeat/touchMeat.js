@@ -120,7 +120,7 @@ function setup() {
  
   imageMode(CENTER);
   textAlign(CENTER);
-  frameRate(20);
+  //frameRate(20);
 
   bkg = color(hue, 50, 90);
   //background(bkg);
@@ -133,7 +133,7 @@ function draw() {
 
   // meat
   
-  if(frameCount > 100 && fadein <250){
+  if(frameCount > 150 && fadein <250){
 
      // background color
     if( hue != newhue){
@@ -147,7 +147,7 @@ function draw() {
     
     }
 
-    fadein += 2;
+    fadein += 1;
   
     tint(255,100,100,fadein);
     image(meat[nMeat], width/2, height/2.25, w, h);
@@ -161,11 +161,11 @@ function draw() {
 
   else{
 
-    if( frameCount<50){
+    if( frameCount<100){
       image(logo, width/2, height/2.25, w, hLogo);
     }
 
-    fill(hue,50,90, floor(frameCount/4) );
+    fill(hue,50,90, floor(frameCount/5) );
     rect(0,0, width,height);
   }
 
@@ -207,7 +207,7 @@ function touchEnded() {
 
  
   
-  if( d < dim && frameCount > 200){
+  if( d < dim && frameCount > 150){
    
 
    oldhue = hue;
