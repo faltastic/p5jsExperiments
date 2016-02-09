@@ -17,17 +17,40 @@ src: url('fonts/texgyreschola-italic.otf') format('OpenType');
 
 }
 
-
-#namesP{
-	text-align: center;
-	font-family:  'Amiri';
-	/* font-family: 'Lateef'; */
-	font-size: 1.5em;
-
+#infoicon{
+	position: absolute;
+	margin: 0 auto;
+	bottom: 3vh;
+	left: 47%;
+	width: 6%;
+	height:auto;
 }
 
-#hint{
-	float:right;
-	text-align: right;
+.modal-demo {
+    background-color: #FFF;
+    width: 90%;
+    height: auto;
+    top: 10vh;
+    border: #000 solid 1px;
+    border-radius: 10px;
+    box-shadow: 0 8px 6px -6px black;
+    text-align: left;
+    display: none;
+}
+.title {
+	text-align: center;
+    padding-top: 0.75em; 
+    /*padding-bottom: 1em;
+    */
+    line-height: 2em;
+    font-size: 1.5em;
+    /*border-bottom: #CCC solid 1px;*/
+}
+.text {
+    padding-left: 1.25em;
+    padding-right: 1.25em;
+    padding-bottom: 2em;
+
+    font-size: 1.15em;
 }
 

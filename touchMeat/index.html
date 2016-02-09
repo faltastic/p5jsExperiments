@@ -21,6 +21,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/custombox.css">
   <link rel="stylesheet" href="css/moan.css">
 
   <!-- Favicon
@@ -37,6 +38,7 @@
   <!--script language="javascript" src="lib/p5.sound.js"></script-->
 
   <script src="lib/jquery.js"></script>
+
   
   
 </head>
@@ -46,11 +48,49 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
  <div id="theCanvas"></div>
-     
+
+ 
+  
+ <a href="#modal"><img id="infoicon" src="images/info.png" />   </a>   
+
+
+<!-- info modal -->
+<div id="modal" class="modal-demo">
+    
+    <h4 class="title">touch meat</h4>
+    <div class="text">
+        We were barely able to catch the breeze at the beach, and it felt as if someone stepped out of my mind. She was in love with him for the first time in months, so she had no intention of escaping. The sun had risen from the ocean, making her feel more alive than normal. 
+
+        <br />
+        She's beautiful, but the truth is that I don't know what to do.
+    
+        <br />
+        The sun was just starting to fade away, leaving people scattered around the Atlantic Ocean. I'd seen the men in his life, who guided me at the beach once more.
+    </div>
+
+</div>
+
+
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
   <script language="javascript" src="touchMeat.js"></script>
+
+
+
+  <script src="lib/custombox.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('infoicon').addEventListener('click', function( e ) {
+            Custombox.open({
+                target: '#modal',
+                effect: 'blur'
+            });
+            e.preventDefault();
+        });
+    });
+  </script>
 
 
 </body>

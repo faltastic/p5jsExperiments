@@ -21,7 +21,7 @@ var nMoan = 0, nMeat =0;
 var lastMoan =0, lastMeat = 0;
 
 var logo, hLogo;
-var infoIcn;
+//var infoIcn;
 var playIcn, muteIcn;
 ////
 // temp. variables
@@ -37,7 +37,7 @@ var d =0;
 function preload(){
 
  logo = loadImage("images/logo.png");
- infoIcn = loadImage("images/info.png");
+ // infoIcn = loadImage("images/info.png");
 
  moan[0] = createAudio('sound/stag.mp3');
  moan[1] = createAudio('sound/wolf.mp3');
@@ -159,7 +159,7 @@ function draw() {
     noTint();
     text(names[nMeat], width/2, 0.85*height);
 
-    image(infoIcn,width/2, height-48, 32,32 );
+    //image(infoIcn,width/2, height-48, 32,32 );
 
   }
 
