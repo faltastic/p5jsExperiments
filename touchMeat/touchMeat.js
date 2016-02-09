@@ -29,8 +29,9 @@ var playIcn, muteIcn;
 var hue, oldhue, newhue, bkg;
 var fadein = 0;
 var vol =0;
-var soundOn = true; 
 var d =0;
+var trans = 100;
+
 
 
 
@@ -119,7 +120,7 @@ function setup() {
  
   imageMode(CENTER);
   textAlign(CENTER);
-  frameRate(10);
+  frameRate(20);
 
   bkg = color(hue, 50, 90);
   //background(bkg);
@@ -132,7 +133,7 @@ function draw() {
 
   // meat
   
-  if(frameCount > 50){
+  if(frameCount > 100 && fadein <250){
 
      // background color
     if( hue != newhue){
@@ -141,17 +142,12 @@ function draw() {
      else{ hue = oldhue--;}
     
      bkg = color(hue, 50, 90);
+
+     background(bkg);
     
     }
-    background(bkg);
 
-    if(fadein < 255 ){
-
-      fadein += 5;
-      //tint(360,0,100,100-fadein);
-      //image(meat[lastMeat], width/2, height/2, w, lastH);
-    
-    }
+    fadein += 1;
   
     tint(255,100,100,fadein);
     image(meat[nMeat], width/2, height/2.25, w, h);
@@ -165,28 +161,13 @@ function draw() {
 
   else{
 
-    if( frameCount<25){
+    if( frameCount<50){
       image(logo, width/2, height/2.25, w, hLogo);
     }
 
-    fill(hue,50,90, floor(frameCount) );
+    fill(hue,50,90, floor(frameCount/3) );
     rect(0,0, width,height);
   }
-  
-
-  /* unneccesary
-  // sound icon
-
-  if(!soundOn){
-    
-    moan[nMoan].volume(0);
-    image(muteIcn,width - 64, 64-16, 32,32 );
-  }
-  else{
-    image(playIcn,width - 64, 64-16, 32,32 );
-    //console.log("now");
-  }
-  */
 
 
 }
@@ -197,7 +178,7 @@ function touchMoved() {
 
   d = dist(touchX, touchY, width/2, height/2);
   
-  if(soundOn && d<dim){
+  if( d<dim ){
     if(vol < 0.985){
       vol = (vol+0.05);  // map(d, 0,dim, 1, 0);
     }
@@ -205,8 +186,6 @@ function touchMoved() {
   else {
     vol=0;
   }
-
-
   moan[nMoan].volume(vol);
 
 }
@@ -226,10 +205,13 @@ if( touchX > width-64-16 && touchY < 64 ){
   
   d = dist(touchX, touchY, width/2, height/2);
 
-  oldhue = hue;
-  newhue = random(120);
+ 
   
   if( d < dim && frameCount > 200){
+   
+
+   oldhue = hue;
+   newhue = random(120);
  
    nMoan = floor(random(100)%N);
    nMeat = floor(random(100)%N);
@@ -253,7 +235,7 @@ if( touchX > width-64-16 && touchY < 64 ){
    dim =(w+h)/4;
    //dim = sqrt(w*w + h*h)/2; //diagonal
 
-   fadein = 10;
+   fadein = 0;
 
   }
 }
