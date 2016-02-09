@@ -147,7 +147,7 @@ function draw() {
     
     }
 
-    fadein += 1;
+    fadein += 2;
   
     tint(255,100,100,fadein);
     image(meat[nMeat], width/2, height/2.25, w, h);
@@ -165,7 +165,7 @@ function draw() {
       image(logo, width/2, height/2.25, w, hLogo);
     }
 
-    fill(hue,50,90, floor(frameCount/3) );
+    fill(hue,50,90, floor(frameCount/4) );
     rect(0,0, width,height);
   }
 
@@ -194,11 +194,11 @@ function touchMoved() {
 
 function touchEnded() {
 
-if( touchX > width-64-16 && touchY < 64 ){
-    soundOn = !soundOn;
+// if( touchX > width-64-16 && touchY < 64 ){
+//     soundOn = !soundOn;
 
-    //console.log(soundOn);
-  }
+//     //console.log(soundOn);
+//   }
   
   lastMoan = nMoan;
   lastMeat = nMeat;
