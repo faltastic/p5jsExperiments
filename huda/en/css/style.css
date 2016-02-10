@@ -32,7 +32,6 @@ body, button{
   color: #eee;
   padding-top: 0.15em;
   padding-bottom: 0.15em;
-
   text-align: center;
 }
 
@@ -48,7 +47,6 @@ body, button{
 }
 
 #nav a:hover{
- 
   color: #ED6666;
 }
 
@@ -202,7 +200,7 @@ button + label{
 /* Mobile first queries */
 
 /* Larger than mobile */
-@media (min-width: 300px) {
+@media (min-width: 220px) {
 
   body {
       font-size: 80%; 
