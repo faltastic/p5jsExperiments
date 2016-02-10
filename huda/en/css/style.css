@@ -200,9 +200,11 @@ button + label{
 /* Larger than mobile */
 @media (min-device-width: 400px) {
 
+  #myheader{
+    font-size: 7.5em;
+  }
 
    .container .mix,
-  }
   .container .gap{
     width: 48%;
   }
@@ -221,10 +223,15 @@ button + label{
 /* Larger than phablet */
 @media (min-device-width: 550px) {
 
+ 
 
   .container .mix,
   .container .gap{
     width: 32%;
+  }
+
+   #myheader{
+    font-size: 6.25em;
   }
 
   .normaltext{
@@ -241,10 +248,17 @@ button + label{
 /* Larger than tablet */
 @media (min-device-width: 750px) {
 
+  
+
   #myheader h1,
   #nav{
     text-align: left;
   }
+
+  #myheader h1{
+    font-size: 5em;
+  }
+
   .container .mix,
   .container .gap{
     width: 23.5%;
