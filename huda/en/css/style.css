@@ -198,7 +198,7 @@ button + label{
 /* Mobile first queries */
 
 /* Larger than mobile */
-@media (min-width: 400px) {
+@media (min-device-width: 400px) {
 
 
    .container .mix,
@@ -219,7 +219,7 @@ button + label{
 }
 
 /* Larger than phablet */
-@media (min-width: 550px) {
+@media (min-device-width: 550px) {
 
 
   .container .mix,
@@ -239,7 +239,7 @@ button + label{
 }
 
 /* Larger than tablet */
-@media (min-width: 750px) {
+@media (min-device-width: 750px) {
 
   #myheader h1,
   #nav{
