@@ -21,6 +21,7 @@ src: url('CaviarDreams.ttf') format('TrueType');
 body, button{
   background: #eee;
   font-family: 'Hind', sans-serif;
+  font-size: 100%;
 
 }
 
@@ -29,7 +30,7 @@ body, button{
 #myheader h1 {
   font-family:  'CaviarDreamsBold';
   color: #eee;
-  font-size: 4.25em;
+  font-size: 5em;
   padding-top: 0.15em;
   padding-bottom: 0.15em;
 
@@ -200,11 +201,12 @@ button + label{
 /* Larger than mobile */
 @media (min-width: 400px) {
 
-  #myheader{
-    font-size: 6.5em;
+  body {
+      font-size: 150%; /* Base font-size of 32px */
   }
 
-   .container .mix,
+
+  .container .mix,
   .container .gap{
     width: 48%;
   }
@@ -223,16 +225,16 @@ button + label{
 /* Larger than phablet */
 @media (min-width: 550px) {
 
- 
+  body {
+    font-size: 125%; /* Base font-size of 32px */
+  }
 
   .container .mix,
   .container .gap{
     width: 32%;
   }
 
-   #myheader{
-    font-size: 5.5em;
-  }
+
 
   .normaltext{
   width: 95%;
@@ -247,17 +249,16 @@ button + label{
 
 /* Larger than tablet */
 @media (min-width: 750px) {
-
   
+  body {
+    font-size: 100%; /* Base font-size of 32px */
+  }
 
   #myheader h1,
   #nav{
     text-align: left;
   }
 
-  #myheader h1{
-    font-size: 5em;
-  }
 
   .container .mix,
   .container .gap{
