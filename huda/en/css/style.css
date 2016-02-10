@@ -30,7 +30,6 @@ body, button{
 #myheader h1 {
   font-family:  'CaviarDreamsBold';
   color: #eee;
-  font-size: 5em;
   padding-top: 0.15em;
   padding-bottom: 0.15em;
 
@@ -119,30 +118,34 @@ button + label{
 }
 
  .normaltext{
-  width: 75%;
-  padding: 1% 6% 0;
-  text-align: justify;
+  text-align: left;
   background: #eee; 
-  padding-top: 3.5%;
   padding-bottom: 5%;
 }
 
 
 .normaltext p{
   font-family: 'Hind', sans-serif;
-  font-size: 1.25em;
-  padding-bottom: 1.25em;
-  line-height: 1.25em;
-
 }
 
-.normaltext a{
+#biolink a{
   font-family: 'Hind', sans-serif;
   font-size: 1.5em;
   color: #ED6666;
   text-decoration: none;
   padding-bottom: 0;
+}
 
+.#biolink a:hover{
+  text-decoration: underline;
+
+}
+
+.normaltext a{
+  font-family: 'Hind', sans-serif;
+  color: #ED6666;
+  text-decoration: none;
+  padding-bottom: 0;
 }
 
 .normaltext a:hover{
@@ -199,10 +202,14 @@ button + label{
 /* Mobile first queries */
 
 /* Larger than mobile */
-@media (min-width: 400px) {
+@media (min-width: 300px) {
 
   body {
-      font-size: 150%; /* Base font-size of 32px */
+      font-size: 80%; 
+  }
+
+  #myheader h1{
+    font-size: 3.5em;
   }
 
 
@@ -212,21 +219,30 @@ button + label{
   }
   
   .normaltext{
-  width: 100%;
-  padding-top: 12.5%;
+  width: 90%;
+  padding-top: 2.25em;
+  padding-left: 5%;
+
  }
+
  .normaltext p{
-  font-size: 1.05em;
+  font-size: 1.2em;
   padding-bottom: 1.1em;
-  line-height: 1.1em;
+  line-height: 1.25em;
  }
+
 }
 
 /* Larger than phablet */
-@media (min-width: 550px) {
+@media (min-width: 470px) {
+
 
   body {
-    font-size: 125%; /* Base font-size of 32px */
+    font-size: 90%; 
+  }
+
+  #myheader h1{
+    font-size: 4.0em;
   }
 
   .container .mix,
@@ -234,17 +250,14 @@ button + label{
     width: 32%;
   }
 
+.normaltext{
+  width: 87.5%;
+  padding-top: 2.5em;
+  padding-left: 7.5%;
+ }
 
 
-  .normaltext{
-  width: 95%;
-  padding-top: 10%;
- }
- .normaltext p{
-  font-size: 1.15em;
-  padding-bottom: 1.15em;
-  line-height: 1.15em;
- }
+
 }
 
 /* Larger than tablet */
@@ -252,6 +265,10 @@ button + label{
   
   body {
     font-size: 100%; /* Base font-size of 32px */
+  }
+
+  #myheader h1{
+    font-size: 4.25em;
   }
 
   #myheader h1,
@@ -264,6 +281,12 @@ button + label{
   .container .gap{
     width: 23.5%;
   }
+
+  .normaltext{
+  width: 80%;
+  padding-top: 3em;
+  padding-left: 6%;
+ }
 
   .not-for-large{
     display: none;
