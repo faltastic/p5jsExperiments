@@ -40,6 +40,8 @@
 
   <script src="lib/jquery.js"></script>
 
+  <script src="lib/jquery.modal.js" ></script>
+
   
   
 </head>
@@ -50,11 +52,7 @@
 
  <div id="theCanvas"></div>
 
-<a href="#theModal" rel="modal:open"><img id="infoicon" src="images/info.png" ></a>
-  
-
-
-<div id="theModal" style="display:none;">
+ <div id="theModal" style="display:none;">
     <div id="overlayCard"> 
         <h3> touch meat </h3>
         <p>
@@ -69,6 +67,13 @@
       
      </div>
   </div>
+
+
+<a href="#theModal" rel="modal:open"><img id="infoicon" src="images/info.png" ></a>
+  
+
+
+
                 
  
 
@@ -79,16 +84,19 @@
   <script language="javascript" src="touchMeat.js"></script>
 
 
-    <script src="lib/jquery.modal.js" ></script>
 
   <!--script src="lib/custombox.min.js"></script-->
 
   <script>
-    $('a.open-modal').click(function(event) {
-      $(this).modal({
-        fadeDuration: 250
-      });
-      return false;
+    // $('a.open-modal').click(function(event) {
+    //   $(this).modal({
+    //     fadeDuration: 250
+    //   });
+    //   return false;
+    // });
+
+    $("#theModal").modal({
+      fadeDuration: 250
     });
 
     if( !is_touch_device() ){
