@@ -21,7 +21,7 @@ var nMoan = 0, nMeat =0;
 var lastMoan =0, lastMeat = 0;
 
 var logo, hLogo;
-//var infoIcn;
+var infoMode = false;
 var playIcn, muteIcn;
 ////
 // temp. variables
@@ -149,8 +149,8 @@ function draw() {
     
     }
 
-    if(fadein < 249){
-      fadein += 1;
+    if(fadein < 247){
+      fadein += 2;
     }
 
     tint(255,100,100,fadein);
@@ -214,7 +214,7 @@ function touchEnded() {
 
  
   
-  if( d < dim && frameCount > 120){
+  if( d < dim && frameCount > 120 && !infoMode ){
    
    oldhue = hue;
    newhue = random(120);
@@ -247,6 +247,7 @@ function touchEnded() {
 
   if(touchY >0.87 * height){
     $('#theModal').fadeToggle();
+    infoMode = !infoMode;
   }
 }
 

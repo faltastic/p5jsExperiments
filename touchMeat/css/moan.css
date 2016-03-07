@@ -58,7 +58,7 @@ src: url('fonts/texgyreschola-regular.otf') format('OpenType');
 
   z-index: 2;
   width: 90%;
-  height: 85%;
+  height: 90%;
   /*height: auto;*/
   background: #FFF;
   padding: 1em;
