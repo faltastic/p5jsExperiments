@@ -244,6 +244,10 @@ function touchEnded() {
    fadein = 0;
 
   }
+
+  if(touchY >0.87 * height){
+    $('#theModal').fadeToggle();
+  }
 }
 
 /*

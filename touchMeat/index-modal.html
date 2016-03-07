@@ -40,7 +40,6 @@
 
   <script src="lib/jquery.js"></script>
 
-  <script src="lib/jquery.modal.js" ></script>
 
   
   
@@ -52,8 +51,14 @@
 
  <div id="theCanvas"></div>
 
- <div id="theModal" style="display:none;">
-    <div id="overlayCard"> 
+
+<a id="infolink" href="#theModal" > <img id="infoicon" src="images/info.png" ></a>
+
+<!--<a href="#theModal" rel="modal:open"  > here
+ <img id="infoicon" src="images/info.png"  > </a> -->
+ 
+ <div id="theModal" style="display:block;">
+     <div id="overlayCard"> 
         <h3> touch meat </h3>
         <p>
         We were barely able to catch the breeze at the beach, and it felt as if someone stepped out of my mind. She was in love with him for the first time in months, so she had no intention of escaping. The sun had risen from the ocean, making her feel more alive than normal. 
@@ -65,13 +70,8 @@
        The sun was just starting to fade away, leaving people scattered around the Atlantic Ocean. I'd seen the men in his life, who guided me at the beach once more.
        </p>
       
-     </div>
+      </div>
   </div>
-
-
-<a href="#theModal" rel="modal:open"><img id="infoicon" src="images/info.png" ></a>
-  
-
 
 
                 
@@ -81,13 +81,22 @@
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
+  
   <script language="javascript" src="touchMeat.js"></script>
+ <!--script src="lib/jquery.modal.js" ></script-->
 
 
 
   <!--script src="lib/custombox.min.js"></script-->
 
   <script>
+
+   $('img.infoicon').click(function(event) {
+    $('html,body').animate({
+        scrollTop: $("#theModal").offset().top},
+        1000);
+    });
+
     // $('a.open-modal').click(function(event) {
     //   $(this).modal({
     //     fadeDuration: 250
@@ -95,13 +104,10 @@
     //   return false;
     // });
 
-    $("#theModal").modal({
-      fadeDuration: 250
-    });
 
     if( !is_touch_device() ){
-      $('theCanvas').hide();
-      $('theModal').show();
+      //$('theCanvas').hide();
+      //$('theModal').show();
     }
 
 
