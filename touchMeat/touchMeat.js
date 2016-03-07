@@ -116,7 +116,9 @@ function setup() {
   newhue = hue;
   bkg = color(hue, 90, 100);
 
-  fill(0);strokeWeight(0);textSize(floor(height/25));
+  fill(0);
+  strokeWeight(0);
+  textSize(floor(height/25));
  
   imageMode(CENTER);
   textAlign(CENTER);
@@ -133,7 +135,7 @@ function draw() {
 
   // meat
   
-  if(frameCount > 150 && fadein <250){
+  if(frameCount > 120 && fadein <250){
 
      // background color
     if( hue != newhue){
@@ -147,13 +149,18 @@ function draw() {
     
     }
 
-    fadein += 1;
-  
+    if(fadein < 249){
+      fadein += 1;
+    }
+
     tint(255,100,100,fadein);
     image(meat[nMeat], width/2, height/2.25, w, h);
 
     noTint();
-    text(names[nMeat], width/2, 0.85*height);
+    if(fadein > 50){
+     fill(0,fadein/2);
+     text(names[nMeat], width/2, 0.85*height);
+    }
 
     //image(infoIcn,width/2, height-48, 32,32 );
 
@@ -179,8 +186,8 @@ function touchMoved() {
   d = dist(touchX, touchY, width/2, height/2);
   
   if( d<dim ){
-    if(vol < 0.985){
-      vol = (vol+0.05);  // map(d, 0,dim, 1, 0);
+    if(vol < 0.94){
+      vol +=0.05;  // map(d, 0,dim, 1, 0);
     }
   }
   else {
@@ -207,9 +214,8 @@ function touchEnded() {
 
  
   
-  if( d < dim && frameCount > 150){
+  if( d < dim && frameCount > 120){
    
-
    oldhue = hue;
    newhue = random(120);
  
