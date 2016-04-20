@@ -162,7 +162,7 @@ function draw() {
       c[i].eye = floor(map(d, 0, height/2, 0, eyes.length-1));
     
       //  else 
-      if ( fade<24  && d < height/2) {
+      if ( fade<24 ){ //&& d < height/2) {
         c[i].eye = abs( floor(random(-eyes.length+1, eyes.length-1)) );
       }
 

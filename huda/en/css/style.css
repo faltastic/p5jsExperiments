@@ -35,6 +35,27 @@ body, button{
   text-align: center;
 }
 
+h3 {
+  font-family:  'CaviarDreams';
+  color: #ED6666;
+  padding-top: 0.15em;
+  padding-bottom: 1.0em;
+  font-size: 1.25em;
+/*  text-align: center;
+*/
+}
+
+h3 bold{
+  font-family:  'CaviarDreamsBold';
+  padding: 0.25em;
+  border: 1px solid #ED6666 ;
+  border-radius: 0.2em;
+ font-size: 1.25em;
+ color: #ED6666;
+ /*background-color: #eee;*/
+
+}
+
 #nav{
   text-align: center;
 }
@@ -65,8 +86,8 @@ label{
 button{
   display: inline-block;
   padding: .4em .8em;
-  background: #666;
-  border: 0;
+  background: #333;
+  border: 1px solid #666;
   color: #ddd;
   font-size: 1em;
   font-weight: 300;
@@ -77,6 +98,13 @@ button{
 
 button.active{
   background: #ED6666;
+  color: #eee;
+  border-color: #ED6666;
+  /*
+  border-color: #ED6666;
+  background: #333;
+  color: #ED6666;
+  */
 }
 
 button:focus{
@@ -159,6 +187,7 @@ button + label{
   width:95%;
   max-width:225px;
   height:auto;
+/*  opacity: 0.98;*/
  
 
 

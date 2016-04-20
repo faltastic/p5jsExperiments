@@ -1,23 +1,101 @@
 <!DOCTYPE html>
 <html >
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <title>Huda Lutfi</title>
+  <title>Huda Lutfi</title>
+
   
-    
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-   
-    
-    <link rel="stylesheet" href="css/imagelightbox.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+ 
+  
+  <link rel="stylesheet" href="css/imagelightbox.css">
 
-    <link rel="icon" type="image/png" href="icns/faveye.png">
-    
-  </head>
+  <style type="text/css">
+  
+    .caption-style-4{
+      list-style-type: none;
+      margin: 0px;
+      padding: 0px;
+      
+    }
 
-  <body>
+    .caption-style-4 li{
+      float: left;
+      padding: 0px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .caption-style-4 li:hover .caption{
+      opacity: 1;
+    }
+
+    .caption-style-4 li:hover img{
+      opacity: 1;
+      transform: scale(1.05,1.05);
+      -webkit-transform:scale(1.05,1.05);
+      -moz-transform:scale(1.05,1.05);
+      -ms-transform:scale(1.05,1.05);
+      -o-transform:scale(1.05,1.05);
+    }
+
+
+    .caption-style-4 img{
+      margin: 0px;
+      padding: 0px;
+      float: left;
+      z-index: 1;
+    }
+
+    .mix:li .title{
+      z-index:10;
+    }
+
+
+    .caption-style-4 .caption{
+      cursor: pointer;
+      position: absolute;
+      opacity: 0;
+      -webkit-transition:all 0.45s ease-in-out;
+      -moz-transition:all 0.45s ease-in-out;
+      -o-transition:all 0.45s ease-in-out;
+      -ms-transition:all 0.45s ease-in-out;
+      transition:all 0.45s ease-in-out;
+
+    }
+
+    .caption-style-4 img{
+      opacity: 0.9;
+      -webkit-transition:all 0.25s ease-in-out;
+      -moz-transition:all 0.25s ease-in-out;
+      -o-transition:all 0.25s ease-in-out;
+      -ms-transition:all 0.25s ease-in-out;
+      transition:all 0.25s ease-in-out;
+    }
+
+    .caption-style-4 .caption-text h1{
+      /*text-transform: uppercase;*/
+      font-size: 24px;
+    }
+    .caption-style-4 .caption-text{
+      z-index: 10;
+      color: #ff0000;
+      width: 100%;
+      text-align: center;
+      
+      margin: 0 auto;
+    }
+  </style>
+
+  <link rel="icon" type="image/png" href="icns/faveye.png">
+  <script src='js/jquery213.min.js'></script>
+  
+</head>
+
+<body>
 
   <div class="controls" id="myheader">
 
@@ -33,23 +111,13 @@
       <a href="contact.html" > contact </a>
     </div>
     <br class="not-for-large" />
-
- 
   
   </div>
 
   <div class="controls">
-
- 
-    <label>Medium:</label>
-    
-    <button class="filter" data-filter="all">all</button>
-    <button class="filter" data-filter=".cat-1">installation</button>
-    <button class="filter" data-filter=".cat-2">collage / mixed media</button>
-    <button class="filter" data-filter=".cat-3">sculpture</button>
-    <button class="filter" data-filter=".cat-4">objects</button>
    
     <br class="not-for-large" />
+
     <label>Sort:</label>
     
     <button class="sort" data-sort="myorder:asc">new to old</button>
@@ -59,193 +127,71 @@
 
 <div id="myContainer" class="container">
 
-  <div class="mix cat-1 cat-3" data-myorder="1" id="pc-1"> 
-    
-    <a data-imagelightbox="b" href="img/cutandpaste/2-1.jpg"> 
-      <img  src="img/cutandpaste/thumbs/2.png" alt="Bottles - Castor oil Detox Formula, shelf 129 x 38 cm" />
-    </a>
+  
+  <ul class="caption-style-4">
       
-    <a data-imagelightbox="b" href="img/cutandpaste/2-2.jpg" >
-        <img style="display: none;" src=""  alt="Bottles - Castor oil Detox Formula, shelf 129 x 38 cm"/> 
-    </a> 
-    
-  </div>
+    <div class="mix " data-myorder="1">
+          <li>
+          <a href="cutandpaste.html" >
+          <img id="cutThumb" src="img/cutandpaste-stat.gif" alt="">
+          </a>
+          <br />      
+          <h4> Cut and Paste </h4>
+          </li>
+    </div>
+    <div class="mix " data-myorder="2">
+      <li>
+        <img id="ccThumb" src="img/stat.gif" loop="false" alt="">
+      </li>
+      
+    </div>
+  </ul>
 
-  
-  <div class="mix cat-1 cat-3" data-myorder="2" id="pc-2"> 
-
-    <a data-imagelightbox="b" href="img/cutandpaste/3-1.jpg"> 
-     <img src="img/cutandpaste/thumbs/3.png" alt="Ironing Board, 145 x 40 cm" />
-    </a>
-    <a data-imagelightbox="b" href="img/cutandpaste/3-2.jpg"> 
-     <img style="display: none;" src="" alt="Ironing Board, 145 x 40 cm" />
-    </a>
-
-  </div> 
-  
-  <div class="mix cat-2" data-myorder="3" id="pc-3">
-
-    <a data-imagelightbox="b" href="img/cutandpaste/4-1.jpg"> <img src="img/cutandpaste/thumbs/4.png" alt=" Discarded, 250 x 250 cm " /></a>  
-    <a data-imagelightbox="b" href="img/cutandpaste/4-2.jpg"> <img  style="display: none;" src="" alt=" Discarded, 250 x 250 cm " /></a>  
-    <a data-imagelightbox="b" href="img/cutandpaste/4-3.jpg"> <img  style="display: none;" src="" alt=" Discarded, 250 x 250 cm " /></a>  
-    <a data-imagelightbox="b" href="img/cutandpaste/4-4.jpg"> <img  style="display: none;" src="" alt=" Discarded, 250 x 250 cm " /></a>  
-   
-  </div>
-  
-  <div class="mix cat-2" data-myorder="4" id="pc-4"> 
-    <a data-imagelightbox="b" href="img/cutandpaste/5-1.jpg"> <img src="img/cutandpaste/thumbs/5.png" alt="Traffic, 174 x 138 cm " /></a>  
-    <a data-imagelightbox="b" href="img/cutandpaste/5-2.jpg"> <img style="display: none;" src="" alt="Traffic, 174 x 138 cm " /></a>  
-  </div>
-
-  <div class="mix cat-2" data-myorder="5" id="pc-5">  
-    <a data-imagelightbox="b" href="img/cutandpaste/6-1.jpg"> <img src="img/cutandpaste/thumbs/6.png" alt="Potraits from Tahrir, 30 pieces - 39 cm diameter" /></a>  
-    <a data-imagelightbox="b" href="img/cutandpaste/6-2.jpg"> <img style="display: none;" src="" alt="Potraits from Tahrir, 30 pieces - 39 cm diameter" /></a>  
-    <a data-imagelightbox="b" href="img/cutandpaste/6-3.jpg"> <img style="display: none;" src="" alt="Potraits from Tahrir, 30 pieces - 39 cm diameter" /></a>  
-    <a data-imagelightbox="b" href="img/cutandpaste/6-4.jpg"> <img style="display: none;" src="" alt="Potraits from Tahrir, 30 pieces - 39 cm diameter" /></a>  
-  
-  
-  </div>
-  
-  <div class="mix cat-2" data-myorder="6" id="pc-6"> 
-    <a data-imagelightbox="b" href="img/cutandpaste/7-1.jpg"> <img src="img/cutandpaste/thumbs/7.png" alt="Gestures 166 x 80 x 3 cm" /></a>
-    <a data-imagelightbox="b" href="img/cutandpaste/7-2.jpg"> <img style="display: none;" src="" alt="Gestures 166 x 80 x 3 cm"/></a>  
-    <a data-imagelightbox="b" href="img/cutandpaste/7-3.jpg"> <img style="display: none;" src="" alt="Gestures 166 x 80 x 3 cm"/></a>  
-    <a data-imagelightbox="b" href="img/cutandpaste/7-4.jpg"> <img style="display: none;" src="" alt="Gestures 166 x 80 x 3 cm"/></a>  
-       
-  </div>
-  
-  <div class="mix cat-1" data-myorder="7" id="pc-7"> 
-    <a data-imagelightbox="b" href="img/cutandpaste/8-1.jpg"> <img src="img/cutandpaste/thumbs/8.png" alt="Cactus Walk installation" /></a> 
-    <a data-imagelightbox="b" href="img/cutandpaste/8-2.jpg"> <img style="display: none;" src="" alt="Cactus Walk installation"/></a>  
-    <a data-imagelightbox="b" href="img/cutandpaste/8-3.jpg"> <img style="display: none;" src="" alt="Cactus Walk installation"/></a>  
-    <a data-imagelightbox="b" href="img/cutandpaste/8-4.jpg"> <img style="display: none;" src="" alt="Cactus Walk installation"/></a>  
-     
-  </div>
-  
-  <div class="mix cat-3" data-myorder="8" id="pc-8"> 
-    <a data-imagelightbox="b" href="img/cutandpaste/9-1.jpg"> <img src="img/cutandpaste/thumbs/9.png" alt="Patience is a key, 37 x 16 x 16 cm" /></a>  
-    <a data-imagelightbox="b" href="img/cutandpaste/9-2.jpg"> <img style="display: none;" src="" alt="Patience is a key, 37 x 16 x 16 cm"/></a>
-    <a data-imagelightbox="b" href="img/cutandpaste/9-3.jpg"> <img style="display: none;" src="" alt="Patience is a key, 37 x 16 x 16 cm"/></a> 
-    <a data-imagelightbox="b" href="img/cutandpaste/9-4.jpg"> <img style="display: none;" src="" alt="Patience is a key, 37 x 16 x 16 cm"/></a>   
-  </div>
-  
-  <div class="mix cat-1" data-myorder="9" id="pc-9">
-    <a data-imagelightbox="b" href="img/cutandpaste/10-1.jpg"> <img src="img/cutandpaste/thumbs/10.png" alt="Blood of the martyr, 410 x 500 cm" /></a>  
-    <a data-imagelightbox="b" href="img/cutandpaste/10-2.jpg"> <img style="display: none;" src="" alt="Blood of the martyr, 410 x 500 cm"/></a> 
-    <a data-imagelightbox="b" href="img/cutandpaste/10-3.jpg"> <img style="display: none;" src="" alt="Blood of the martyr, 410 x 500 cm"/></a> 
-    <a data-imagelightbox="b" href="img/cutandpaste/10-4.jpg"> <img style="display: none;" src="" alt="Blood of the martyr, 410 x 500 cm"/></a> 
-       
-  </div>
-  
-  <div class="mix cat-2" data-myorder="10" id="pc-10"> 
-    <a data-imagelightbox="b" href="img/cutandpaste/11-1.jpg"> <img src="img/cutandpaste/thumbs/11.png" alt="Tested, 48 x 78 x 2 cm x 8 " /></a>  
-    <a data-imagelightbox="b" href="img/cutandpaste/11-2.jpg"> <img style="display: none;" src="" alt="Tested, 48 x 78 x 2 cm x 8 "/></a> 
-    <a data-imagelightbox="b" href="img/cutandpaste/11-3.jpg"> <img style="display: none;" src="" alt="Tested, 48 x 78 x 2 cm x 8 "/></a>
-  </div>
-  
-  <div class="mix cat-1" data-myorder="11" id="pc-11"> 
-    <a data-imagelightbox="b" href="img/cutandpaste/12-1.jpg"> <img src="img/cutandpaste/thumbs/12.png" alt="The Fool's Journal, 61 x 25 diameter x 18 " /></a>
-    <a data-imagelightbox="b" href="img/cutandpaste/12-2.jpg"> <img style="display: none;" src="" alt="The Fool's Journal, 61 x 25 diameter x 18 "/></a>   
-    <a data-imagelightbox="b" href="img/cutandpaste/12-3.jpg"> <img style="display: none;" src="" alt="The Fool's Journal, 61 x 25 diameter x 18 "/></a>   
-    <a data-imagelightbox="b" href="img/cutandpaste/12-4.jpg"> <img style="display: none;" src="" alt="The Fool's Journal, 61 x 25 diameter x 18 "/></a>   
-    <a data-imagelightbox="b" href="img/cutandpaste/12-5.jpg"> <img style="display: none;" src="" alt="The Fool's Journal, 61 x 25 diameter x 18 "/></a>     
-  </div>
-
-  <div class="mix cat-2" data-myorder="12" id="pc-12"> 
-    <a data-imagelightbox="b" href="img/cutandpaste/13-1.jpg"> <img src="img/cutandpaste/thumbs/13.png" alt="Marching on Crutches, 201 x 65 x 2 cm x 2" /></a> 
-    <a data-imagelightbox="b" href="img/cutandpaste/13-2.jpg"> <img style="display: none;" src="" alt="Marching on Crutches, 201 x 65 x 2 cm x 2"/></a>   
-    <a data-imagelightbox="b" href="img/cutandpaste/13-3.jpg"> <img style="display: none;" src="" alt="Marching on Crutches, 201 x 65 x 2 cm x 2"/></a>          
-  </div>
-  
-  <div class="mix cat-1" data-myorder="13" id="pc-13">
-    <a data-imagelightbox="b" href="img/cutandpaste/14-1.jpg"> <img src="img/cutandpaste/thumbs/14.png" alt="Narratives of Power, 41 x 71 cm x 5" /></a>
-    <a data-imagelightbox="b" href="img/cutandpaste/14-2.jpg"> <img style="display: none;" src="" alt="Narratives of Power, 41 x 71 cm x 5"/></a>
-    <a data-imagelightbox="b" href="img/cutandpaste/14-3.jpg"> <img style="display: none;" src="" alt="Narratives of Power, 41 x 71 cm x 5"/></a>
-    <a data-imagelightbox="b" href="img/cutandpaste/14-4.jpg"> <img style="display: none;" src="" alt="Narratives of Power, 41 x 71 cm x 5"/></a>
-   
-  </div>
-  
-  <div class="mix cat-2" data-myorder="14" id="pc-14"> 
-    <a data-imagelightbox="b" href="img/cutandpaste/15-1.jpg"> <img src="img/cutandpaste/thumbs/15.png" alt="We Bring Bounty to Egypt, 27 x 43 cm x 100 " /></a>
-    <a data-imagelightbox="b" href="img/cutandpaste/15-2.jpg"> <img style="display: none;" src="" alt="We Bring Bounty to Egypt, 27 x 43 cm x 100 " /></a>      
-  </div>
-  
-  <div class="mix cat-2" data-myorder="15" id="pc-15"> 
-    <a data-imagelightbox="b" href="img/cutandpaste/16-1.jpg"> <img src="img/cutandpaste/thumbs/16.png"  alt="Train of Badrashayn, 175 x 122 x 3 cm" /></a> 
-    <a data-imagelightbox="b" href="img/cutandpaste/16-2.jpg"> <img style="display: none;" src=""  alt="Train of Badrashayn, 175 x 122 x 3 cm"  /></a> 
-    <a data-imagelightbox="b" href="img/cutandpaste/16-3.jpg"> <img style="display: none;" src=""  alt="Train of Badrashayn, 175 x 122 x 3 cm"  /></a> 
-    <a data-imagelightbox="b" href="img/cutandpaste/16-4.jpg"> <img style="display: none;" src=""  alt="Train of Badrashayn, 175 x 122 x 3 cm"  /></a>   
-  </div>
-  
-  <div class="mix cat-2" data-myorder="16" id="pc-16">
-    <a data-imagelightbox="b" href="img/cutandpaste/17-1.jpg"> <img src="img/cutandpaste/thumbs/17.png" alt="You dont want to make me upset me, 30 x 196 x 6.5 cm x 3" /></a> 
-    <a data-imagelightbox="b" href="img/cutandpaste/17-2.jpg"> <img style="display: none;" src="" alt="You dont want to make me upset me, 30 x 196 x 6.5 cm x 3 "/></a>  
-    <a data-imagelightbox="b" href="img/cutandpaste/17-3.jpg"> <img style="display: none;" src="" alt="You dont want to make me upset me, 30 x 196 x 6.5 cm x 3 "/></a>  
-    <a data-imagelightbox="b" href="img/cutandpaste/17-4.jpg"> <img style="display: none;" src="" alt="You dont want to make me upset me, 30 x 196 x 6.5 cm x 3 "/></a>  
-  </div>
-  
-  <div class="mix cat-1 cat-3" data-myorder="17" id="pc-17">
-    <a data-imagelightbox="b" href="img/cutandpaste/18-1.jpg"> <img src="img/cutandpaste/thumbs/18.png" alt="Narratives of Resistance " /></a>
-    <a data-imagelightbox="b" href="img/cutandpaste/18-2.jpg"> <img style="display: none;" src="" alt="Narratives of Resistance" /></a>
-    <a data-imagelightbox="b" href="img/cutandpaste/18-3.jpg"> <img style="display: none;" src="" alt="Narratives of Resistance" /></a>
-    <a data-imagelightbox="b" href="img/cutandpaste/18-4.jpg"> <img style="display: none;" src="" alt="Narratives of Resistance" /></a>
-    <a data-imagelightbox="b" href="img/cutandpaste/18-5.jpg"> <img style="display: none;" src="" alt="Narratives of Resistance" /></a>
-    <a data-imagelightbox="b" href="img/cutandpaste/18-6.jpg"> <img style="display: none;" src="" alt="Narratives of Resistance" /></a>
-    <a data-imagelightbox="b" href="img/cutandpaste/18-7.jpg"> <img style="display: none;" src="" alt="Narratives of Resistance" /></a>
-    <a data-imagelightbox="b" href="img/cutandpaste/18-8.jpg"> <img style="display: none;" src="" alt="Narratives of Resistance" /></a>    
-  </div>
-  
-
-  
-  <div class="gap"></div>
-  <div class="gap"></div>
-  
-
-
-   </div><script src='js/jquery213.min.js'></script>
-
-   
-  <!--script src='js/jquery.mixitup.js'></script-->
   <script src='js/jquery.mixitup.min.js'></script>
-  <script src='js/imagelightbox.js'></script>
-  <script src='js/imagelightbox-options.js'></script>
-
-
-
+  
   <script>
+   // make better gifs with GIMP
+  // http://imgur.com/gallery/BlTnC
+    
+    $(function() {
+        $("#cutThumb").hover(
+            function() {
+              $(this).fadeTo( "slow" , 1.0);
+              $(this).attr("src", "img/cutandpaste-dyn3.gif");
+              //$(".caption").fadeTo("slow", 1.0);
+
+            },
+            function() {
+                $(this).attr("src", "img/cutandpaste-stat.gif");
+                $(this).fadeTo( "slow" , 0.9);
+            }                         
+        ); 
+        $("#ccThumb").hover(
+            function() {
+              $(this).fadeTo( "slow" , 1.0);
+              $(this).attr("src", "img/dyn.gif");
+              //$(".caption").fadeTo("slow", 1.0);
+
+            },
+            function() {
+                $(this).attr("src", "img/stat.gif");
+                $(this).fadeTo( "slow" , 0.9);
+            }                         
+        );                      
+    });
 
    $(document).ready(function(){
 
       $('#myContainer').mixItUp();
-
-      var nPieces = 18;
-      for (var i = 1; i < nPieces; i++) {
-        $("#pc-"+i+" a").data('imagelightbox', 'b').imageLightbox(
-          {
-            onStart:   function() { overlayOn(); },
-            onEnd:     function() { captionOff();overlayOff(); activityIndicatorOff(); },
-            onLoadStart: function() { captionOff();activityIndicatorOn(); },
-            onLoadEnd:   function() { captionOn(); activityIndicatorOff(); }
-        });
-      };
-
-
-      /*$( 'a[data-imagelightbox="b"]' ).imageLightbox(
-      {
-       onStart:   function() { overlayOn(); },
-       onEnd:     function() { captionOff();overlayOff(); activityIndicatorOff(); },
-       onLoadStart: function() { captionOff();activityIndicatorOn(); },
-       onLoadEnd:   function() { captionOn(); activityIndicatorOff(); }
-      });
-      */
-
-
     });
-  </script>
-   <!--script src="js/index.js"></script-->
+</script>
+
+</div>
+
+
+  
 
     
     
-    
-  </body>
+</body>
 </html>
