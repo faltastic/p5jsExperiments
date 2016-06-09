@@ -76,7 +76,40 @@
     
   </div>
 
+  <script>
+  
+    var s='';
+
+  </script>
+
   <div class="mix cat-1 cat-3" data-myorder="2" id="pc-2"> 
+    
+    <script>
+	   
+	   var n = 3;  // order
+	   var i = 1;  // start at one
+	   var j = 2;  // total pics for piece
+	   s = '<a data-imagelightbox="b"'+' href="img/cutandpaste/' + n + '-'+ i +'.jpg">' 
+	       + '<img src="img/cutandpaste/thumbs/'+n+'.png"'
+	       + 'alt="Ironing Board, 145 x 40 cm" /'
+	       + '></a>';
+	   
+	   i++;
+	   if(i != j){ 
+	   
+	     s  = s+  '<a data-imagelightbox="b"'+' href="img/cutandpaste/' + n + '-'+ i +'.jpg">' 
+	       + '<img style="display: none;"'
+	       + 'src=""'+' alt="Ironing Board, 145 x 40 cm" /'
+	       + '></a>';
+	   }
+	   
+	   document.write(s); 
+	   
+	 </script>
+	     
+    
+    </div>
+  <!--div class="mix cat-1 cat-3" data-myorder="2" id="pc-2"> 
 
     <a data-imagelightbox="b" href="img/cutandpaste/3-1.jpg"> 
      <img src="img/cutandpaste/thumbs/3.png" alt="Ironing Board, 145 x 40 cm" />
@@ -85,7 +118,7 @@
      <img style="display: none;" src="" alt="Ironing Board, 145 x 40 cm" />
     </a>
 
-  </div> 
+  </div--> 
   
   <div class="mix cat-2" data-myorder="3" id="pc-3">
 
