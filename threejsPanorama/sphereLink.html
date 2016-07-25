@@ -35,19 +35,14 @@
     <div id="info"> <a href="http://threejs.org" target="_blank">three.js webgl</a> - equirectangular panorama
         <br /> Drag equirectangular texture into the page. </div>
     <script src="three.js"></script>
-    <!--
     <script src="js/renderers/Projector.js"></script>
     <script src="js/renderers/CanvasRenderer.js"></script>
--->
-    <script src="js/loaders/DDSLoader.js"></script>
-    <script src="js/loaders/MTLLoader.js"></script>
-    <script src="js/loaders/OBJLoader.js"></script>
-    <script src="js/Detector.js"></script>
     <script src="js/libs/stats.min.js"></script>
     <script>
-        var camera, scene, renderer;
-        var container, stats;
-        var OBJLoaded;
+        var camera, scene, projector, renderer;
+        var objects = [];
+        var raycaster, mouse; 
+        
         var isUserInteracting = false
             , onMouseDownMouseX = 0
             , onMouseDownMouseY = 0
@@ -66,37 +61,51 @@
             camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1100);
             camera.target = new THREE.Vector3(0, 0, 0);
             scene = new THREE.Scene();
-            //var light = new THREE.AmbientLight(0x404040); // soft white light
-            var ambient = new THREE.AmbientLight(0x555555);
-            scene.add(ambient);
-            var directionalLight = new THREE.DirectionalLight(0xbdffad);
-            directionalLight.position.set(0, 0, 1).normalize();
-            scene.add(directionalLight);
+            var light = new THREE.AmbientLight(0x404040); // soft white light
             var geometry = new THREE.SphereGeometry(500, 60, 40);
             geometry.applyMatrix(new THREE.Matrix4().makeScale(-1, 1, 1));
             var textureLoader = new THREE.TextureLoader();
             var vault = textureLoader.load('files/sinusoidal.png');
             var material = new THREE.MeshBasicMaterial({
+                //map: THREE.ImageUtils.loadTexture( 'textures/2294472375_24a3b8ef46_o.jpg' )
                 map: vault
+                    // map: THREE.TextureLoader('files/sinusoidal.png')
             });
             mesh = new THREE.Mesh(geometry, material);
             scene.add(mesh);
+            /*
+            var geometry1 = new THREE.SphereGeometry( 25, 32, 32 );
+            var material1 = new THREE.MeshBasicMaterial( {color: 0xff0000} );
+            var sphere1 = new THREE.Mesh( geometry1, material1 );
+            sphere1.position.set(-60, 55, 0);
+            scene.add( sphere1 );
+            */
+            //
+            //scene = new THREE.Scene();
             var mat1 = new THREE.MeshPhongMaterial({
                 color: 0xff0000
                 , specular: 0x009900
                 , shininess: 70
                 , shading: THREE.FlatShading
             });
-            var wire1 = new THREE.MeshBasicMaterial({
+            var wireRed = new THREE.MeshBasicMaterial({
                 color: 0xff0000
                 , wireframe: true
                     //,morphTargets: true
             });
+            var wireGreen = new THREE.MeshBasicMaterial({
+                color: 0x00ff00
+                , wireframe: true
+                    //,morphTargets: true
+            });
             var geometry1 = new THREE.SphereBufferGeometry(32, 16, 16);
-            var object = new THREE.Mesh(geometry1, wire1);
-            object.position.x = 0;
-            object.position.y = 0;
-            object.position.z = -500;
+            objects[0] = new THREE.Mesh(geometry1, wireRed);
+            objects[0].position.x = 0;
+            objects[0].position.y = 0;
+            objects[0].position.z = -500;
+            objects[0].userData = {
+                URL: "http://google.com"
+            };
             /*object.scale.x = Math.random() * 2 + 1;
             object.scale.y = Math.random() * 2 + 1;
             object.scale.z = Math.random() * 2 + 1;
@@ -104,49 +113,36 @@
             object.rotation.y = Math.random() * 2 * Math.PI;
             object.rotation.z = Math.random() * 2 * Math.PI;
             */
-            scene.add(object);
-            /* model
-            //THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
-            var loader = new THREE.OBJMTLLoader();
-            loader.load('obj/nave.obj', 'obj/nave.mtl', function (object3) {
-                object3.position.x = 0;
-                object3.position.y = 0;
-                object3.position.z = 0;
-                var scaleA = 0.09;
-                object3.scale.x = scaleA;
-                object3.scale.y = scaleA;
-                object3.scale.z = scaleA;
-                scene.add(object3);
-            });
-            */
-            // model
-            var onProgress = function (xhr) {
-                if (xhr.lengthComputable) {
-                    var percentComplete = xhr.loaded / xhr.total * 100;
-                    console.log(Math.round(percentComplete, 2) + '% downloaded');
-                }
+            scene.add(objects[0]);
+            objects[1] = new THREE.Mesh(geometry1, wireGreen);
+            objects[1].position.x = 0;
+            objects[1].position.y = 0;
+            objects[1].position.z = +500;
+            objects[1].userData = {
+                URL: "http://threejs.org"
             };
-            var onError = function (xhr) {};
-            //THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
-            var mtlLoader = new THREE.MTLLoader();
-            mtlLoader.setPath('obj/');
-            mtlLoader.load('shipibo.mtl', function (materials) {
-                materials.preload();
-                var objLoader = new THREE.OBJLoader();
-                objLoader.setMaterials(materials);
-                objLoader.setPath('obj/');
-                objLoader.load('nave.obj', function (object) {
-                    object.position.x = 4;
-                    object.position.y = 0;
-                    object.position.z = 4;
-                    var scaleA = 0.005;
-                    object.scale.x = scaleA;
-                    object.scale.y = scaleA;
-                    object.scale.z = scaleA;
-                    OBJLoaded = object;
-                    scene.add(object);
-                }, onProgress, onError);
-            });
+            scene.add(objects[1]);
+            scene.add(light);
+            /*
+                var material1 = new THREE.MeshNormalMaterial();
+                var sphereGeometry = new THREE.SphereGeometry(30, 32, 16);
+                var sphere1 = new THREE.Mesh(sphereGeometry, outlineMaterial1);
+                //sphere1.position.set(-60, 55, 100);
+                //sphere1.position.z = -100; 
+                scene.add(sphere1);
+                var outlineMaterial1 = new THREE.MeshBasicMaterial({
+                    color: 0xff0000
+                    , side: THREE.BackSide
+                });
+                var outlineMesh1 = new THREE.Mesh(sphereGeometry, outlineMaterial1);
+                outlineMesh1.position = sphere1.position;
+                outlineMesh1.scale.multiplyScalar(1.05);
+                scene.add(outlineMesh1);
+                //*/
+            projector = new THREE.Projector();
+            raycaster = new THREE.Raycaster();
+            mouse = new THREE.Vector2();
+            
             renderer = new THREE.WebGLRenderer();
             renderer.setSize(window.innerWidth, window.innerHeight);
             container.appendChild(renderer.domElement);
@@ -193,14 +189,33 @@
             onPointerDownPointerY = event.clientY;
             onPointerDownLon = lon;
             onPointerDownLat = lat;
+            var vector = new THREE.Vector3((event.clientX / window.innerWidth) * 2 - 1, -(event.clientY / window.innerHeight) * 2 + 1, 0.5);
+            
+            
+            projector.unprojectVector(vector, camera);
+            //var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize());
+            raycaster.setFromCamera( mouse, camera );
+            
+            var intersects = raycaster.intersectObjects(objects);
+            if (intersects.length > 0) {
+                window.open(intersects[0].object.userData.URL, "_self");
+            }
         }
+        
 
         function onDocumentMouseMove(event) {
             if (isUserInteracting === true) {
                 lon = (onPointerDownPointerX - event.clientX) * 0.1 + onPointerDownLon;
                 lat = (event.clientY - onPointerDownPointerY) * 0.1 + onPointerDownLat;
             }
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
         }
+
+       
+        
+        window.addEventListener('mousemove', onMouseMove, false);
+        window.requestAnimationFrame(render);
 
         function onDocumentMouseUp(event) {
             isUserInteracting = false;
@@ -222,9 +237,36 @@
             camera.updateProjectionMatrix();
         }
 
+        function onMouseMove(event) {
+            // calculate mouse position in normalized device coordinates
+            // (-1 to +1) for both components
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        }
+
         function animate() {
             requestAnimationFrame(animate);
+            render();
             update();
+        }
+         function render() {
+            // update the picking ray with the camera and mouse position	
+            raycaster.setFromCamera(mouse, camera);
+            // calculate objects intersecting the picking ray
+            var intersects = raycaster.intersectObjects(objects);
+            
+            if (intersects.length > 0) {
+                intersects[0].object.rotation.y += 0.02;
+                //window.open(intersects[0].object.userData.URL, "_self");
+            }
+             // more than one intersect
+             // for (var i = 0; i < intersects.length; i++) {
+                //intersects[i].object.material.color.set(0x0000ff);
+              //  intersects[i].object.rotation.x += 0.1;
+            //}
+             
+             
+            renderer.render(scene, camera);
         }
 
         function update() {
@@ -237,10 +279,6 @@
             camera.target.x = 500 * Math.sin(phi) * Math.cos(theta);
             camera.target.y = 500 * Math.cos(phi);
             camera.target.z = 500 * Math.sin(phi) * Math.sin(theta);
-            var rotSpeed = 0.004;
-            if (OBJLoaded) {
-                OBJLoaded.rotation.y -= rotSpeed;
-            }
             camera.lookAt(camera.target);
             // distortion
             //camera.position.copy(camera.target).negate();
