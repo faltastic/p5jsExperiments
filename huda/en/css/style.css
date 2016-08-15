@@ -185,8 +185,9 @@ button + label{
   display: block;
   margin:0 auto;
   width:95%;
-  max-width:225px;
+  max-width:240px;
   height:auto;
+  margin-bottom: 14px;    
 /*  opacity: 0.98;*/
  
 
