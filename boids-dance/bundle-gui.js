@@ -43,15 +43,16 @@ ticker(window, 60).on('tick', function() {
   boids.tick()
 }).on('draw', function() {
 
-  v = 5+(20*vol);
+  v = 6+(vol*sepF/5);
   var boidData = boids.boids
     , halfHeight = canvas.height/2
     , halfWidth = canvas.width/2
 
-  ctx.fillStyle = 'rgba(255,241,235,0.25)' // '#FFF1EB'
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.25)'
+  //'rgba(255,241,235,0.25)' // '#FFF1EB'
   ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-  ctx.strokeStyle =  '#543D5E' //'#6CC417' //'#FFF1EB' // '#543D5E'
+  ctx.strokeStyle =  '#cd17e5'  // '#e83aff' // #222'// '#543D5E' //'#6CC417' //'#FFF1EB' // '#e83aff'
   for (var i = 0, l = boidData.length, x, y; i < l; i += 1) {
     x = boidData[i][0]; y = boidData[i][1]
     // wrap around the screen
@@ -62,7 +63,9 @@ ticker(window, 60).on('tick', function() {
 
   if(vol > 0.00025){
   //boids.speedLimit += 0.05; //*vol; 
-  boids.separationForce = map(vol,0,1,0.001,2.8); ///10;
+  boids.separationForce =map(sepF*vol, 0,90, 0.01,2.8); ///10;
+ // boids.separationForce = sepForce; 
+  //boids.cohesionForce =  cohForce;
   }
   
 })
