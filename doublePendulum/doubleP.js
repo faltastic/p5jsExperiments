@@ -76,7 +76,7 @@ function initPendulum() {
     centery = height / 2;
     pend.m1 = random(1, 3);
     pend.m2 = random(0.5, 2);
-    pend.l1 = random(3, 5);
+    pend.l1 = random(3.5,4.5);
     pend.l2 = 8 - pend.l1;
     pend.g = 10;
     pend.x[0] = 3;
@@ -103,9 +103,9 @@ function draw() {
         }
         
         if(guiP.moveCenter){
-            centerx = map(noise(frameCount/100), 0, 1,width/3,2*width/3);
+            centerx = map(noise(frameCount/500), 0, 1,width/3,2*width/3);
             
-            centery = map(noise(200 + frameCount/100), 0, 1,height/3,2*height/3);
+            centery = map(noise(200 + frameCount/500), 0, 1,height/3,2*height/3);
         }
         pend.update();
         console.log(centerx);
@@ -117,12 +117,14 @@ function draw() {
         // should calculate vel wrt the actual states instead of the xy pos as it doesn't scale well right now
         stroke(frameCount / 5 % 360, 100 - vel * 5, 100, vel * 10 + 50);
         strokeWeight(1.5);
-        line(posx, posy, newposx, newposy);
+        //line(posx, posy, newposx, newposy);
         posx = newposx;
         posy = newposy;
-        stroke(100, 0, 100, 15);
-        strokeWeight(0.5);
+        //stroke(100, 0, 100, 15);
+        strokeWeight(0.75);
         pend.drawP();
+        stroke(100, 0, 100, 15);
+        ellipse(posx,posy,3,3);
     }
 }
 
