@@ -1,0 +1,60 @@
+
+/* always show scroll bar */
+html {
+    overflow-y:scroll; 
+}
+
+body {
+  background-color: white;
+  color: black;
+}
+/*
+@font-face
+{
+font-family:'Amiri';
+src: url('fonts/Amiri-Regular.ttf') format('TrueType');
+}
+
+@font-face
+{
+font-family:'AmiriBold';
+src: url('fonts/Amiri-Bold.ttf') format('TrueType');
+}
+*/
+@font-face
+{
+font-family:'DroidKufi';
+src: url('fonts/DroidKufi-Regular.ttf') format('TrueType');
+}
+
+@font-face
+{
+font-family:'Lateef';
+src: url('fonts/LateefRegOT.ttf') format('TrueType');
+}
+@font-face
+{
+font-family:'Wasm';
+src: url('fonts/WasmFont.ttf') format('TrueType');
+}
+
+@font-face
+{
+font-family:'Sche';
+src: url('fonts/ScheherazadeRegOT.ttf') format('TrueType');
+}
+
+
+#namesP{
+	text-align: center;
+	/*font-family:  'Amiri';*/
+	 font-family: 'DroidKufi'; 
+	font-size: 1.5em;
+
+}
+
+#hint{
+	float:right;
+	text-align: right;
+}
+

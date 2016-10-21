@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<head>
+	
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palestine: Buried in Numbers</title>
+	<!-- A data visualization for the deaths in Palestine in July 2014 -->
+    <link rel="stylesheet" href="css/foundation.css" />
+    <script src="js/vendor/modernizr.js"></script>
+    <script type="application/javascript" src="js/Chart.js"></script>
+    <script type="application/javascript" src="latestdata.js"></script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+
+</head>
+
+<body>
+<!-- header -->	
+	<div class="row">
+		<div class= "large-2 medium-2 small-2 columns">
+         		<img data-interchange="[img/keffy.png, (default)], [img/keffy-small.png, (small)], [img/keffy.png, (large)], [img/keffy-medium.png, (medium)] ">
+		</div>
+	
+		<div class="large-10 medium-10 columns">
+		<br />
+		<h2>Palestine: Buried in Numbers </h2>
+		<br /> 
+		<h4> 
+		"I look forward to surviving. If I don't, remember that I wasn't Hamas or a militant, nor was I used as a human shield. I was at home."
+		<br />
+		- <a href="https://twitter.com/imPalestine"> Mohammed Suliman </a> 
+		</h4>		
+		<br />
+		<p>Data updated 30 July, 2014 via <a href="http://www.imemc.org/article/68429"> IMEMC</a> (International Middle East Media Center)</p>
+
+		<a href="https://twitter.com/share" class="twitter-share-button" data-text="Buried in Numbers: visualizing the numbers of deaths" data-via="Faltastico" data-hashtags="Palestine">Tweet</a>
+
+	
+		</div>	
+	</div>	
+
+<!--families data -->
+	<div class="row">
+		<div class="large-7 medium-7 large-push-5 medium-push-5 columns">
+			<div style="width:100%">
+				<canvas id="familiesCanvas" width="300" height="300" />
+			</div>
+			 <small> * The radial axis represents the number of deaths in each age range. Age N/A means the age of the dead person is not available.</small> 	
+			<br / > <br />	
+		</div>
+		 <div class="large-5 medium-5 large-pull-7 medium-pull-7 columns">
+			<br /> <br />						
+			<h4> Families that are no longer </h4>
+			<p> Nine of the most devastated families by the ongoing Gaza genocide. </p>
+			<p> This chart show how many children, teenagers, adults, and elders these families lost. </p>
+			<br />
+			<img src="img/family-legend.png">
+		</div>
+	</div> 
+
+
+	<div class="row" id="morefam">
+		<div class="large-7 medium-7 columns">
+			
+			<div style="width:100%">
+				<canvas id="familiesCanvasAlBatsh" width="300" height="300" />
+			</div>
+		</div>		
+		<div class="large-5 medium-5  columns">
+			<br /> <br / > 
+			<h4 class="text-center"> Al Batsh Family </h4>
+			<p> The most devasted family was Al Batsh. On 12 July 2014, these 17 members of Al Batsh family were killed in Khan Younis.</p>
+			<ul> 
+			<li> Nahedh Na’im - 41 years old </li><li> Baha’ Majed - 28 </li><li> Qusai Issam - 12 </li><li>Aziza Youssef - 59 </li><li> Ahmed No'man - 27 				</li><li> Mohammed Issam - 17 </li><li> Yahia 'Ala - 18 </li><li> Jalal Majed - 26 </li><li> Mahmoud Majed - 26 </li><li> 
+			Majed Sobhi - age unknown </li><li> Marwa Majed - 25 </li><li> Khaled Majed - 20 </li><li> Manar Majed - 13 </li><li> Amal Hussein - 49 			</li><li> Anas Ala' - 10 </li><li>
+			Qusai Ala' - 20</li>
+			</ul> 
+			<br /> <br />   		
+		</div>
+		
+		
+	</div> 
+<!--days data -->	 
+	<div class="row">
+	        <div class="large-7 medium-7 columns">
+			<div style="width: 100%">
+				<canvas id="daysCanvas" height="450" width="600"></canvas>
+			</div>
+		<small> * The horizontal axis represents the day in July, and the vertical axis is the number of deaths in that day. </small> 
+		</div>	
+		 <div class="large-5 medium-5 columns">
+			<br /> <br />			
+			<h4> Daily death count </h4>
+			<p> In the month of July 2014 (till the 30th), the death of 1100 Palestinians have been confirmed by the Palestinian Ministry of Health. </p>
+			<p> "Over 5800 have been injured, including 822 children and 572 women, with some losing limbs and others disabled for life." -<a href="http://www.imemc.org/article/68429">IMEMC</a> </p> 
+		</div>
+	</div>		
+<!--places data -->
+	<div class="row">
+		<div class="large-7 medium-7 large-push-5 medium-push-5 columns">
+			<div id="canvas-holder" style="width:100%">
+				<canvas id="placesCanvas" width="300" height="300" />
+			</div>
+			 <small> * The radial axis represents the total number of deaths in the highlighted areas. </small> 		
+		</div>
+		 <div class="large-5 medium-5 large-pull-7 medium-pull-7 columns">
+			<br /> <br />						
+			<h4> Target areas </h4>
+			<p> Gaza (red) and Khan Younis (green) saw the largest number of causalities. </p>
+			<p>The Shaujeeya neighbourhood in Gaza alone witnessed a massacre of sixty people on July 20.</p> 
+		</div>
+	</div> 
+<!--age data -->	
+	<div class="row">
+	        <div class="large-7 medium-7 columns">
+			<div style="width: 100%">
+				<canvas id="agesCanvas" height="450" width="600"></canvas>
+			</div>
+		<small> * The horizontal axis represents the age, and the vertical axis is the number of deaths to a person of that age. </small> 
+		</div>	
+		 <div class="large-5 medium-5 columns">
+			<br /> <br />			
+			<h4> More young than old </h4>
+			<p> "We get the impression that Israel believes their enemy is hiding inside of Palestinian children."  <br /> - <a href="https://twitter.com/SaulWilliams"> Saul Williams </a>    </p> 
+		</div>
+	</div>	
+	
+	<div class="row"> 
+		<br/> 
+		<p> <small>  &nbsp; &nbsp; Built on <a href="http://foundation.zurb.com/"> Foundation 5 </a> using <a href="http://www.chartjs.org/"> Chart.js </a> by <a href="http://faltastico.tumblr.com/"> Youssef Faltas </a>, 2014 
+		
+	 	 <br />
+ &nbsp; &nbsp;  Please contribute to this project on <a href="https://github.com/faltastic/buried-in-numbers"> Github </a> </p>
+	 </div>
+
+<script src="js/buried.js"></script>
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script src="js/foundation/foundation.interchange.js"></script>
+
+<script>
+$(document).foundation();
+</script>
+
+</body>
+
+</html>
