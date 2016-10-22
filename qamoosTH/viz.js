@@ -49,7 +49,7 @@ function setup() {
     strokeWeight(1);
     textAlign(LEFT);
     textSize(12);
-    textFont('Cairo Light');
+    textFont('CairoReg');
     
     pal = [color(74,139,115,175), color(37,93,108,175), color(92,93,136,175), color(59,137,201,175)];
     

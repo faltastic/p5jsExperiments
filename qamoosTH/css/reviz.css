@@ -17,7 +17,17 @@ src: url('fonts/Amiri-Regular.ttf') format('TrueType');
 }
 */
 
-@import url('https://fonts.googleapis.com/css?family=Cairo:200,300,400,600,700,900&subset=arabic');
+@font-face
+{
+font-family:'CairoReg';
+src: url('fonts/Cairo-Regular.ttf') format('TrueType');
+}
+
+@font-face
+{
+font-family:'CairoBold';
+src: url('fonts/Cairo-Bold.ttf') format('TrueType');
+}
 
 @font-face
 {
@@ -54,7 +64,8 @@ src: url('fonts/ScheherazadeRegOT.ttf') format('TrueType');
     margin: 0 auto;
     text-align: center;
     font-size: 1.75em;
-    font-family:'Cairo Bold', sans-serif;
+    font-family:'CairoBold', sans-serif;
+    font-weight: 700; 
     
     /*'DroidKufi';*/
 }
@@ -62,7 +73,7 @@ src: url('fonts/ScheherazadeRegOT.ttf') format('TrueType');
 	text-align: center;
 	/*font-family:  'Amiri';
 	 font-family: 'DroidNaskh';*/ 
-    font-family:'Cairo', sans-serif;
+    font-family:'CairoReg', sans-serif;
     
 	font-size: 1.5em;
 
@@ -75,7 +86,8 @@ src: url('fonts/ScheherazadeRegOT.ttf') format('TrueType');
 
 .demo-overlay {
   /*text-align: right;*/
-  font-family:'Cairo Light', sans-serif;
+  font-family:'CairoReg', sans-serif;
+font-weight: 400;
   position: absolute;
   width: 100%;
   top: 0;
@@ -103,7 +115,7 @@ src: url('fonts/ScheherazadeRegOT.ttf') format('TrueType');
   padding-top: 20;
   margin-top: 40px;
   font-size: 1.5em;
-  font-family:'Cairo Bold', sans-serif;     
+  font-family: 'CairoBold'; 
 }
 .demo-overlay .info p {
  /* font-family: 'DroidNaskh';*/
