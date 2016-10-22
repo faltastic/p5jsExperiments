@@ -40,7 +40,7 @@ function preload() {
 }
 
 function setup() {
-    var myCanvas = createCanvas(0.8 * windowWidth, windowHeight / 0.8);
+    var myCanvas = createCanvas(0.85* windowWidth, windowHeight / 0.8);
     myCanvas.parent("theCanvas");
     frameRate(2);
     //rectMode(CORNERS);
@@ -49,7 +49,7 @@ function setup() {
     strokeWeight(1);
     textAlign(LEFT);
     textSize(12);
-    textFont('DroidKufi');
+    textFont('Cairo Light');
     
     pal = [color(74,139,115,175), color(37,93,108,175), color(92,93,136,175), color(59,137,201,175)];
     
@@ -76,13 +76,14 @@ function setup() {
    // N =30;
     for (var i = 0; i < N; i++) {
         t[i] = words[i]['term'];
+        
         n[i] = floor(random(5, 20)); //words[i]['ex'].length; 
         h[i] = map(n[i], 0, nMax, 2, 20);
         theta[i] = i * TWO_PI / N;
         x[i] = (width / 2) + R * cos(theta[i]);
         y[i] = (height / 2) + R * sin(theta[i]);
         d = rndData; //words[i]['con'];
-        names[i] = "";
+        //names[i] = "";
         for (var j = 0; j < n[i]; j++) {
             // names[i] += "<p>" + words[i]['ex'][j] + " </p> " ;
         }
@@ -94,7 +95,7 @@ function setup() {
     noFill();
     // ellipse(width/2,height/2, R,R);
     
-    
+    console.log(t);
     for (var i = 0; i <N; i++) {
         /*
         fill(pal[words[i]['cat']-1]);
@@ -147,25 +148,28 @@ function setup() {
         fill(0);
         translate(width/2, height/2);
         rotate(theta[i]);
-        translate(1.1*R,0);
+        translate(1.2*R,0);
+        textAlign(LEFT);
         
         if(i>floor(N/4) && i<floor(3*N/4)) {
-            translate(0,-6); 
-            rotate(PI); 
-            textAlign(RIGHT);
+           
+           translate(0,-6); 
+           rotate(PI); 
+           textAlign(RIGHT);
+           
         }
-        text(t[i],  0,0);
+        text(t[i], 0,0);
         pop();
         
         push();
         translate(width/2, height/2);
         rotate(theta[i]);
-        translate(1.1*R,0);
+        translate(1.12*R,0);
         fill(pal[words[i]['cat']-1],10);
         strokeWeight(1.5);
         noStroke();
         //ellipse(
-        rect(0.4*R, -6, h[i],5);
+        rect(-0.04*R, -6, h[i],5);
         
         pop();
         
@@ -192,7 +196,7 @@ function randomData() {
                 }
         }
     }
-    console.log(words);
+    //console.log(words);
     /* words[i] =
         {
          "title": "شباب",

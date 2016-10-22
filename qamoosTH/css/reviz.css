@@ -7,6 +7,7 @@ html {
 body {
   background-color: white;
   color: black;
+  direction: rtl;
 }
 /*
 @font-face
@@ -14,13 +15,16 @@ body {
 font-family:'Amiri';
 src: url('fonts/Amiri-Regular.ttf') format('TrueType');
 }
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Cairo:200,300,400,600,700,900&subset=arabic');
 
 @font-face
 {
-font-family:'AmiriBold';
-src: url('fonts/Amiri-Bold.ttf') format('TrueType');
+font-family:'DroidNaskh';
+src: url('fonts/DroidNaskh-Regular.ttf') format('TrueType');
 }
-*/
+
 @font-face
 {
 font-family:'DroidKufi';
@@ -44,11 +48,22 @@ font-family:'Sche';
 src: url('fonts/ScheherazadeRegOT.ttf') format('TrueType');
 }
 
-
+#title{
+    padding-top: 1.0em; 
+    width: 25%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.75em;
+    font-family:'Cairo Bold', sans-serif;
+    
+    /*'DroidKufi';*/
+}
 #namesP{
 	text-align: center;
-	/*font-family:  'Amiri';*/
-	 font-family: 'DroidKufi'; 
+	/*font-family:  'Amiri';
+	 font-family: 'DroidNaskh';*/ 
+    font-family:'Cairo', sans-serif;
+    
 	font-size: 1.5em;
 
 }
@@ -58,3 +73,65 @@ src: url('fonts/ScheherazadeRegOT.ttf') format('TrueType');
 	text-align: right;
 }
 
+.demo-overlay {
+  /*text-align: right;*/
+  font-family:'Cairo Light', sans-serif;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 2;
+}
+.demo-overlay .hover-area {
+  color: #ff9900;
+  font-size: 2em;
+  position: relative;
+  top: 2em;
+  left: 2em;
+}
+.demo-overlay .info {
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  margin-bottom: -20px;
+  box-sizing: border-box;
+  padding: 0 20px;
+  padding-bottom: 50px;
+  color: #fff;
+  transition: all .75s ease-in-out;
+}
+.demo-overlay .info h1 {
+  padding-top: 20;
+  margin-top: 40px;
+  font-size: 1.5em;
+  font-family:'Cairo Bold', sans-serif;     
+}
+.demo-overlay .info p {
+ /* font-family: 'DroidNaskh';*/
+}
+
+.demo-overlay .info a {
+ color:rgb(59,137,201);
+}
+.demo-overlay:hover .info {
+  max-height: 1000px;
+  background-color: rgba(0, 0, 0, 0.65);
+}
+.demo-overlay .footer {
+
+}
+.demo-overlay .twitter-share-button, .demo-overlay .twitter-follow-button {
+  margin-left: 10px;
+}
+#twitter-widget-0 {
+  margin-bottom: -5px;
+}
+.demo-overlay a.follow-link {
+  float: right;
+  color: #33bbff;
+}
+
+@media (max-width: 600px) {
+  .demo-overlay a.follow-link {
+    float: left;
+  }
+}
