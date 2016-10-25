@@ -150,21 +150,20 @@ function chordAll() {
         pop();
     }
 }
+var incoming = [];
+var nNew = 1;
+var thetaEnd = [];
+var thetaMove = [];
+var xNew = [];
+var yNew = [];
+var tNew = [];
+var strokeNew = [];
+var strokeOut;
+var strokeIn;
 
- var incoming = [];
-    var nNew = 1;
-    var thetaEnd = [];
-    var thetaMove = [];
-    var xNew = [];
-    var yNew = [];
-    var tNew = [];
-    var strokeNew = [];
-    var strokeOut;
-    var strokeIn;
-
-function chordOne() {
+function chordOne(newTerm) {
     isChordAll = false;
-    var i = floor(random(N));
+    var i = newTerm; //floor(random(N));
     incoming = [];
     nNew = 1;
     thetaEnd = [];
@@ -173,7 +172,6 @@ function chordOne() {
     yNew = [];
     tNew = [];
     strokeNew = [];
-    
     strokeOut = color(175); // pal[words[i]['cat'] - 1];
     strokeIn = color(0);
     tNew[0] = t[i]; // wont be used
@@ -198,18 +196,14 @@ function chordOne() {
 }
 
 function chordOneDraw(t, t0, tAnime) {
-    
-
     textSize(map(nNew, 1, 50, 16, 12));
     //console.log(nNew);
     //console.log(incoming);
-    background(255,map( t-t0, 0, tAnime, 5,255));
+    background(255, map(t - t0, 0, tAnime, 5, 255));
     noFill();
     for (var j = 1; j <= nNew; j++) {
         thetaEnd[j] = (thetaEnd[0] + (j * TWO_PI / nNew)) % (TWO_PI);
-        
-        thetaMove[j] = map(t-t0, 0, tAnime, thetaEnd[0], thetaEnd[j]);
-                           
+        thetaMove[j] = map(t - t0, 0, tAnime, thetaEnd[0], thetaEnd[j]);
         xNew[j] = (width / 2) + R * cos(thetaMove[j]);
         yNew[j] = (height / 2) + R * sin(thetaMove[j]);
         //console.log(thetaEnd[j]);
@@ -244,7 +238,6 @@ function chordOneDraw(t, t0, tAnime) {
         text(tNew[j], 0, 0);
         pop();
     }
-    
 }
 
 function randomData(r) {
@@ -288,17 +281,48 @@ function randomData(r) {
 }
 
 function draw() {
-    if (!isChordAll && (millis()- t0)< 400) {
+    if (!isChordAll && (millis() - t0) < 400) {
         chordOneDraw(millis(), t0, 400);
     }
+   // cartesToPolar(mouseX, mouseY);
 }
 
 function mouseReleased() {
-    if (isChordAll) {
-        t0 = millis();
-        chordOne();
+    
+    if (isChordAll) {    
+        var rTheta = cartesToPolar(mouseX, mouseY);
+        if (rTheta[0] > 0.85 * R) {
+            //theta[i] = i * TWO_PI / N;    with  i = myTerm
+            var newTerm = ceil(N * rTheta[1] / TWO_PI)%N;
+            t0 = millis();
+            chordOne(newTerm);
+        }
     }
     else {
         chordAll();
     }
+}
+
+function cartesToPolar(x, y) {
+    var rTheta = [];
+    if (x < width / 2) {
+        x = (x - (width / 2));
+    }
+    else {
+        x = +(x - (width / 2));
+    }
+    if (y < height / 2) {
+        y = height / 2 - y;
+    }
+    else {
+        y = -(y - height / 2);
+    }
+    //console.log(floor(x) + " " + floor(y));
+    rTheta[0] = sqrt((x * x) + (y * y));
+    rTheta[1] = atan2(-y, x);
+    if (rTheta[1] < 0) {
+        rTheta[1] += TWO_PI;
+    }
+    //console.log(rTheta);
+    return rTheta;
 }
