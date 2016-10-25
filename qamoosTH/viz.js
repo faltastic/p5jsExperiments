@@ -55,7 +55,7 @@ function setup() {
     randomData();
     w = width / N;
     baseH = height / 1.2;
-    R = width / 4;
+    R = height/3.5;
     //nMax = 0;
     nMax = 20;
     /*    
@@ -151,23 +151,39 @@ function chordAll() {
 
 function chordOne() {
     isChordAll = false;
+    
     var i = floor(random(N));
+    var incoming = [];
     var nNew = 1;
     var thetaEnd = [];
     var xNew = [];
     var yNew = [];
     var tNew = [];
     var strokeNew = [];
-    stroke(pal[words[i]['cat'] - 1]);
+    var strokeOut = color(92, 93, 136, 175); // pal[words[i]['cat'] - 1];
+    var strokeIn = color(59, 137, 201, 175) ;//pal[words[i]['cat'] - 1]);
+    
+    strokeOut = color(175); // pal[words[i]['cat'] - 1];
+    strokeIn = color(0) ;
+    
     noFill();
     tNew[0] = t[i]; // wont be used
     thetaEnd[0] = theta[i]; //  = selected old Theta;
     xNew[0] = x[i]; // = selcted xOld;
     yNew[0] = y[i]; // = selcted yOld;
     strokeNew[0] = color(0, 0);
+    incoming[0] = false;
+    
     for (var j = 0; j < N; j++) {
         if (d[i][j] > 0.1) {
             nNew++;
+            incoming.push(false);
+            tNew.push(t[j]);
+            strokeNew.push(d[i][j]*1.5);
+        }
+        if (d[j][i] > 0.1) {
+            nNew++;
+            incoming.push(true);
             tNew.push(t[j]);
             strokeNew.push(d[i][j]*1.5);
         }
@@ -178,8 +194,12 @@ function chordOne() {
         thetaEnd[j] = (theta[i] + (j * TWO_PI / nNew)) % (TWO_PI);
         xNew[j] = (width / 2) + R * cos(thetaEnd[j]);
         yNew[j] = (height / 2) + R * sin(thetaEnd[j]);
-        console.log(thetaEnd[j]);
+        //console.log(thetaEnd[j]);
+        
         strokeWeight(strokeNew[j]);
+        if(incoming[j]){ stroke(strokeIn);}
+        else{stroke(strokeOut);}
+        
         bezier(x[i], y[i], width / 2, height / 2, width / 2, height / 2, xNew[j], yNew[j]);
     }
     for (var j = 0; j < nNew; j++) {
