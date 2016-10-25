@@ -52,7 +52,7 @@ function setup() {
     //N = 20;
     N = words.length;
     //console.log(N);
-    randomData();
+    randomData(50);
     w = width / N;
     baseH = height / 1.2;
     R = height/3.5;
@@ -171,25 +171,31 @@ function chordOne() {
     thetaEnd[0] = theta[i]; //  = selected old Theta;
     xNew[0] = x[i]; // = selcted xOld;
     yNew[0] = y[i]; // = selcted yOld;
-    strokeNew[0] = color(0, 0);
+    strokeNew[0] = color(0);
     incoming[0] = false;
     
     for (var j = 0; j < N; j++) {
-        if (d[i][j] > 0.1) {
-            nNew++;
-            incoming.push(false);
-            tNew.push(t[j]);
-            strokeNew.push(d[i][j]*1.5);
-        }
-        if (d[j][i] > 0.1) {
+        
+        if ( (d[i][j] !=0 ) || (d[j][i] !=0 ) ) {
             nNew++;
             incoming.push(true);
             tNew.push(t[j]);
             strokeNew.push(d[i][j]*1.5);
         }
+        if (d[j][i] != 0) {
+            incoming[nNew-1] =false;
+            strokeNew[nNew-1] = d[j][i]*1.5;
+        }
+        
     }
+    
+    
     textSize(map(nNew, 1, 50, 16, 12));
-    //console.log(tNew);
+    
+    console.log(nNew);
+    console.log(incoming);
+    
+    
     for (var j = 1; j <= nNew; j++) {
         thetaEnd[j] = (theta[i] + (j * TWO_PI / nNew)) % (TWO_PI);
         xNew[j] = (width / 2) + R * cos(thetaEnd[j]);
@@ -197,10 +203,15 @@ function chordOne() {
         //console.log(thetaEnd[j]);
         
         strokeWeight(strokeNew[j]);
-        if(incoming[j]){ stroke(strokeIn);}
-        else{stroke(strokeOut);}
+        if(incoming[j]){ 
+            stroke(strokeIn);
+        }else{
+            stroke(strokeOut);
+        }
+        // stroke(strokeOut);
+        bezier(xNew[0], yNew[0], width / 2, height / 2, width / 2, height / 2, xNew[j], yNew[j]);
         
-        bezier(x[i], y[i], width / 2, height / 2, width / 2, height / 2, xNew[j], yNew[j]);
+        
     }
     for (var j = 0; j < nNew; j++) {
         push();
@@ -208,14 +219,17 @@ function chordOne() {
         fill(0);
         translate(width / 2, height / 2);
         rotate(thetaEnd[j]);
-        translate(1.2 * R, 0);
+        translate(1.1 * R, 0);
+        if(j==0) {ellipse(0,0,4,4);}
+        translate(0.1 * R, 0);
         textAlign(LEFT);
         if (thetaEnd[j] > (TWO_PI / 4) && thetaEnd[j] < (3 * TWO_PI / 4)) {
             translate(0, 0);
             rotate(PI);
             textAlign(RIGHT);
-            console.log(thetaEnd[j]);
+           // console.log(thetaEnd[j]);
         }
+        
         text(tNew[j], 0, 0);
         pop();
         /*
@@ -257,26 +271,27 @@ function chordOne() {
     }
 }
 
-function randomData() {
+function randomData(r) {
     //words = [];
     for (var i = 0; i < N; i++) {
         rndData[i] = [];
         for (var j = 0; j < N; j++) {
+            rndData[i][j]=0;
             if (i == j) {
                 rndData[i][j] = 0;
             }
             else {
                 //rndData[i][j] = floor(random(0,1.3));
-                if (random(30) < 15) {
+                if (random(r) < 15) {
                     rndData[i][j] = 0;
                 }
-                if (random(30) < random(1, 2.4)) {
+                if (random(r) < random(1, 2.4)) {
                     rndData[i][j] = 1;
                 }
-                if (random(15) < random(0.05, 0.08)) {
+                if (random(r) < random(0.06, 0.09)) {
                     rndData[i][j] = 2;
                 }
-                if (random(10) < random(0.05, 0.08)) {
+                if (random(r) < random(0.03, 0.06)) {
                     rndData[i][j] = 3;
                 }
             }
