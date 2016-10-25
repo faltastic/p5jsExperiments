@@ -198,13 +198,16 @@ function chordOne() {
 }
 
 function chordOneDraw(t, t0, tAnime) {
+    
+
     textSize(map(nNew, 1, 50, 16, 12));
     //console.log(nNew);
     //console.log(incoming);
-    background(255);
+    background(255,map( t-t0, 0, tAnime, 5,255));
     noFill();
     for (var j = 1; j <= nNew; j++) {
         thetaEnd[j] = (thetaEnd[0] + (j * TWO_PI / nNew)) % (TWO_PI);
+        
         thetaMove[j] = map(t-t0, 0, tAnime, thetaEnd[0], thetaEnd[j]);
                            
         xNew[j] = (width / 2) + R * cos(thetaMove[j]);
@@ -241,6 +244,7 @@ function chordOneDraw(t, t0, tAnime) {
         text(tNew[j], 0, 0);
         pop();
     }
+    
 }
 
 function randomData(r) {
