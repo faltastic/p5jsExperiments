@@ -25,6 +25,7 @@ var vol = 0
     , soundOn = true;
 var fontAR;
 var pal = [];
+var t0 = 0;
 
 function preload() {
     //fontAR= loadFont('./css/fonts/DroidNaskh-Regular.ttf');
@@ -39,7 +40,7 @@ function preload() {
 function setup() {
     var myCanvas = createCanvas(0.85 * windowWidth, windowHeight / 0.8);
     myCanvas.parent("theCanvas");
-    frameRate(2);
+    //frameRate(2);
     //rectMode(CORNERS);
     ellipseMode(RADIUS);
     smooth();
@@ -55,7 +56,7 @@ function setup() {
     randomData(50);
     w = width / N;
     baseH = height / 1.2;
-    R = height/3.5;
+    R = height / 3.5;
     //nMax = 0;
     nMax = 20;
     /*    
@@ -91,6 +92,7 @@ function setup() {
 
 function chordAll() {
     isChordAll = true;
+    background(255);
     textSize(12);
     for (var i = 0; i < N; i++) {
         stroke(pal[words[i]['cat'] - 1]);
@@ -149,125 +151,95 @@ function chordAll() {
     }
 }
 
-function chordOne() {
-    isChordAll = false;
-    
-    var i = floor(random(N));
-    var incoming = [];
+ var incoming = [];
     var nNew = 1;
     var thetaEnd = [];
+    var thetaMove = [];
     var xNew = [];
     var yNew = [];
     var tNew = [];
     var strokeNew = [];
-    var strokeOut = color(92, 93, 136, 175); // pal[words[i]['cat'] - 1];
-    var strokeIn = color(59, 137, 201, 175) ;//pal[words[i]['cat'] - 1]);
+    var strokeOut;
+    var strokeIn;
+
+function chordOne() {
+    isChordAll = false;
+    var i = floor(random(N));
+    incoming = [];
+    nNew = 1;
+    thetaEnd = [];
+    thetaMove = [];
+    xNew = [];
+    yNew = [];
+    tNew = [];
+    strokeNew = [];
     
     strokeOut = color(175); // pal[words[i]['cat'] - 1];
-    strokeIn = color(0) ;
-    
-    noFill();
+    strokeIn = color(0);
     tNew[0] = t[i]; // wont be used
     thetaEnd[0] = theta[i]; //  = selected old Theta;
+    thetaMove[0] = theta[i];
     xNew[0] = x[i]; // = selcted xOld;
     yNew[0] = y[i]; // = selcted yOld;
     strokeNew[0] = color(0);
     incoming[0] = false;
-    
     for (var j = 0; j < N; j++) {
-        
-        if ( (d[i][j] !=0 ) || (d[j][i] !=0 ) ) {
+        if ((d[i][j] != 0) || (d[j][i] != 0)) {
             nNew++;
             incoming.push(true);
             tNew.push(t[j]);
-            strokeNew.push(d[i][j]*1.5);
+            strokeNew.push(d[i][j] * 1.5);
         }
         if (d[j][i] != 0) {
-            incoming[nNew-1] =false;
-            strokeNew[nNew-1] = d[j][i]*1.5;
+            incoming[nNew - 1] = false;
+            strokeNew[nNew - 1] = d[j][i] * 1.5;
         }
-        
     }
-    
-    
+}
+
+function chordOneDraw(t, t0, tAnime) {
     textSize(map(nNew, 1, 50, 16, 12));
-    
-    console.log(nNew);
-    console.log(incoming);
-    
-    
+    //console.log(nNew);
+    //console.log(incoming);
+    background(255);
+    noFill();
     for (var j = 1; j <= nNew; j++) {
-        thetaEnd[j] = (theta[i] + (j * TWO_PI / nNew)) % (TWO_PI);
-        xNew[j] = (width / 2) + R * cos(thetaEnd[j]);
-        yNew[j] = (height / 2) + R * sin(thetaEnd[j]);
+        thetaEnd[j] = (thetaEnd[0] + (j * TWO_PI / nNew)) % (TWO_PI);
+        thetaMove[j] = map(t-t0, 0, tAnime, thetaEnd[0], thetaEnd[j]);
+                           
+        xNew[j] = (width / 2) + R * cos(thetaMove[j]);
+        yNew[j] = (height / 2) + R * sin(thetaMove[j]);
         //console.log(thetaEnd[j]);
-        
         strokeWeight(strokeNew[j]);
-        if(incoming[j]){ 
+        if (incoming[j]) {
             stroke(strokeIn);
-        }else{
+        }
+        else {
             stroke(strokeOut);
         }
         // stroke(strokeOut);
         bezier(xNew[0], yNew[0], width / 2, height / 2, width / 2, height / 2, xNew[j], yNew[j]);
-        
-        
     }
     for (var j = 0; j < nNew; j++) {
         push();
         noStroke();
         fill(0);
         translate(width / 2, height / 2);
-        rotate(thetaEnd[j]);
+        rotate(thetaMove[j]);
         translate(1.1 * R, 0);
-        if(j==0) {ellipse(0,0,4,4);}
+        if (j == 0) {
+            ellipse(0, 0, 4, 4);
+        }
         translate(0.1 * R, 0);
         textAlign(LEFT);
-        if (thetaEnd[j] > (TWO_PI / 4) && thetaEnd[j] < (3 * TWO_PI / 4)) {
+        if (thetaMove[j] > (TWO_PI / 4) && thetaMove[j] < (3 * TWO_PI / 4)) {
             translate(0, 0);
             rotate(PI);
             textAlign(RIGHT);
-           // console.log(thetaEnd[j]);
+            // console.log(thetaEnd[j]);
         }
-        
         text(tNew[j], 0, 0);
         pop();
-        /*
-        if(j==0){
-            
-            
-            
-          push();
-          translate(width / 2, height / 2);
-          rotate(thetaEnd[j]);
-          
-          fill(pal[words[i]['cat'] - 1], 10);
-          strokeWeight(1.5);
-          noStroke();
-          //rect(-0.04 * R, 0, h[i], 10);
-          
-            if (thetaEnd[j] > (TWO_PI/4) && thetaEnd[j] < (3*TWO_PI/4) ) { 
-                
-                translate(1.1 * R, 0);
-                rect(-0.04 * R, 0, h[i], 10);
-                translate(0.1*R,6);
-                textAlign(RIGHT);
-                text(n[i], 0, 0);
-                
-            }
-            else{
-                translate(1.1 * R, 0);
-                rect(-0.04 * R, 0, h[i], 10);
-                translate(-0.1*R,6);
-                textAlign(LEFT);
-                text(n[i], 0, 0);
-                
-            }
-            pop();
-            
-            
-        }
-        */
     }
 }
 
@@ -276,7 +248,7 @@ function randomData(r) {
     for (var i = 0; i < N; i++) {
         rndData[i] = [];
         for (var j = 0; j < N; j++) {
-            rndData[i][j]=0;
+            rndData[i][j] = 0;
             if (i == j) {
                 rndData[i][j] = 0;
             }
@@ -311,11 +283,15 @@ function randomData(r) {
      }*/
 }
 
-function draw() {}
+function draw() {
+    if (!isChordAll && (millis()- t0)< 400) {
+        chordOneDraw(millis(), t0, 400);
+    }
+}
 
 function mouseReleased() {
-    background(255);
     if (isChordAll) {
+        t0 = millis();
         chordOne();
     }
     else {
