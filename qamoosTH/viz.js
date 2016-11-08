@@ -53,7 +53,10 @@ function setup() {
     //N = 20;
     N = words.length;
     //console.log(N);
-    randomData(50);
+    //randomData(50);
+    //console.log(rndData.length);
+    rndData = Drough;
+    //console.log(Drough); 
     w = width / N;
     baseH = height / 1.2;
     R = height / 3.5;
@@ -95,13 +98,13 @@ function chordAll() {
     background(255);
     textSize(12);
     for (var i = 0; i < N; i++) {
-        stroke(pal[words[i]['cat'] - 1]);
+        stroke(pal[words[i]['cat']-1]);
         //stroke(0);
         noFill();
         strokeWeight(0.1);
         for (var j = 0; j < N; j++) {
             if (d[i][j] > 0.1) {
-                strokeWeight(d[i][j] / 5); // console.log(i + " , " + j);
+                strokeWeight(d[i][j] / 10); // console.log(i + " , " + j);
                 // for (var k = 0; k < d[i][j]; k++) {
                 //strokeWeight(d[i][j]);
                 if (words[i]['cat'] > 0) {
@@ -186,11 +189,13 @@ function chordOne(newTerm) {
             nNew++;
             incoming.push(true);
             tNew.push(t[j]);
-            strokeNew.push(d[i][j] * 1.5);
+            if(d[i][j]<6){ strokeNew.push(d[i][j]);}
+            else{           strokeNew.push(6);}
         }
         if (d[j][i] != 0) {
             incoming[nNew - 1] = false;
-            strokeNew[nNew - 1] = d[j][i] * 1.5;
+            if(d[j][i]<6){ strokeNew[nNew - 1] = d[j][i];}
+            else{           strokeNew[nNew - 1] = 6;}
         }
     }
 }
@@ -199,7 +204,7 @@ function chordOneDraw(t, t0, tAnime) {
     textSize(map(nNew, 1, 50, 16, 12));
     //console.log(nNew);
     //console.log(incoming);
-    background(255, map(t - t0, 0, tAnime, 5, 255));
+    background(255, map(t - t0, 0, tAnime, 25, 275));
     noFill();
     for (var j = 1; j <= nNew; j++) {
         thetaEnd[j] = (thetaEnd[0] + (j * TWO_PI / nNew)) % (TWO_PI);
