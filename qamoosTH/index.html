@@ -1,104 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-
-  <!-- Basic Page Needs
+    <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta charset="utf-8">
-  <title> Thawra Dict.</title>
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <!-- Mobile Specific Metas
+    <meta charset="utf-8">
+    <title> Thawra Dict.</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- FONT
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- FONT
   –––––––––––––––––––––––––––––––––––––––––––––––––– 
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
 
   <style>
 @import url('https://fonts.googleapis.com/css?family=Cairo:200,300,400,600,700,900&subset=arabic');
-</style -->    
-
-  <!-- CSS
+</style -->
+    <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/skeleton.css">
-  <link rel="stylesheet" href="css/reviz.css">
-
-  <!-- Favicon
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/qamoos.css">
+    <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="icon" type="image/png" href="images/favicon.png">
-
-
- 
-
-  <!-- Javascript Libraries
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <!-- Javascript Libraries
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <script language="javascript" src="lib/newp5.min.js"></script>
-  <script language="javascript" src="lib/p5.dom.min.js"></script>
-  <!--script language="javascript" src="lib/p5.sound.js"></script-->
-
-  <script src="lib/jquery.js"></script>
-  
-  
+    <script language="javascript" src="lib/newp5.min.js"></script>
+    <script language="javascript" src="lib/p5.dom.min.js"></script>
+    <!--script language="javascript" src="lib/p5.sound.js"></script-->
+    <script src="lib/jquery.js"></script>
+    <script src="lib/typed.js"></script>
 </head>
+
 <body>
-
-   <!-- THE DATA
+    <!-- THE DATA
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
- <script src="data/terms.js"></script> 
- <script src="data/Dmatrix-fix.js"></script> 
-
-<!-- <audio controls>
+    <script src="data/terms.js"></script>
+    <script src="data/Dmatrix-fix.js"></script>
+    <!-- <audio controls>
 
 <source id="belly" src="amb.mp3" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio> -->
-
-  <!-- Primary Page Layout
+    <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
- 
-
-  <div class="container">
-     <!--small id="hint"> click to pause / play 
+    <div class="container">
+        <!--small id="hint"> click to pause / play 
      <br/> hover to select
      </small-->
-     
-    <div class="row">
-        <div id="title"> قاموس الثورة</div>
-    </div>
-      
-    <div id="theCanvas"></div> 
-    
-      
-  <div class="row">
-     
-        <p id="namesP"> حاجة من قاموس الثورة</p>
-    </div>  
-      
-    <div class="demo-overlay">
-        <div class="info">
-          <h1>يعني ايه قاموس الثورة؟</h1>
-            
-          <p>
-            اتكلمنا كتير فى السنين الأخيرة فى مصر وعن طريق الكلام ده اتوصلنا لنوع من اللغة الجديدة. بنستخدم مفردات زى “عيش – حرية – عدالة اجتماعية” للتعبير عن مطالبنا، و بنستخدم مفردات تانية عشان نميز الاحداث المختلفة اللى حصلت.
-              </p><p>
-
-اللغة الجديدة اللى طورناها دى، اتاحت لنا اسلوب مشترك نتكلم بيه حوالين موضوع محدد. قاموس الثورة بيجمع المفردات المستخدمة فى اللغة الجديدة وبيطلب منك انك تحاول تعرّف الكلمات، لأن تحت عباية اللغة المشتركة فيه كتير من الأفكار و الآراء المختلفة والدليل على كده ان ممكن شخصين يستخدموا نفس الكلمة و كل واحد فيهم يقصد حاجة مختلفة تماماً.
-</p><p>
-اشترك معنا فى تعريف مفردات اللغة الجديدة عن طريق اضافة معناها بالنسبة لك. اضغط على الكلمة اللى عايز تضيف معناها واكتب اضافتك فى التعليقات ولو عندك كلمة عايز تضيفها و ملقيتهاش فى القاموس، ممكن تضيفها هنا.
-</p><p>
-احنا بنجمّع تعريف الكلمات اللى اخترناها لحد دلوقتى عن طريق التعليقات على الموقع هنا أو عن طريق مقابلات شخصية مع مصريين فى مناطق مختلفة. نفسنا فى الاخر نطلّع كتاب فيه مفردات الثورة مشروحة عن طريق المصريين على اختلاف الوانهم.</p>
-             <div class="footer">
-	              <a href="#" class="back-link">
+        <div class="row">
+            <div id="title"> قاموس الثورة &nbsp <img id="infoButton" src="icns/book.png" height="30" width="30" /> </div>
+        </div>
+        <div id="theCanvas"></div>
+        <div class="row" id="termTextArea">
+            <div id="termText"> </div>
+        </div>
+        <!--div class="demo-overlay">
+            <div class="info">
+                <h1>يعني ايه قاموس الثورة؟</h1>
+                <p> اتكلمنا كتير فى السنين الأخيرة فى مصر وعن طريق الكلام ده اتوصلنا لنوع من اللغة الجديدة. بنستخدم مفردات زى “عيش – حرية – عدالة اجتماعية” للتعبير عن مطالبنا، و بنستخدم مفردات تانية عشان نميز الاحداث المختلفة اللى حصلت. </p>
+                <p> اللغة الجديدة اللى طورناها دى، اتاحت لنا اسلوب مشترك نتكلم بيه حوالين موضوع محدد. قاموس الثورة بيجمع المفردات المستخدمة فى اللغة الجديدة وبيطلب منك انك تحاول تعرّف الكلمات، لأن تحت عباية اللغة المشتركة فيه كتير من الأفكار و الآراء المختلفة والدليل على كده ان ممكن شخصين يستخدموا نفس الكلمة و كل واحد فيهم يقصد حاجة مختلفة تماماً. </p>
+                <p> اشترك معنا فى تعريف مفردات اللغة الجديدة عن طريق اضافة معناها بالنسبة لك. اضغط على الكلمة اللى عايز تضيف معناها واكتب اضافتك فى التعليقات ولو عندك كلمة عايز تضيفها و ملقيتهاش فى القاموس، ممكن تضيفها هنا. </p>
+                <p> احنا بنجمّع تعريف الكلمات اللى اخترناها لحد دلوقتى عن طريق التعليقات على الموقع هنا أو عن طريق مقابلات شخصية مع مصريين فى مناطق مختلفة. نفسنا فى الاخر نطلّع كتاب فيه مفردات الثورة مشروحة عن طريق المصريين على اختلاف الوانهم.</p>
+                <div class="footer"> <a href="#" class="back-link">
                        لينك
                       &raquo;
-                 </a>
-            </div>
-
-	          	<!--a class="twitter-share-button"
+                 </a> </div>
+                a class="twitter-share-button"
 				  href="https://twitter.com/share?related=flimshaw:Charlie Hoey&via=flimshaw">
 				Tweet
 				</a>
@@ -109,20 +80,12 @@ Your browser does not support the audio element.
 				<a href="http://twitter.com/flimshaw" class="follow-link">&raquo; follow @flimshaw on Twitter</a>
 
                 charliehoey.com/threejs-demos/wireframe-tendrils-shader.html
-                -->
-
-			</div>
-        </div>
-        
-    <a class="hover-area"><i class="fa fa-info-circle"></i></a>
-
-  </div>
-
-<!-- End Document
+                
+            </div-->
+    </div>
+    <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
-  <script language="javascript" src="viz.js"></script>
-
-
+    <script language="javascript" src="viz.js"></script>
 </body>
+
 </html>

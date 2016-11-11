@@ -1,13 +1,17 @@
 
 /* always show scroll bar */
 html {
-    overflow-y:scroll; 
+    /*overflow-y:none;*/
+    height: 90vh;
 }
+
+
 
 body {
   background-color: white;
   color: black;
   direction: rtl;
+ max-height: 100%;
 }
 /*
 @font-face
@@ -40,7 +44,7 @@ src: url('fonts/DroidNaskh-Regular.ttf') format('TrueType');
 font-family:'DroidKufi';
 src: url('fonts/DroidKufi-Regular.ttf') format('TrueType');
 }
-
+/*
 @font-face
 {
 font-family:'Lateef';
@@ -56,28 +60,74 @@ src: url('fonts/WasmFont.ttf') format('TrueType');
 {
 font-family:'Sche';
 src: url('fonts/ScheherazadeRegOT.ttf') format('TrueType');
-}
+}*/
 
 #title{
+    position: absolute;
+    top: 2px;
     padding-top: 1.0em; 
-    width: 25%;
+    padding-right: 0.5em;
+    width: 100%;
     margin: 0 auto;
-    text-align: center;
-    font-size: 1.75em;
+    text-align: right;
+    font-size: 2.0em;
     font-family:'CairoBold', sans-serif;
     font-weight: 700; 
+    z-index: 3;
+    background: rgba(255,255,255,255,0.01);
     
     /*'DroidKufi';*/
 }
-#namesP{
-	text-align: center;
+
+theCanvas{
+    position: absolute;
+    top: 13em;
+    height: 95%;
+    z-index: -1;
+    font-family:'CairoReg', sans-serif;
+}
+
+
+#termTextArea{
+	width: 45%;
+    position: absolute;
+    top: 6em;
+    overflow-y:auto;
+    direction:ltr;
+    max-height: 82.5vh;
+    margin-top: 1.0em;
+}
+
+
+#termText{
+	text-align: right;
+    direction:rtl;
 	/*font-family:  'Amiri';
 	 font-family: 'DroidNaskh';*/ 
-    font-family:'CairoReg', sans-serif;
-    
-	font-size: 1.5em;
+    font-family:'DroidKufi', sans-serif;
+	font-size: 1.0em;
+    padding-top: 1.0em;
+    padding-right: 1.0em;
+    padding-left: 1.0em;
 
 }
+
+::-webkit-scrollbar
+{
+  width: 0.5em;;  /* for vertical scrollbars */
+  height: 0.5em; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: rgba(0, 0, 0, 0.5);
+}
+
 
 #hint{
 	float:right;
@@ -108,6 +158,7 @@ font-weight: 400;
   box-sizing: border-box;
   padding: 0 20px;
   padding-bottom: 50px;
+    padding-top: 1.5em;
   color: #fff;
   transition: all .75s ease-in-out;
 }
@@ -125,7 +176,7 @@ font-weight: 400;
  color:rgb(59,137,201);
 }
 .demo-overlay:hover .info {
-  max-height: 1000px;
+  max-height: 600px;
   background-color: rgba(0, 0, 0, 0.65);
 }
 .demo-overlay .footer {

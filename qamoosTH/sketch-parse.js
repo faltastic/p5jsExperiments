@@ -9,7 +9,6 @@ var terms = [];
 var arrayTerm = [];
 var wholeTerm = [];
 var D = [];
-
 var bugout = new debugout();
 
 function setup() {
@@ -18,7 +17,6 @@ function setup() {
     // of the function that will run when the file is loaded
     // This is known as a "callback"
     loadStrings(fileName, parseData);
-    
     //console.log(txtData);    
     //console.log(arrayTerm);
     console.log(terms);
@@ -44,29 +42,23 @@ function parseData(lines) {
             linesTerm.push(lines[i]);
         }
     }
-    
-    
     //    txtData.push(lines);
-    
     // join() joins the elements of an array
     // Here we pass in a line break to retain formatting
     //text = lines.join(' <br /> ');
     //var par = createP(text);
     //par.id('text');
-    
     var m, lm;
     var newText, newTerm;
-     for (var i = 0; i < wholeTerm.length-1; i++) {
-        newText = wholeTerm[i]; 
-         
+    for (var i = 0; i < wholeTerm.length - 1; i++) {
+        newText = wholeTerm[i];
         D[i] = [];
-        for (var j = 0; j < terms.length-1; j++) {
+        for (var j = 0; j < terms.length - 1; j++) {
             D[i][j] = 0;
             newTerm = terms[j];
             if (i != j) {
-                
                 m = newText.indexOf(newTerm);
-                lm = newText.lastIndexOf(newTerm); 
+                lm = newText.lastIndexOf(newTerm);
                 /*
                 if(m>0)
                 {
@@ -74,24 +66,17 @@ function parseData(lines) {
                     console.log("lm = " + lm);
                 }
                 */
-               
-                while ( m < lm )  {
+                while (m < lm) {
                     //console.log(m); 
                     D[i][j] += 1;
-                    m = newText.indexOf(terms[j],m+1);
-                    
-                    
-                   
+                    m = newText.indexOf(terms[j], m + 1);
                 }
-                
-                
             }
         }
     }
-    //console.log(D);
-    bugout.log(JSON.stringify(D));
-
-    bugout.downloadLog();
-  
+  //  console.log(arrayTerm);
+   // saveStrings(JSON.stringify(D), 'nouns.txt');
+  bugout.log(arrayTerm);
+//    bugout.log(JSON.stringify(D));
+//   bugout.downloadLog();
 }
-    

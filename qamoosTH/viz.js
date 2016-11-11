@@ -6,7 +6,7 @@ var N;
 var n = []
     , h = []
     , t = [];
-var w;
+var Cx;
 var d = [];
 var rndData = [];
 var names = [];
@@ -26,6 +26,14 @@ var vol = 0
 var fontAR;
 var pal = [];
 var t0 = 0;
+var tAnime = 600;
+var termText;
+var termTextAreaHtml; 
+var termTextHtml; // html element for term text
+var infoButton; // 
+
+
+var aboutText = "<h5>يعني ايه قاموس الثورة؟</h5>"+ "<p>     اتكلمنا كتير فى السنين الأخيرة فى مصر وعن طريق الكلام ده اتوصلنا لنوع من اللغة الجديدة. بنستخدم مفردات زى “عيش – حرية – عدالة اجتماعية” للتعبير عن مطالبنا، و بنستخدم مفردات تانية عشان نميز الاحداث المختلفة اللى حصلت.</p><p>"+"اللغة الجديدة اللى طورناها دى، اتاحت لنا اسلوب مشترك نتكلم بيه حوالين موضوع محدد. قاموس الثورة بيجمع المفردات المستخدمة فى اللغة الجديدة وبيطلب منك انك تحاول تعرّف الكلمات، لأن تحت عباية اللغة المشتركة فيه كتير من الأفكار و الآراء المختلفة والدليل على كده ان ممكن شخصين يستخدموا نفس الكلمة و كل واحد فيهم يقصد حاجة مختلفة تماماً.</p>";
 
 function preload() {
     //fontAR= loadFont('./css/fonts/DroidNaskh-Regular.ttf');
@@ -38,8 +46,13 @@ function preload() {
 }
 
 function setup() {
-    var myCanvas = createCanvas(0.85 * windowWidth, windowHeight / 0.8);
+    var myCanvas = createCanvas(windowWidth, 1.05 * windowHeight);
     myCanvas.parent("theCanvas");
+    // HTML elements
+    termTextHtml = select('#termText');
+    termTextAreaHtml = select('#termTextArea');
+    
+    
     //frameRate(2);
     //rectMode(CORNERS);
     ellipseMode(RADIUS);
@@ -52,14 +65,11 @@ function setup() {
     // prepare data
     //N = 20;
     N = words.length;
-    //console.log(N);
-    //randomData(50);
-    //console.log(rndData.length);
+    
     rndData = Drough;
     //console.log(Drough); 
-    w = width / N;
-    baseH = height / 1.2;
-    R = height / 3.5;
+    R = height / 3.25;
+    Cx = width / 2.5;
     //nMax = 0;
     nMax = 20;
     /*    
@@ -75,7 +85,7 @@ function setup() {
         n[i] = floor(random(5, 20)); //words[i]['ex'].length; 
         h[i] = map(n[i], 0, nMax, 2, 20);
         theta[i] = i * TWO_PI / N;
-        x[i] = (width / 2) + R * cos(theta[i]);
+        x[i] = Cx + R * cos(theta[i]);
         y[i] = (height / 2) + R * sin(theta[i]);
         d = rndData; //words[i]['con'];
         //names[i] = "";
@@ -83,7 +93,6 @@ function setup() {
             // names[i] += "<p>" + words[i]['ex'][j] + " </p> " ;
         }
     }
-    namesP = select('#namesP');
     //console.log(d);
     //console.log(namesP);
     stroke(0);
@@ -91,6 +100,7 @@ function setup() {
     //console.log(t);
     chordAll();
     //chordOne();
+    
 }
 
 function chordAll() {
@@ -98,40 +108,24 @@ function chordAll() {
     background(255);
     textSize(12);
     for (var i = 0; i < N; i++) {
-        stroke(pal[words[i]['cat']-1]);
-        //stroke(0);
+        stroke(pal[words[i]['cat'] - 1]);
+        //stroke(50);
         noFill();
-        strokeWeight(0.1);
+        //strokeWeight(0.051);
         for (var j = 0; j < N; j++) {
             if (d[i][j] > 0.1) {
-                strokeWeight(d[i][j] / 10); // console.log(i + " , " + j);
-                // for (var k = 0; k < d[i][j]; k++) {
-                //strokeWeight(d[i][j]);
+               strokeWeight(d[i][j] / 10); // console.log(i + " 
                 if (words[i]['cat'] > 0) {
-                    bezier(x[i], y[i], //(x[i]+x[j])/2, (y[i]+y[j])/2,
-                        //(x[i]+x[j])/2, (y[i]+y[j])/2,
-                        width / 2, height / 2, width / 2, height / 2, x[j], y[j]);
+                    bezier(x[i], y[i], 
+                        Cx, height / 2, Cx, height / 2, x[j], y[j]);
                 }
-                /*beginShape();
-                 curveVertex(x[i], y[i]);
-                 curveVertex((x[i]+x[j])/2, (y[i]+y[j])/2);
-                  curveVertex(x[j], y[j]);
-                endShape();``
-                */
-                /*
-                curveTightness(map(dist(x[i],y[i],x[j],y[j]), 1, 2*R, -2,0) );
-                curve((width / 2) + 3 * R * cos(theta[i]),(height / 2) + 3 * R * sin(theta[i]), 
-                        x[i], y[i],                         
-                        x[j], y[j],
-                        (width / 2) + 3 * R * cos(theta[j]),(height / 2) + 3 * R * sin(theta[j]) );
-                  */
-                //}
+           
             }
         }
         push();
         noStroke();
         fill(0);
-        translate(width / 2, height / 2);
+        translate(Cx, height / 2);
         rotate(theta[i]);
         translate(1.2 * R, 0);
         textAlign(LEFT);
@@ -143,7 +137,7 @@ function chordAll() {
         text(t[i], 0, 0);
         pop();
         push();
-        translate(width / 2, height / 2);
+        translate(Cx, height / 2);
         rotate(theta[i]);
         translate(1.12 * R, 0);
         fill(pal[words[i]['cat'] - 1], 10);
@@ -152,6 +146,9 @@ function chordAll() {
         rect(-0.04 * R, -6, h[i], 5);
         pop();
     }
+    termTextAreaHtml.style("width", "35%");
+    termText = aboutText;
+    //termTextHtml.html(termText);
 }
 var incoming = [];
 var nNew = 1;
@@ -189,28 +186,40 @@ function chordOne(newTerm) {
             nNew++;
             incoming.push(true);
             tNew.push(t[j]);
-            if(d[i][j]<6){ strokeNew.push(d[i][j]);}
-            else{           strokeNew.push(6);}
+            if (d[i][j] < 6) {
+                strokeNew.push(d[i][j]);
+            }
+            else {
+                strokeNew.push(6);
+            }
         }
         if (d[j][i] != 0) {
             incoming[nNew - 1] = false;
-            if(d[j][i]<6){ strokeNew[nNew - 1] = d[j][i];}
-            else{           strokeNew[nNew - 1] = 6;}
+            if (d[j][i] < 6) {
+                strokeNew[nNew - 1] = d[j][i];
+            }
+            else {
+                strokeNew[nNew - 1] = 6;
+            }
         }
     }
 }
 
 function chordOneDraw(t, t0, tAnime) {
+    var R1 = map(t - t0, 0, tAnime, R, height / 4.0);
+    var W1 = map(t - t0, 0, tAnime, Cx, width / 3);
+    var H1 = height / 2;
+    //map(t-t0, 0, tAnime, height/2, height/3);
     textSize(map(nNew, 1, 50, 16, 12));
     //console.log(nNew);
     //console.log(incoming);
     background(255, map(t - t0, 0, tAnime, 25, 275));
     noFill();
-    for (var j = 1; j <= nNew; j++) {
+    for (var j = 0; j <= nNew; j++) {
         thetaEnd[j] = (thetaEnd[0] + (j * TWO_PI / nNew)) % (TWO_PI);
         thetaMove[j] = map(t - t0, 0, tAnime, thetaEnd[0], thetaEnd[j]);
-        xNew[j] = (width / 2) + R * cos(thetaMove[j]);
-        yNew[j] = (height / 2) + R * sin(thetaMove[j]);
+        xNew[j] = W1 + R1 * cos(thetaMove[j]);
+        yNew[j] = H1 + R1 * sin(thetaMove[j]);
         //console.log(thetaEnd[j]);
         strokeWeight(strokeNew[j]);
         if (incoming[j]) {
@@ -220,19 +229,19 @@ function chordOneDraw(t, t0, tAnime) {
             stroke(strokeOut);
         }
         // stroke(strokeOut);
-        bezier(xNew[0], yNew[0], width / 2, height / 2, width / 2, height / 2, xNew[j], yNew[j]);
+        bezier(xNew[0], yNew[0], W1, H1, W1, H1, xNew[j], yNew[j]);
     }
     for (var j = 0; j < nNew; j++) {
         push();
         noStroke();
         fill(0);
-        translate(width / 2, height / 2);
+        translate(W1, H1);
         rotate(thetaMove[j]);
-        translate(1.1 * R, 0);
+        translate(1.1 * R1, 0);
         if (j == 0) {
             ellipse(0, 0, 4, 4);
         }
-        translate(0.1 * R, 0);
+        translate(0.1 * R1, 0);
         textAlign(LEFT);
         if (thetaMove[j] > (TWO_PI / 4) && thetaMove[j] < (3 * TWO_PI / 4)) {
             translate(0, 0);
@@ -243,6 +252,16 @@ function chordOneDraw(t, t0, tAnime) {
         text(tNew[j], 0, 0);
         pop();
     }
+    var fileName = "data/1.txt";
+    loadStrings(fileName, showTermText);
+}
+
+function showTermText(lines) {
+   
+    termText = '<p>' + lines.join('</p><p>') + '</p>';
+    termTextAreaHtml.style("width", "45%");
+    termTextHtml.html(termText);
+  
 }
 
 function randomData(r) {
@@ -271,34 +290,27 @@ function randomData(r) {
             }
         }
     }
-    //console.log(words);
-    /* words[i] =
-        {
-         "title": "شباب",
-         "con":[0,2,1,0,4],
-         "ex": [
-         "سليمان صابر علي محمدين",
-         "غريب عبد العزيز عبد اللطيف",
-         "محمد السيد لبيب محمد",
-         "احمد عزيز الدين فرج عبد الله"
-         ]
-     }*/
+  
 }
 
 function draw() {
-    if (!isChordAll && (millis() - t0) < 400) {
-        chordOneDraw(millis(), t0, 400);
+    if(frameCount<3){
+        $("#termText").typed({strings: [aboutText] });
     }
-   // cartesToPolar(mouseX, mouseY);
+    if (!isChordAll && (millis() - t0) < tAnime) {
+        chordOneDraw(millis(), t0, tAnime);
+    }
+   
 }
 
 function mouseReleased() {
     
-    if (isChordAll) {    
-        var rTheta = cartesToPolar(mouseX, mouseY);
-        if (rTheta[0] > 0.85 * R) {
+    var rTheta = cartesToPolar(mouseX, mouseY);
+    if (isChordAll) {
+        
+        if (rTheta[0] > 0.85 * R && rTheta[0] < 1.5 * R) {
             //theta[i] = i * TWO_PI / N;    with  i = myTerm
-            var newTerm = ceil(N * rTheta[1] / TWO_PI)%N;
+            var newTerm = ceil(N * rTheta[1] / TWO_PI) % N;
             t0 = millis();
             chordOne(newTerm);
         }
@@ -306,15 +318,23 @@ function mouseReleased() {
     else {
         chordAll();
     }
+    document.getElementById('infoButton').addEventListener('click', function () {
+        
+        termTextAreaHtml.style("width", "38%");
+        termText = aboutText;
+        termTextHtml.html(termText);
+       
+
+    });
 }
 
 function cartesToPolar(x, y) {
     var rTheta = [];
     if (x < width / 2) {
-        x = (x - (width / 2));
+        x = (x - Cx);
     }
     else {
-        x = +(x - (width / 2));
+        x = +(x - Cx);
     }
     if (y < height / 2) {
         y = height / 2 - y;
