@@ -40,48 +40,25 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <script src="data/terms.js"></script>
     <script src="data/Dmatrix-fix.js"></script>
-    <!-- <audio controls>
-
-<source id="belly" src="amb.mp3" type="audio/mpeg">
-Your browser does not support the audio element.
-</audio> -->
+    
     <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div class="container">
-        <!--small id="hint"> click to pause / play 
-     <br/> hover to select
-     </small-->
-        <div class="row">
-            <div id="title"> قاموس الثورة &nbsp <img id="infoButton" src="icns/book.png" height="30" width="30" /> </div>
-        </div>
+        <div class="row" id="textBox">
+          <div id="title">
+            قاموس الثورة
+            </div>
+            
+            <div  id="termTextArea">
+               <div id="termText">  
+               </div>
+             </div>
+         </div>
         <div id="theCanvas"></div>
-        <div class="row" id="termTextArea">
-            <div id="termText"> </div>
+        <div id="linkBox"> 
+            اي حاجه <br />اي حاجه <br />اي حاجه <br />اي حاجه <br />
         </div>
-        <!--div class="demo-overlay">
-            <div class="info">
-                <h1>يعني ايه قاموس الثورة؟</h1>
-                <p> اتكلمنا كتير فى السنين الأخيرة فى مصر وعن طريق الكلام ده اتوصلنا لنوع من اللغة الجديدة. بنستخدم مفردات زى “عيش – حرية – عدالة اجتماعية” للتعبير عن مطالبنا، و بنستخدم مفردات تانية عشان نميز الاحداث المختلفة اللى حصلت. </p>
-                <p> اللغة الجديدة اللى طورناها دى، اتاحت لنا اسلوب مشترك نتكلم بيه حوالين موضوع محدد. قاموس الثورة بيجمع المفردات المستخدمة فى اللغة الجديدة وبيطلب منك انك تحاول تعرّف الكلمات، لأن تحت عباية اللغة المشتركة فيه كتير من الأفكار و الآراء المختلفة والدليل على كده ان ممكن شخصين يستخدموا نفس الكلمة و كل واحد فيهم يقصد حاجة مختلفة تماماً. </p>
-                <p> اشترك معنا فى تعريف مفردات اللغة الجديدة عن طريق اضافة معناها بالنسبة لك. اضغط على الكلمة اللى عايز تضيف معناها واكتب اضافتك فى التعليقات ولو عندك كلمة عايز تضيفها و ملقيتهاش فى القاموس، ممكن تضيفها هنا. </p>
-                <p> احنا بنجمّع تعريف الكلمات اللى اخترناها لحد دلوقتى عن طريق التعليقات على الموقع هنا أو عن طريق مقابلات شخصية مع مصريين فى مناطق مختلفة. نفسنا فى الاخر نطلّع كتاب فيه مفردات الثورة مشروحة عن طريق المصريين على اختلاف الوانهم.</p>
-                <div class="footer"> <a href="#" class="back-link">
-                       لينك
-                      &raquo;
-                 </a> </div>
-                a class="twitter-share-button"
-				  href="https://twitter.com/share?related=flimshaw:Charlie Hoey&via=flimshaw">
-				Tweet
-				</a>
-				<script>
-				window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
-				</script>
-
-				<a href="http://twitter.com/flimshaw" class="follow-link">&raquo; follow @flimshaw on Twitter</a>
-
-                charliehoey.com/threejs-demos/wireframe-tendrils-shader.html
-                
-            </div-->
+        <div class="slider" id="zslider"></div>
     </div>
     <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->

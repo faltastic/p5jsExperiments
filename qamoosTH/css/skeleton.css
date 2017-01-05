@@ -51,10 +51,10 @@
 /* For devices larger than 550px */
 @media (min-width: 550px) {
   .container {
-    width: 90%; }
+    width: 100%; }
   .column,
   .columns {
-    margin-left: 4%; }
+   /* margin-left: 4%;*/ }
   .column:first-child,
   .columns:first-child {
     margin-left: 0; }
@@ -172,20 +172,21 @@ input[type="submit"],
 input[type="reset"],
 input[type="button"] {
   display: inline-block;
-  height: 38px;
-  padding: 0 30px;
-  color: #555;
+  height: 30px;
+  width: 30px;
+  vertical-align: middle;
+  color: #333;
   text-align: center;
-  font-size: 11px;
+  font-size: 18px;
   font-weight: 600;
-  line-height: 38px;
+  line-height: 20px;
   letter-spacing: .1rem;
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
   background-color: transparent;
   border-radius: 4px;
-  border: 1px solid #bbb;
+  border: 1px solid #333;
   cursor: pointer;
   box-sizing: border-box; }
 .button:hover,
@@ -198,8 +199,9 @@ button:focus,
 input[type="submit"]:focus,
 input[type="reset"]:focus,
 input[type="button"]:focus {
-  color: #333;
-  border-color: #888;
+  background-color: #000;
+    color: #fff;
+  border-color: #000;
   outline: 0; }
 .button.button-primary,
 button.button-primary,

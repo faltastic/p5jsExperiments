@@ -25,8 +25,8 @@ src: url('fonts/Amiri-Regular.ttf') format('TrueType');
 
 @font-face
 {
-font-family:'NotoNaskh';
-src: url('fonts/Noto-Naskh-Arabic.ttf') format('TrueType');
+font-family:'DroidNaskh';
+src: url('fonts/DroidNaskh-Regular.ttf') format('TrueType');
 }
 
 
@@ -65,6 +65,22 @@ font-family:'Sche';
 src: url('fonts/ScheherazadeRegOT.ttf') format('TrueType');
 }*/
 
+#title{
+    position: absolute;
+    top: 2px;
+    padding-top: 1.0em; 
+    padding-right: 0.5em;
+    width: 100%;
+    margin: 0 auto;
+    text-align: right;
+    font-size: 2.0em;
+    font-family:'CairoBold', sans-serif;
+    font-weight: 700; 
+    z-index: 3;
+    background: rgba(255,255,255,255,0.01);
+    
+    /*'DroidKufi';*/
+}
 
 theCanvas{
     position: absolute;
@@ -76,43 +92,14 @@ theCanvas{
 }
 
 
-#textBox{
-    position: absolute;
-    top: 0px;
-    width:60%;
-    right: 39.5%;
-    
-    padding-top: 2.0em; 
-    padding-right: 0.33em;
-    padding-bottom: 1.0em;
-    
-    margin: 0 auto;
-    text-align: right;
-    
-    background: rgb(240,255,255);
-    border-right: 3px solid black;
-    visibility: hidden;
-}
-
-
-#title{
-    font-size: 2.0em;
-    font-family:'CairoBold', sans-serif;
-    font-weight: 700; 
-    z-index: 3;
-    border-bottom: 3px solid black;
-    padding-bottom: 1.0em;
-    margin-right: 1.0em;
-    margin-left: 1.0em;
-}
-
 #termTextArea{
+	width: 45%;
+    position: absolute;
+    top: 6em;
     overflow-y:auto;
-    direction:rtl;
+    direction:ltr;
     max-height: 82.5vh;
-    font-size: 1.5em;
-    padding-top: 1.0em;
-    padding-right: 1.33em;
+    margin-top: 1.0em;
 }
 
 
@@ -121,49 +108,29 @@ theCanvas{
     direction:rtl;
 	/*font-family:  'Amiri';
 	 font-family: 'DroidNaskh';*/ 
-    font-family:'NotoNaskh', serif;
-    padding-left: 2.0em;
-}
+    font-family:'DroidNaskh', serif;
+	font-size: 1.33em;
+    padding-top: 1.0em;
+    padding-right: 1.0em;
+    padding-left: 1.0em;
+    
 
-#linkBox{
-    position: absolute;
-    top: 60%;
-    height: 30%;
-    width:35%;
-    right: 5%;
-    
-    color: rgb(1, 39, 39);
-    padding-top: 1.0em; 
-    padding-right: 0.01em;
-    padding-bottom: 1.0em;
-    
-    margin: 0 auto;
-    text-align: right;
-    font-family:'CairoBold', sans-serif;
-    font-size: 1.0em;
-    visibility: hidden;
-
-    
-    /*background: rgb(240,255,255);
-    border-right: 3px solid black;*/
 }
 
 ::-webkit-scrollbar
 {
-  
-  direction:rtl;
-  width: 0.33em;;  /* for vertical scrollbars */
-  height: 0.33em; /* for horizontal scrollbars */
+  width: 0.5em;;  /* for vertical scrollbars */
+  height: 0.5em; /* for horizontal scrollbars */
 }
 
 ::-webkit-scrollbar-track
 {
-  /*background:  rgba(0, 46, 46, 0.15);*/
+  background: rgba(0, 0, 0, 0.1);
 }
 
 ::-webkit-scrollbar-thumb
 {
-  background: rgba(0, 46, 46, 0.5);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 
