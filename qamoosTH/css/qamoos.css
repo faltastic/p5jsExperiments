@@ -2,7 +2,7 @@
 /* always show scroll bar */
 html {
     /*overflow-y:none;*/
-    height: 90vh;
+    height: 100vh;
 }
 
 
@@ -27,6 +27,18 @@ src: url('fonts/Amiri-Regular.ttf') format('TrueType');
 {
 font-family:'NotoNaskh';
 src: url('fonts/Noto-Naskh-Arabic.ttf') format('TrueType');
+}
+
+@font-face
+{
+font-family:'NotoKufi';
+src: url('fonts/NotoKufiArabic-Regular.ttf') format('TrueType');
+}
+
+@font-face
+{
+font-family:'NotoKufiBold';
+src: url('fonts/NotoKufiArabic-Bold.ttf') format('TrueType');
 }
 
 
@@ -70,9 +82,9 @@ theCanvas{
     position: absolute;
     top: 10em;
     right: 2.5%;
-    height: 95%;
+    height: 100%;
     z-index: -1;
-    font-family:'CairoReg', sans-serif;
+    font-family:'NotoKufi', sans-serif;
 }
 
 
@@ -80,7 +92,8 @@ theCanvas{
     position: absolute;
     top: 0px;
     width:60%;
-    right: 39.5%;
+    right: 0%; 
+    /*right: 39.5%;*/
     
     padding-top: 2.0em; 
     padding-right: 0.33em;
@@ -90,7 +103,7 @@ theCanvas{
     text-align: right;
     
     background: rgb(240,255,255);
-    border-right: 3px solid black;
+    border-left: 3px solid black;
     visibility: hidden;
 }
 
@@ -109,11 +122,17 @@ theCanvas{
 #termTextArea{
     overflow-y:auto;
     direction:rtl;
-    max-height: 82.5vh;
+    max-height: 80.0vh;
     font-size: 1.5em;
     padding-top: 1.0em;
     padding-right: 1.33em;
+
 }
+
+#termTextArea p{
+    margin-bottom: 0.75em;
+}
+
 
 
 #termText{
@@ -127,31 +146,62 @@ theCanvas{
 
 #linkBox{
     position: absolute;
-    top: 60%;
-    height: 30%;
-    width:35%;
-    right: 5%;
+    bottom: 3em;
+    width:34.5%;
+    right: 65%;
     
+    overflow-y:auto;
+    max-height: 30vh;
     color: rgb(1, 39, 39);
-    padding-top: 1.0em; 
-    padding-right: 0.01em;
+ 
     padding-bottom: 1.0em;
     
     margin: 0 auto;
     text-align: right;
+    font-family:'NotoKufiBold', sans-serif;
+    font-size: 1.0em;
+    visibility: hidden;
+    
+    /*
+    -webkit-column-count: 2; 
+    -moz-column-count: 2; 
+    column-count: 2;
+    */
+
+}
+#aboutLink{
+    position: absolute;
+    bottom: 0.5em;
+    right: 65%;
+    
+    color: rgba(0, 46, 46, 0.5);
+    /*padding-top: 1.0em; 
+    padding-right: 0.01em;*/
+    padding-bottom: 0.5em;
+ 
+    text-align: right;
     font-family:'CairoBold', sans-serif;
     font-size: 1.0em;
     visibility: hidden;
-
     
-    /*background: rgb(240,255,255);
-    border-right: 3px solid black;*/
 }
+
+#aboutLink a:link, a:visited{
+    color: rgba(0, 46, 46, 0.5);
+    text-decoration: none;
+}
+#aboutLink a:hover, a:active{
+    text-decoration:none;
+    color: #01a3a3;
+}
+
+
+
 
 ::-webkit-scrollbar
 {
   
-  direction:rtl;
+  direction:ltr;
   width: 0.33em;;  /* for vertical scrollbars */
   height: 0.33em; /* for horizontal scrollbars */
 }
@@ -166,14 +216,14 @@ theCanvas{
   background: rgba(0, 46, 46, 0.5);
 }
 
-
+/*
 #hint{
 	float:right;
 	text-align: right;
 }
 
 .demo-overlay {
-  /*text-align: right;*/
+  
   font-family:'CairoReg', sans-serif;
 font-weight: 400;
   position: absolute;
@@ -207,7 +257,7 @@ font-weight: 400;
   font-family: 'CairoBold'; 
 }
 .demo-overlay .info p {
- /* font-family: 'DroidNaskh';*/
+ /* font-family: 'DroidNaskh';
 }
 
 .demo-overlay .info a {
@@ -235,7 +285,7 @@ font-weight: 400;
   .demo-overlay a.follow-link {
     float: left;
   }
-}
+}*/
 /*
 input[type=range].slider {
   -webkit-appearance: none;

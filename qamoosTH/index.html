@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/skeleton.css">
     <link rel="stylesheet" href="css/qamoos.css">
+    <link type="text/css" rel="stylesheet" href="css/featherlight.gallery.css" />
     <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link rel="icon" type="image/png" href="images/favicon.png">
@@ -30,9 +31,11 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <script language="javascript" src="lib/newp5.min.js"></script>
     <script language="javascript" src="lib/p5.dom.min.js"></script>
-    <!--script language="javascript" src="lib/p5.sound.js"></script-->
-    <script src="lib/jquery.js"></script>
-    <script src="lib/typed.js"></script>
+    
+
+    <!--script language="javascript" src="lib/p5.sound.js"></script>
+<script src="lib/typed.js"></script>
+    -->
 </head>
 
 <body>
@@ -55,14 +58,16 @@
              </div>
          </div>
         <div id="theCanvas"></div>
-        <div id="linkBox"> 
-            اي حاجه <br />اي حاجه <br />اي حاجه <br />اي حاجه <br />
-        </div>
-        <div class="slider" id="zslider"></div>
+        <div id="linkBox"> </div>
+        <div id="aboutLink"> 
+            <a href="#" target="_blank" onclick="showAbout(this.href); return false;">قاموس الثورة</a>
+       </div>
     </div>
     <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <script language="javascript" src="viz.js"></script>
+    <script src="lib/jquery.js"></script>
+    <script src="lib/featherlight.gallery.js" type="text/javascript" charset="utf-8"></script>
 </body>
 
 </html>

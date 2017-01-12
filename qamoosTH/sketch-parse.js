@@ -28,7 +28,7 @@ function parseData(lines) {
     terms[0] = "٢٥ يناير";
     var linesTerm = [];
     var n = 0;
-    for (var i = 1; i < lines.length; i++) {
+    for (var i = 0; i < lines.length; i++) {
         if (parseInt(lines[i]) < 200) {
             // console.log(lines[i]);
             terms.push(lines[i + 1]);
@@ -76,7 +76,7 @@ function parseData(lines) {
     }
   //  console.log(arrayTerm);
    // saveStrings(JSON.stringify(D), 'nouns.txt');
-  bugout.log(arrayTerm);
+ // bugout.log(arrayTerm);
 //    bugout.log(JSON.stringify(D));
 //   bugout.downloadLog();
 }
