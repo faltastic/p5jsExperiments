@@ -19,6 +19,8 @@ var bell;
 var muteIcn, playIcn;
 ////
 // temp. variables
+var hostLoc ="";
+var currentLoc="";
 var today = 0
     , yesterday = 0;
 var namesP;
@@ -40,14 +42,7 @@ var about = false;
 var aboutText = "<h5>يعني ايه قاموس الثورة؟</h5>" + "<p>     اتكلمنا كتير فى السنين الأخيرة فى مصر وعن طريق الكلام ده اتوصلنا لنوع من اللغة الجديدة. بنستخدم مفردات زى “عيش – حرية – عدالة اجتماعية” للتعبير عن مطالبنا، و بنستخدم مفردات تانية عشان نميز الاحداث المختلفة اللى حصلت.</p><p>" + "اللغة الجديدة اللى طورناها دى، اتاحت لنا اسلوب مشترك نتكلم بيه حوالين موضوع محدد. قاموس الثورة بيجمع المفردات المستخدمة فى اللغة الجديدة وبيطلب منك انك تحاول تعرّف الكلمات، لأن تحت عباية اللغة المشتركة فيه كتير من الأفكار و الآراء المختلفة والدليل على كده ان ممكن شخصين يستخدموا نفس الكلمة و كل واحد فيهم يقصد حاجة مختلفة تماماً.</p>";
 
 function preload() {
-    // textFont('CairoReg');
-    //fontAR= loadFont('./css/fonts/DroidNaskh-Regular.ttf');
-    /*
-    bell = createAudio('sound/SD.wav');
-
-    playIcn = loadImage("icns/play.png");
-    muteIcn = loadImage("icns/mute.png");
-    */
+   
 }
 
 function setup() {
@@ -65,10 +60,7 @@ function setup() {
     textSize(12);
     textFont('NotoKufi');
     pal = [color(74, 139, 115, 175), color(37, 93, 108, 175), color(92, 93, 136, 175), color(59, 137, 201, 175)];
-    // pal = 
-    //[color(28,38,74, 175), color(30,96,117, 175), color(45,168,156, 175), color(45,235,174, 175)];
-    // [color(13,181,203, 175),color(39,97,105, 175), color(0,223,252, 175),color(26,139,154, 175)];
-    //[color(161,218,180, 175), color(65,182,196, 175), color(44,127,184, 175), color(37,52,148, 175)];
+
     // prepare data
     //N = 20;
     N = words.length;
@@ -105,6 +97,8 @@ function setup() {
     noFill();
     //console.log(t);
     //chordOne();
+    hostLoc = window.location.href;
+    console.log(hostLoc);
 }
 
 function chordAll() {
@@ -161,7 +155,7 @@ thetaEnd[0] = 0;
 var thetaMove = [];
 var xNew = [];
 var yNew = [];
-var tNew = [];
+var tNew = []; //var tNewLink =[];
 var strokeNew = [];
 var strokeOut;
 var strokeIn;
@@ -268,7 +262,7 @@ function chordOneDraw(t, t0, tAnime) {
         select('#linkBox').style("visibility", "visible");
         select('#aboutLink').style("visibility", "visible");
         var fileName = "data/txt/"+(originalN[0]+1)+".txt";
-        console.log(fileName);
+        //console.log(fileName);
         loadStrings(fileName, showTermText);
         showLinks();
     }
@@ -287,13 +281,22 @@ function showTermText(lines) {
 }
 
 function showLinks() {
-    if (tNew.length < 10) {
-        var linksText = tNew.slice(1, tNew.length).join('<br/>');
-    }
-    else {
-        var linksText = tNew.slice(1, tNew.length).join('<br/>');
+   
+    //var linksText = tNew.slice(1, tNew.length).join('<br/>'); 
+    var linksText ="";
+    
+    for(var i=1;i<tNew.length;i++){
+        linksText+='<a href="#' +originalN[i]+ '" onClick="listTermClick('+i+')" >'+ tNew[i]+ '</a> <br/>';    
     }
     select('#linkBox').html(linksText);
+}
+
+function listTermClick(newTermId){
+    var newTerm = newTermId;
+        newTerm = originalN[newTerm];
+        t0 = millis();
+        console.log(originalN);
+        chordOne(newTerm);
 }
 
 function showAbout() {
@@ -374,9 +377,11 @@ function draw() {
             pop();
         }
     }
+    
     if (!isChordAll && (millis() - t0) < tAnime) {
         chordOneDraw(millis(), t0, tAnime);
     }
+    
     //var rTheta = cartesToPolar(mouseX, mouseY,zoom*Cx/2, thetaEnd[0]);
     //  console.log(rTheta[0]);
     //console.log(zoom*Cx/2 + "  " + mouseX);
@@ -410,13 +415,14 @@ function mouseReleased() {
         t0 = millis();
         chordOne(newTerm);
     }
-    else if (!about) {
+    else if (!about && mouseY<0.5*height) {
         var newTerm = currentTerm;
         newTerm = originalN[newTerm];
         t0 = millis();
         console.log(originalN);
         chordOne(newTerm);
     }
+    
     //console.log(rTheta[1]);
     //newTerm=originalN[newTerm];
     //    document.getElementById('infoButton').addEventListener('click', function () {

@@ -145,12 +145,22 @@ theCanvas{
 }
 
 #linkBox{
+    /*
+    -webkit-column-count: 2; 
+    -moz-column-count: 2; 
+    column-count: 2;
+    */
+    
+    column-width: 50%;
+    column-count: 2;
+    
     position: absolute;
     bottom: 3em;
     width:34.5%;
     right: 65%;
     
     overflow-y:auto;
+    max-width: 34.5%;
     max-height: 30vh;
     color: rgb(1, 39, 39);
  
@@ -162,13 +172,18 @@ theCanvas{
     font-size: 1.0em;
     visibility: hidden;
     
-    /*
-    -webkit-column-count: 2; 
-    -moz-column-count: 2; 
-    column-count: 2;
-    */
+    
 
 }
+
+#linkBox a{
+   color: black;
+ text-decoration: none;    
+}
+#linkBox a:hover{
+ text-decoration: underline;    
+}
+
 #aboutLink{
     position: absolute;
     bottom: 0.5em;
