@@ -83,7 +83,7 @@ theCanvas{
     top: 10em;
     right: 2.5%;
     height: 100%;
-    z-index: -1;
+    z-index: 99;
     font-family:'NotoKufi', sans-serif;
 }
 
@@ -119,6 +119,19 @@ theCanvas{
     margin-left: 1.0em;
 }
 
+#titleLinks{
+    font-size: 1.0em;
+    font-family:'Cairo', sans-serif;
+    z-index: 3;
+    padding-bottom: 1.0em;
+    margin-right: 1.0em;
+    margin-left: 1.0em;
+    position: absolute;
+    top: 3em;
+    left: 1em;
+
+}
+
 #termTextArea{
     overflow-y:auto;
     direction:rtl;
@@ -145,23 +158,14 @@ theCanvas{
 }
 
 #linkBox{
-    
-   
-    
-    
-    column-width: 50%;
-     -webkit-column-count: 2; 
-    -moz-column-count: 2; 
-    column-count: 2;
-    
-    
+     
     position: absolute;
     bottom: 3em;
     width:34.5%;
     right: 65%;
     
     overflow-y:auto;
-    max-width: 34.5%;
+   /* max-width: 34.5%;*/
     max-height: 30vh;
     color: rgb(1, 39, 39);
  
@@ -173,7 +177,12 @@ theCanvas{
     font-size: 1.0em;
     visibility: hidden;
     
-    
+    /*
+    column-width: 50%;
+     -webkit-column-count: 2; 
+    -moz-column-count: 2; 
+    column-count: 2;
+    */
 
 }
 
@@ -187,13 +196,12 @@ theCanvas{
 
 #aboutLink{
     position: absolute;
-    bottom: 0.5em;
+    bottom: 0.35em;
     right: 65%;
     
     color: rgba(0, 46, 46, 0.5);
-    /*padding-top: 1.0em; 
-    padding-right: 0.01em;*/
-    padding-bottom: 0.5em;
+    padding-top: 0.25em; 
+    padding-bottom: 0.35em;
  
     text-align: right;
     font-family:'CairoBold', sans-serif;

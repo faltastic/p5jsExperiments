@@ -23,7 +23,8 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/skeleton.css">
     <link rel="stylesheet" href="css/qamoos.css">
-    <link type="text/css" rel="stylesheet" href="css/featherlight.gallery.css" />
+    <!--link type="text/css" rel="stylesheet" href="css/jquery.sSlider.min.css" /-->
+    <link rel="stylesheet" href="css/modal.css">
     <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link rel="icon" type="image/png" href="images/favicon.png">
@@ -31,7 +32,9 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <script language="javascript" src="lib/newp5.min.js"></script>
     <script language="javascript" src="lib/p5.dom.min.js"></script>
-    
+     <!--script src="lib/jquery.js"></script
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="lib/jquery.sSlider.min.js" type="text/javascript" charset="utf-8"></script>
 
     <!--script language="javascript" src="lib/p5.sound.js"></script>
 <script src="lib/typed.js"></script>
@@ -51,6 +54,11 @@
           <div id="title">
             قاموس الثورة
             </div>
+            <div id="titleLinks">
+            
+             <a id="downLink" title="Open PDF" href="data/1.txt" target="_blank"> <img src="icns/download-2-24.png" /></a>
+                <a id="backLink" title="Previous Term" href="#" onClick="previousTerm()" > <img src="icns/arrow-96-24-wide.png" /></a>
+            </div>
             
             <div  id="termTextArea">
                <div id="termText">  
@@ -58,18 +66,30 @@
              </div>
          </div>
         <div id="theCanvas"></div>
+        <a id="zoom-photo" href="#modal-1" data-modal-open><img src="icns/zoom-in-64.png" /></a>
+        
         <div id="linkBox">
-<!--            <div id="linkBoxCol2"> xxxx <br/> yyyy </div>-->
         </div>
         <div id="aboutLink"> 
             <a href="#" target="_blank" onclick="showAbout(this.href); return false;">قاموس الثورة</a>
        </div>
     </div>
+    
+    <div id="modal-1" style="display:none">
+        <center><img id="zoomInPhoto" src="" width="90%" height="auto" alt="">
+        </center>
+    </div>
+    <div class="modal">
+      <div class="modal-inner">
+        <span data-modal-close>&times;</span>
+        <div class="modal-content"></div>
+      </div>
+    </div>
     <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <script language="javascript" src="viz.js"></script>
-    <script src="lib/jquery.js"></script>
-    <script src="lib/featherlight.gallery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="lib/modal.js"></script>
+    <script>var modal = new VanillaModal.default();</script>
 </body>
 
 </html>

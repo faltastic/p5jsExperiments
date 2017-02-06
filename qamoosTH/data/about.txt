@@ -1,34 +1,37 @@
 اتكلمنا كتير فى السنين الأخيرة فى مصر عن الثورة، وعن طريق الكلام ده اتوصلنا لنوع من اللغة الجديدة. بنستخدم مفردات زى “عيش – حرية – عدالة اجتماعية” للتعبير عن مطالب الثورة، و بنستخدم مفردات تانية عشان نميز الاحداث المختلفة اللى حصلت.
 
+<br /><br />
+<a href="#modal-2" data-modal-open><img src="img/about1.jpg" width="48%" height="auto" /></a>
+&nbsp;&nbsp;
+<a href="#modal-3" data-modal-open><img src="img/about2.jpg" width="48%" height="auto" /></a>
+
+<a href="#modal-4" data-modal-open><img src="img/about3.jpg" width="48%" height="auto" /></a>
+&nbsp;&nbsp;
+<a href="#modal-5" data-modal-open><img src="img/box2.jpg" width="48%" height="auto" /></a>
+
+
+<div id="modal-2" style="display:none">
+        <center><img src="img/about1.jpg" width="90%" height="auto" alt="">
+        </center>
+</div>
+<div id="modal-3" style="display:none">
+        <center><img src="img/about2.jpg" width="90%" height="auto" alt="">
+        </center>
+</div>
+<div id="modal-4" style="display:none">
+        <center><img src="img/about3.jpg" width="90%" height="auto" alt="">
+        </center>
+</div>
+<div id="modal-5" style="display:none">
+        <center><img src="img/box2.jpg" width="90%" height="auto" alt="">
+        </center>
+</div>
+
+
 اللغة الجديدة اللى طورناها دى، اتاحت لنا اسلوب مشترك نتكلم بيه حوالين موضوع محدد. قاموس الثورة بيجمع المفردات المستخدمة فى اللغة الجديدة للثورة و بيطلب من المصريين انهم يحاولوا يعرّفوا الكلمات، لأن تحت عباية اللغة المشتركة فيه كتير من الأفكار و الآراء المختلفة و الدليل على كده ان ممكن شخصين يستخدموا نفس الكلمة و كل واحد فيهم يقصد حاجة مختلفة تماماً.
 
-
-<center><img src="img/about1.jpg" width="100%"/></center>
-
-<center><img src="img/about2.jpg" width="100%"/></center>
-
-<center><img src="img/about3.jpg" width="100%"/></center>
-
-<!--div class="row">
-   
-    <div class="one-third.column">
-        <a class="thumbnail gallery" href="img/about1.jpg"><img src="img/about1.jpg" /></a>
-    </div>
-    <div class="one-third.column">
-        <a class="thumbnail gallery" href="img/about2.jpg"><img src="img/about2.jpg" /></a>
-    </div>
-    <div class="one-third.column"><a class="thumbnail gallery" href="img/about3.jpg"><img src="img/about3.jpg" /></a>
-    </div>
-    <div class="one-third.column">
-        <a class="thumbnail gallery" href="img/about1.jpg"><img src="img/about1.jpg" /></a>
-    </div>
-    <div class="one-third.column">
-        <a class="thumbnail gallery" href="img/about2.jpg"><img src="img/about2.jpg" /></a>
-    </div>
-    <div class="one-third.column">
-        <a class="thumbnail gallery" href="img/about3.jpg"><img src="img/about3.jpg" /></a>
-    </div>
-</div-->
-
+<br />
+<center><img src="img/participants.jpg" width="100%" height="auto" alt=""></center>
+        
 
 اشترك معنا فى تعريف مفردات اللغة الجديدة عن طريق اضافة معناها بالنسبة لك.

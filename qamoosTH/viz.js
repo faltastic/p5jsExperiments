@@ -21,8 +21,7 @@ var muteIcn, playIcn;
 // temp. variables
 var hostLoc ="";
 var currentLoc="";
-var today = 0
-    , yesterday = 0;
+var backTerms=[];
 var namesP;
 var vol = 0
     , soundOn = true;
@@ -34,10 +33,8 @@ var termText;
 var termTextAreaHtml;
 var termTextHtml; // html element for term text
 var infoButton; // 
-//var zoomInButton, zoomOutButton;
 var chordSize = 30;
-var zoomVal = 0
-    , zoom = 1;
+var zoomPhoto =false;
 var about = false;
 var aboutText = "<h5>يعني ايه قاموس الثورة؟</h5>" + "<p>     اتكلمنا كتير فى السنين الأخيرة فى مصر وعن طريق الكلام ده اتوصلنا لنوع من اللغة الجديدة. بنستخدم مفردات زى “عيش – حرية – عدالة اجتماعية” للتعبير عن مطالبنا، و بنستخدم مفردات تانية عشان نميز الاحداث المختلفة اللى حصلت.</p><p>" + "اللغة الجديدة اللى طورناها دى، اتاحت لنا اسلوب مشترك نتكلم بيه حوالين موضوع محدد. قاموس الثورة بيجمع المفردات المستخدمة فى اللغة الجديدة وبيطلب منك انك تحاول تعرّف الكلمات، لأن تحت عباية اللغة المشتركة فيه كتير من الأفكار و الآراء المختلفة والدليل على كده ان ممكن شخصين يستخدموا نفس الكلمة و كل واحد فيهم يقصد حاجة مختلفة تماماً.</p>";
 
@@ -145,8 +142,6 @@ function chordAll() {
     //termTextAreaHtml.style("width", "35%");
     termText = ""; // aboutText;
     termTextHtml.html(termText);
-    //if(zoomInButton){zoomInButton.remove();}
-    //if(zoomOutButton){zoomOutButton.remove();}
 }
 var incoming = [];
 var nNew = 1;
@@ -207,15 +202,20 @@ function chordOne(newTerm) {
             }
         }
     }
+    backTerms.push(i);
+    console.log(backTerms);
 }
 
 function chordOneDraw(t, t0, tAnime) {
-    zoom = 1; // map(zoomVal,-3,3,0.5,1.5);
+     // zoom = 1; // map(zoomVal,-3,3,0.5,1.5);
     R1 = map(t - t0, 0, tAnime, R, width / 12);
-    W1 = map(t - t0, 0, tAnime, Cx, 1.5 * width / 10);
+    W1 = map(t - t0, 0, tAnime, Cx, 1.7 * width / 10);
     H1 = 0.33 * height;
     //map(t-t0, 0, tAnime, height/2, height/3);
-    textSize(map(nNew, 1, 50, 14, 10));
+    textSize(map(nNew, 1, 26, 13, 10));
+    if(nNew>25){
+        textSize(9);
+    }
     //console.log(nNew);
     //console.log(incoming);
     background(255, map(t - t0, 0, tAnime, 25, 275));
@@ -262,9 +262,21 @@ function chordOneDraw(t, t0, tAnime) {
         select('#linkBox').style("visibility", "visible");
         select('#aboutLink').style("visibility", "visible");
         var fileName = "data/txt/"+(originalN[0]+1)+".txt";
+        document.getElementById("downLink").href=fileName;
         //console.log(fileName);
         loadStrings(fileName, showTermText);
         showLinks();
+        
+        if(tNew.length>25){
+            select('#zoom-photo').style("visibility", "visible");
+            zoomPhoto =  true;
+            document.getElementById("zoomInPhoto")
+                .src="img/full.png";
+        }
+        else{
+             select('#zoom-photo').style("visibility", "hidden");
+            zoomPhoto = false;
+        }
     }
     if (t - t0 > tAnime - 5) {
         // Cx = W1;
@@ -278,6 +290,7 @@ function showTermText(lines) {
     //termTextAreaHtml.style("width", txtWidth.toString()+"%");
     termTextHtml.html(termText);
     select('#title').html(tNew[0]);
+    
 }
 
 function showLinks() {
@@ -292,27 +305,33 @@ function showLinks() {
 }
 
 function listTermClick(newTermId){
+    about=false;
     var newTerm = newTermId;
         newTerm = originalN[newTerm];
         t0 = millis();
-        console.log(originalN);
+        //console.log(originalN);
         chordOne(newTerm);
 }
 
+function previousTerm(){ 
+    if (backTerms.length > 1) {
+        backTerms.pop();
+        var newTerm = backTerms[backTerms.length - 1];
+        t0 = millis();
+        backTerms.pop();
+        chordOne(newTerm);
+    }
+}
+
 function showAbout() {
+    
     about = true;
-    select('#title').html('عن القاموس');
     var fileName = "data/about.txt";
-    select('#title').html(tNew[0]);
     loadStrings(fileName, showAboutText);
-    	/*$('.gallery').featherlightGallery({
-					gallery: {
-						fadeIn: 300,
-						fadeOut: 300
-					},
-					openSpeed:    300,
-					closeSpeed:   300
-				});*/
+    select('#title').html('عن القاموس');
+    backTerms.push(backTerms[backTerms.length]);
+   // document.getElementById("downLink").href="";
+    
     
 }
 
@@ -322,11 +341,11 @@ function showAboutText(lines) {
 };
 
 function draw() {
-    if (frameCount > 10 && frameCount < 15) {
+    
+   // console.log(mouseX/width);
+    if (document.readyState === "complete" && frameCount > 60 && frameCount < 65) {
         chordAll();
-        //  $("#termText").typed({strings: [aboutText] });
     }
-    //select('#aboutLink').mouseReleased(showAbout);
     if (isChordAll) {
         rTheta = cartesToPolar(mouseX, mouseY, width / 2, height / 2, 0);
         if (rTheta[0] > 0.7 * R && rTheta[0] < 2.0 * R) {
@@ -415,7 +434,7 @@ function mouseReleased() {
         t0 = millis();
         chordOne(newTerm);
     }
-    else if (!about && mouseY<0.5*height) {
+    else if (!about && !zoomPhoto && mouseY<0.5*height && mouseX<0.39*width) {
         var newTerm = currentTerm;
         newTerm = originalN[newTerm];
         t0 = millis();
