@@ -32,7 +32,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <script language="javascript" src="lib/newp5.min.js"></script>
     <script language="javascript" src="lib/p5.dom.min.js"></script>
-     <!--script src="lib/jquery.js"></script
+    <!--script src="lib/jquery.js"></script
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="lib/jquery.sSlider.min.js" type="text/javascript" charset="utf-8"></script>
 
@@ -45,51 +45,44 @@
     <!-- THE DATA
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <script src="data/terms.js"></script>
-    <script src="data/Dmatrix-fix.js"></script>
-    
+    <script src="data/theCoMatrix.js"></script>
     <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div class="container">
         <div class="row" id="textBox">
-          <div id="title">
-            قاموس الثورة
-            </div>
+            <div id="title"> قاموس الثورة </div>
             <div id="titleLinks">
-            
-             <a id="downLink" title="Open PDF" href="data/1.txt" target="_blank"> <img src="icns/download-2-24.png" /></a>
-                <a id="backLink" title="Previous Term" href="#" onClick="previousTerm()" > <img src="icns/arrow-96-24-wide.png" /></a>
+                <a id="downLink" title="Open PDF" href="data/1.txt" target="_blank"> <img src="icns/download-2-24.png" /></a>&nbsp;&nbsp;
+                <a id="homeLink" title="Home" href="."> <img src="icns/chord-24.png" /></a> &nbsp;
+                <a id="backLink" title="Previous Term" href="#" onClick="previousTerm()"> <img src="icns/arrow-96-24-wide.png" /></a>
             </div>
-            
-            <div  id="termTextArea">
-               <div id="termText">  
-               </div>
-             </div>
-         </div>
-        <div id="theCanvas"></div>
-        <a id="zoom-photo" href="#modal-1" data-modal-open><img src="icns/zoom-in-64.png" /></a>
-        
-        <div id="linkBox">
+            <div id="termTextArea">
+                <div id="termText"> </div>
+            </div>
         </div>
-        <div id="aboutLink"> 
-            <a href="#" target="_blank" onclick="showAbout(this.href); return false;">قاموس الثورة</a>
-       </div>
+        
+        <div id="theCanvas"></div>
+        
+        <a id="zoom-photo" href="#modal-1" data-modal-open><img src="icns/zoom-64.png" /></a>
+        <div id="linkBox"> </div>
+        <div id="listTitle" > الفهرس </div>
+        <div id="aboutLink"> <a href="#" onclick="showAbout(this.href); return false;">قاموس الثورة</a> </div>
     </div>
-    
     <div id="modal-1" style="display:none">
-        <center><img id="zoomInPhoto" src="" width="90%" height="auto" alt="">
-        </center>
+        <center><img id="zoomInPhoto" src="" width="90%" height="auto" alt=""> </center>
     </div>
     <div class="modal">
-      <div class="modal-inner">
-        <span data-modal-close>&times;</span>
-        <div class="modal-content"></div>
-      </div>
+        <div class="modal-inner"> <span data-modal-close>&times;</span>
+            <div class="modal-content"></div>
+        </div>
     </div>
     <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <script language="javascript" src="viz.js"></script>
     <script src="lib/modal.js"></script>
-    <script>var modal = new VanillaModal.default();</script>
+    <script>
+        var modal = new VanillaModal.default();
+    </script>
 </body>
 
 </html>

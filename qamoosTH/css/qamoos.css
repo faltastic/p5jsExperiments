@@ -109,6 +109,7 @@ theCanvas{
 
 
 #title{
+    
     font-size: 2.0em;
     font-family:'CairoBold', sans-serif;
     font-weight: 700; 
@@ -117,6 +118,7 @@ theCanvas{
     padding-bottom: 1.0em;
     margin-right: 1.0em;
     margin-left: 1.0em;
+    
 }
 
 #titleLinks{
@@ -146,6 +148,9 @@ theCanvas{
     margin-bottom: 0.75em;
 }
 
+#termTextArea a{
+    text-decoration: none;
+}
 
 
 #termText{
@@ -194,6 +199,19 @@ theCanvas{
  text-decoration: underline;    
 }
 
+#listTitle{
+    position: absolute;
+    top: 2em;
+    right:65%;
+    font-family:'NotoKufiBold', sans-serif;
+    font-size: 1.5em;
+    visibility: hidden; 
+    z-index: 3;
+    border-bottom: 3px solid black;
+    padding-bottom: 1.0em;
+    
+}
+
 #aboutLink{
     position: absolute;
     bottom: 0.35em;
@@ -240,6 +258,8 @@ theCanvas{
   background: rgba(0, 46, 46, 0.5);
 }
 
+
+audio { width: 100%; height:50px; }
 /*
 #hint{
 	float:right;

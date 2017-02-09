@@ -19,9 +19,9 @@ var bell;
 var muteIcn, playIcn;
 ////
 // temp. variables
-var hostLoc ="";
-var currentLoc="";
-var backTerms=[];
+var hostLoc = "";
+var currentLoc = "";
+var backTerms = [];
 var namesP;
 var vol = 0
     , soundOn = true;
@@ -34,13 +34,11 @@ var termTextAreaHtml;
 var termTextHtml; // html element for term text
 var infoButton; // 
 var chordSize = 30;
-var zoomPhoto =false;
+var zoomPhoto = false;
 var about = false;
 var aboutText = "<h5>يعني ايه قاموس الثورة؟</h5>" + "<p>     اتكلمنا كتير فى السنين الأخيرة فى مصر وعن طريق الكلام ده اتوصلنا لنوع من اللغة الجديدة. بنستخدم مفردات زى “عيش – حرية – عدالة اجتماعية” للتعبير عن مطالبنا، و بنستخدم مفردات تانية عشان نميز الاحداث المختلفة اللى حصلت.</p><p>" + "اللغة الجديدة اللى طورناها دى، اتاحت لنا اسلوب مشترك نتكلم بيه حوالين موضوع محدد. قاموس الثورة بيجمع المفردات المستخدمة فى اللغة الجديدة وبيطلب منك انك تحاول تعرّف الكلمات، لأن تحت عباية اللغة المشتركة فيه كتير من الأفكار و الآراء المختلفة والدليل على كده ان ممكن شخصين يستخدموا نفس الكلمة و كل واحد فيهم يقصد حاجة مختلفة تماماً.</p>";
 
-function preload() {
-   
-}
+function preload() {}
 
 function setup() {
     var myCanvas = createCanvas(0.97 * windowWidth, 0.97 * windowHeight);
@@ -57,7 +55,6 @@ function setup() {
     textSize(12);
     textFont('NotoKufi');
     pal = [color(74, 139, 115, 175), color(37, 93, 108, 175), color(92, 93, 136, 175), color(59, 137, 201, 175)];
-
     // prepare data
     //N = 20;
     N = words.length;
@@ -110,9 +107,7 @@ function chordAll() {
         for (var j = 0; j < N; j++) {
             if (d[i][j] > 0.1) {
                 strokeWeight(d[i][j] / 10); // console.log(i + " 
-                if (words[i]['cat'] > 0) {
-                    bezier(x[i], y[i], Cx, height / 2, Cx, height / 2, x[j], y[j]);
-                }
+                bezier(x[i], y[i], Cx, height / 2, Cx, height / 2, x[j], y[j]);
             }
         }
         push();
@@ -142,6 +137,92 @@ function chordAll() {
     //termTextAreaHtml.style("width", "35%");
     termText = ""; // aboutText;
     termTextHtml.html(termText);
+}
+
+function chordAllSelect() {
+    isChordAll = true;
+    rTheta = cartesToPolar(mouseX, mouseY, width / 2, height / 2, 0);
+    if (rTheta[0] > 0.3 * R && rTheta[0] < 2.0 * R) {
+        //theta[i] = i * TWO_PI / N;    with  i = myTerm
+        currentTerm = int(N * rTheta[1] / TWO_PI) % N;
+    }
+    chordAll();
+    background(255);
+    textSize(12);
+    textFont('NotoKufi');
+    for (var i = 0; i < N; i++) {
+        stroke(pal[words[i]['cat'] - 1], 1);
+        noFill();
+        for (var j = 0; j < N; j++) {
+            if (d[i][j] > 0.1) {
+                strokeWeight(d[i][j] / 10);
+                bezier(x[i], y[i], Cx, height / 2, Cx, height / 2, x[j], y[j]);
+            }
+        }
+        push();
+        noStroke();
+        fill(0);
+        translate(Cx, height / 2);
+        rotate(theta[i]);
+        translate(1.2 * R, 0);
+        textAlign(LEFT);
+        if (i > floor(N / 4) && i < floor(3 * N / 4)) {
+            translate(0, -6);
+            rotate(PI);
+            textAlign(RIGHT);
+        }
+        if (i != currentTerm) {
+            text(t[i], 0, 0);
+        }
+        pop();
+        push();
+        translate(Cx, height / 2);
+        rotate(theta[i]);
+        translate(1.12 * R, 0);
+        fill(pal[words[i]['cat'] - 1], 10);
+        strokeWeight(1.5);
+        noStroke();
+        //rect(-0.04 * R, -6, h[i], 5);
+        pop();
+    }
+    
+    if (currentTerm) {
+        var hoverTerm = currentTerm;
+        for (var j = 0; j < N; j++) {
+            if (d[hoverTerm][j] > 0.1) {
+                stroke(20);
+                strokeWeight(3);
+                bezier(x[hoverTerm], y[hoverTerm], Cx, height / 2, Cx, height / 2, x[j], y[j]);
+            }
+        }
+        push();
+        noStroke();
+        fill(0);
+        translate(Cx, height / 2);
+        rotate(theta[hoverTerm]);
+        translate(1.2 * R, 0);
+        textAlign(LEFT);
+        if (hoverTerm > floor(N / 4) && hoverTerm < floor(3 * N / 4)) {
+            translate(0, -6);
+            rotate(PI);
+            textAlign(RIGHT);
+        }
+        fill(255);
+        text(t[hoverTerm], 0, 0);
+        fill(0);
+        textFont('NotoKufiBold');
+        text(t[hoverTerm], 0, 0);
+        pop();
+        push();
+        fill(0);
+        translate(Cx, height / 2);
+        rotate(theta[hoverTerm]);
+        translate(1.15 * R, 0);
+        fill(0);
+        stroke(0);
+        ellipse(0, 0, 1.5, 1.5);
+        pop();
+    }
 }
 var incoming = [];
 var nNew = 1;
@@ -207,13 +288,13 @@ function chordOne(newTerm) {
 }
 
 function chordOneDraw(t, t0, tAnime) {
-     // zoom = 1; // map(zoomVal,-3,3,0.5,1.5);
+    // zoom = 1; // map(zoomVal,-3,3,0.5,1.5);
     R1 = map(t - t0, 0, tAnime, R, width / 12);
     W1 = map(t - t0, 0, tAnime, Cx, 1.7 * width / 10);
     H1 = 0.33 * height;
     //map(t-t0, 0, tAnime, height/2, height/3);
     textSize(map(nNew, 1, 26, 13, 10));
-    if(nNew>25){
+    if (nNew > 25) {
         textSize(9);
     }
     //console.log(nNew);
@@ -261,20 +342,18 @@ function chordOneDraw(t, t0, tAnime) {
         select('#textBox').style("visibility", "visible");
         select('#linkBox').style("visibility", "visible");
         select('#aboutLink').style("visibility", "visible");
-        var fileName = "data/txt/"+(originalN[0]+1)+".txt";
-        document.getElementById("downLink").href=fileName;
+        var fileName = "data/txt/" + (originalN[0] + 1) + ".txt";
+        document.getElementById("downLink").href = fileName;
         //console.log(fileName);
         loadStrings(fileName, showTermText);
         showLinks();
-        
-        if(tNew.length>25){
+        if (tNew.length > 25) {
             select('#zoom-photo').style("visibility", "visible");
-            zoomPhoto =  true;
-            document.getElementById("zoomInPhoto")
-                .src="img/full.png";
+            zoomPhoto = true;
+            document.getElementById("zoomInPhoto").src = "img/full.png";
         }
-        else{
-             select('#zoom-photo').style("visibility", "hidden");
+        else {
+            select('#zoom-photo').style("visibility", "hidden");
             zoomPhoto = false;
         }
     }
@@ -289,31 +368,38 @@ function showTermText(lines) {
     var txtWidth = 100; //map(zoomVal,-3,3,70,45);
     //termTextAreaHtml.style("width", txtWidth.toString()+"%");
     termTextHtml.html(termText);
+    document.getElementById("termTextArea").scrollTop = 0;
     select('#title').html(tNew[0]);
-    
 }
 
 function showLinks() {
-   
     //var linksText = tNew.slice(1, tNew.length).join('<br/>'); 
-    var linksText ="";
-    
-    for(var i=1;i<tNew.length;i++){
-        linksText+='<a href="#' +originalN[i]+ '" onClick="listTermClick('+i+')" >'+ tNew[i]+ '</a> <br/>';    
+    var linksText = "";
+    for (var i = 1; i < tNew.length; i++) {
+        linksText += '<a href="#' + originalN[i] + '" onClick="listTermClick(' + i + ')" >' + tNew[i] + '</a> <br/>';
     }
     select('#linkBox').html(linksText);
+    document.getElementById("linkBox").scrollTop = 0;
 }
 
-function listTermClick(newTermId){
-    about=false;
+function listTermClick(newTermId) {
     var newTerm = newTermId;
+    if (about) {
+        // backTerms.pop();
+        cancelAbout();
+    }
+    else {
         newTerm = originalN[newTerm];
-        t0 = millis();
-        //console.log(originalN);
-        chordOne(newTerm);
+    }
+    t0 = millis();
+    //console.log(originalN);
+    chordOne(newTerm);
 }
 
-function previousTerm(){ 
+function previousTerm() {
+    if (about) {
+        cancelAbout();
+    }
     if (backTerms.length > 1) {
         backTerms.pop();
         var newTerm = backTerms[backTerms.length - 1];
@@ -323,48 +409,47 @@ function previousTerm(){
     }
 }
 
+function cancelAbout() {
+    about = false;
+    document.getElementById("linkBox").style.maxHeight = "30vh";
+    select('#theCanvas').style("visibility", "visible");
+    select('#listTitle').style("visibility", "hidden");
+    select('#downLink').style("visibility", "visible");
+}
+
 function showAbout() {
-    
     about = true;
     var fileName = "data/about.txt";
     loadStrings(fileName, showAboutText);
-    select('#title').html('عن القاموس');
-    backTerms.push(backTerms[backTerms.length]);
-   // document.getElementById("downLink").href="";
-    
-    
+    var aboutTitle = "عن القاموس";
+    select('#title').html(aboutTitle);
+    document.getElementById("linkBox").style.maxHeight = "70vh";
+    var linksText = "";
+    for (var i = 0; i < N; i++) {
+        linksText += '<a href="#' + i + '" onClick="listTermClick(' + i + ')" >' + t[i] + '</a> <br/>';
+    }
+    select('#linkBox').html(linksText);
+    select('#theCanvas').style("visibility", "hidden");
+    select('#listTitle').style("visibility", "visible");
+    select('#zoom-photo').style("visibility", "hidden");
+    select('#downLink').style("visibility", "hidden");
+    zoomPhoto = false;
 }
 
 function showAboutText(lines) {
     var aboutText = '<p>' + lines.join('') + '</p>';
     termTextHtml.html(aboutText);
+    document.getElementById("termTextArea").scrollTop = 0;
 };
 
 function draw() {
-    
-   // console.log(mouseX/width);
+    // console.log(mouseX/width);
     if (document.readyState === "complete" && frameCount > 60 && frameCount < 65) {
         chordAll();
+        // currentTerm = 0;
     }
-    if (isChordAll) {
-        rTheta = cartesToPolar(mouseX, mouseY, width / 2, height / 2, 0);
-        if (rTheta[0] > 0.7 * R && rTheta[0] < 2.0 * R) {
-            //theta[i] = i * TWO_PI / N;    with  i = myTerm
-            push();
-            translate(Cx, height / 2);
-            noFill();
-            stroke(255);
-            strokeWeight(6);
-            ellipse(0, 0, 1.15 * R, 1.15 * R);
-            currentTerm = int(N * rTheta[1] / TWO_PI) % N;
-            rotate(theta[currentTerm]);
-            translate(1.15 * R, 0);
-            fill(0, 100, 100);
-            noStroke();
-            //noFill();
-            ellipse(0, 0, 3, 3);
-            pop();
-        }
+    if (isChordAll && frameCount > 65) {
+        chordAllSelect();
     }
     else {
         rTheta = cartesToPolar(mouseX, mouseY, W1, H1, thetaEnd[0]);
@@ -396,11 +481,9 @@ function draw() {
             pop();
         }
     }
-    
     if (!isChordAll && (millis() - t0) < tAnime) {
         chordOneDraw(millis(), t0, tAnime);
     }
-    
     //var rTheta = cartesToPolar(mouseX, mouseY,zoom*Cx/2, thetaEnd[0]);
     //  console.log(rTheta[0]);
     //console.log(zoom*Cx/2 + "  " + mouseX);
@@ -428,20 +511,37 @@ var rThetaPrev = 0;
 var currentTerm;
 
 function mouseReleased() {
+    var clickChord = false;
+    if (rTheta[0] < 1.5 * R1) {
+        if (!about && !zoomPhoto) {
+            clickChord = true;
+        }
+        if (zoomPhoto && rTheta[0] > 0.5 * R1) {
+            clickChord = true;
+        }
+    }
     if (isChordAll) {
         //theta[i] = i * TWO_PI / N;    with  i = myTerm
         var newTerm = currentTerm;
         t0 = millis();
         chordOne(newTerm);
     }
-    else if (!about && !zoomPhoto && mouseY<0.5*height && mouseX<0.39*width) {
+    else if (clickChord) {
         var newTerm = currentTerm;
         newTerm = originalN[newTerm];
         t0 = millis();
         console.log(originalN);
         chordOne(newTerm);
     }
-    
+    /*
+    else if( zoomPhoto && rTheta[0] > 0.33 * R1){
+      var newTerm = currentTerm;
+        newTerm = originalN[newTerm];
+        t0 = millis();
+        console.log(originalN);
+        chordOne(newTerm);  
+    }
+    */
     //console.log(rTheta[1]);
     //newTerm=originalN[newTerm];
     //    document.getElementById('infoButton').addEventListener('click', function () {
