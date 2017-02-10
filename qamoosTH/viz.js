@@ -474,26 +474,10 @@ function mouseReleased() {
         console.log(originalN);
         chordOne(newTerm);
     }
-    /*
-    else if( zoomPhoto && rTheta[0] > 0.33 * R1){
-      var newTerm = currentTerm;
-        newTerm = originalN[newTerm];
-        t0 = millis();
-        console.log(originalN);
-        chordOne(newTerm);  
-    }
-    */
-    //console.log(rTheta[1]);
-    //newTerm=originalN[newTerm];
-    //    document.getElementById('infoButton').addEventListener('click', function () {
-    //        
-    //        termTextAreaHtml.style("width", "38%");
-    //        termText = aboutText;
-    //        termTextHtml.html(termText);    
-    //   });
+   
 }
 
-function whichTheta(mouseTheta, compareTheta) {}
+
 
 function cartesToPolar(x, y, xOff, yOff, thetaStart) {
     var rTheta = [];

@@ -1,0 +1,70 @@
+
+body {
+    background-color: white;
+    color: black;
+    direction: rtl;
+    font-family: 'NotoKufi';
+}
+
+@font-face {
+    font-family: 'NotoNaskh';
+    src: url('fonts/Noto-Naskh-Arabic.ttf') format('TrueType');
+}
+
+@font-face {
+    font-family: 'NotoKufi';
+    src: url('fonts/NotoKufiArabic-Regular.ttf') format('TrueType');
+}
+
+@font-face {
+    font-family: 'NotoKufiBold';
+    src: url('fonts/NotoKufiArabic-Bold.ttf') format('TrueType');
+}
+
+@font-face {
+    font-family: 'CairoBold';
+    src: url('fonts/Cairo-Bold.ttf') format('TrueType');
+}
+
+@font-face {
+    font-family: 'CairoReg';
+    src: url('fonts/Cairo-Regular.ttf') format('TrueType');
+}
+
+#menu {
+    display: none;
+}
+
+.slicknav_menu {
+    display: block;
+}
+
+#mainTitle {
+    
+    text-align: center;
+    margin-top: 1em;
+    /*margin-right: 2%;*/
+    padding-bottom: 1.0em;
+    font-size: 1.5em;
+    border-bottom: 1px solid #000;
+}
+
+#mainImg {
+    width: 96%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 1em;
+}
+
+#mainText {
+    width: 96%;
+    background: #f0ffff;
+    text-align: right;
+    direction: rtl;
+    font-family: 'NotoNaskh', serif;
+    font-size: 1.1em;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 1.5em;
+}
+
