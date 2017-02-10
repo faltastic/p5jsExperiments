@@ -101,9 +101,7 @@ function chordAll() {
     textSize(12);
     for (var i = 0; i < N; i++) {
         stroke(pal[words[i]['cat'] - 1]);
-        //stroke(50);
         noFill();
-        //strokeWeight(0.051);
         for (var j = 0; j < N; j++) {
             if (d[i][j] > 0.1) {
                 strokeWeight(d[i][j] / 10); // console.log(i + " 
@@ -134,58 +132,15 @@ function chordAll() {
         //rect(-0.04 * R, -6, h[i], 5);
         pop();
     }
-    //termTextAreaHtml.style("width", "35%");
-    termText = ""; // aboutText;
-    termTextHtml.html(termText);
 }
 
 function chordAllSelect() {
-    isChordAll = true;
     rTheta = cartesToPolar(mouseX, mouseY, width / 2, height / 2, 0);
     if (rTheta[0] > 0.3 * R && rTheta[0] < 2.0 * R) {
         //theta[i] = i * TWO_PI / N;    with  i = myTerm
         currentTerm = int(N * rTheta[1] / TWO_PI) % N;
     }
     chordAll();
-    background(255);
-    textSize(12);
-    textFont('NotoKufi');
-    for (var i = 0; i < N; i++) {
-        stroke(pal[words[i]['cat'] - 1], 1);
-        noFill();
-        for (var j = 0; j < N; j++) {
-            if (d[i][j] > 0.1) {
-                strokeWeight(d[i][j] / 10);
-                bezier(x[i], y[i], Cx, height / 2, Cx, height / 2, x[j], y[j]);
-            }
-        }
-        push();
-        noStroke();
-        fill(0);
-        translate(Cx, height / 2);
-        rotate(theta[i]);
-        translate(1.2 * R, 0);
-        textAlign(LEFT);
-        if (i > floor(N / 4) && i < floor(3 * N / 4)) {
-            translate(0, -6);
-            rotate(PI);
-            textAlign(RIGHT);
-        }
-        if (i != currentTerm) {
-            text(t[i], 0, 0);
-        }
-        pop();
-        push();
-        translate(Cx, height / 2);
-        rotate(theta[i]);
-        translate(1.12 * R, 0);
-        fill(pal[words[i]['cat'] - 1], 10);
-        strokeWeight(1.5);
-        noStroke();
-        //rect(-0.04 * R, -6, h[i], 5);
-        pop();
-    }
-    
     if (currentTerm) {
         var hoverTerm = currentTerm;
         for (var j = 0; j < N; j++) {
@@ -208,6 +163,8 @@ function chordAllSelect() {
             textAlign(RIGHT);
         }
         fill(255);
+        text(t[hoverTerm], 0, 0);
+        text(t[hoverTerm], 0, 0);
         text(t[hoverTerm], 0, 0);
         fill(0);
         textFont('NotoKufiBold');
@@ -446,8 +403,14 @@ function draw() {
     // console.log(mouseX/width);
     if (document.readyState === "complete" && frameCount > 60 && frameCount < 65) {
         chordAll();
-        // currentTerm = 0;
+       
     }
+    if (!isChordAll && (millis() - t0) < tAnime) {
+        chordOneDraw(millis(), t0, tAnime);
+    }
+}
+
+function mouseMoved() {
     if (isChordAll && frameCount > 65) {
         chordAllSelect();
     }
@@ -481,31 +444,9 @@ function draw() {
             pop();
         }
     }
-    if (!isChordAll && (millis() - t0) < tAnime) {
-        chordOneDraw(millis(), t0, tAnime);
-    }
-    //var rTheta = cartesToPolar(mouseX, mouseY,zoom*Cx/2, thetaEnd[0]);
-    //  console.log(rTheta[0]);
-    //console.log(zoom*Cx/2 + "  " + mouseX);
-    //console.log(rTheta[1]*360/TWO_PI);
-    /*
-    if(!isChordAll && zoomInButton){
-        zoomInButton.mousePressed(function(){
-            zoomVal++;
-            zoomVal=constrain(zoomVal,-3,3);
-            console.log("plus");
-        })
-        zoomOutButton.mousePressed(function(){
-            zoomVal--;
-            zoomVal=constrain(zoomVal,-3,3);
-        })
-        if ((millis() - t0) < tAnime){
-            isChordAll = false;
-           chordOneZoom();
-            console.log(zoom);
-        }
-    }*/
 }
+
+
 var rTheta = 0;
 var rThetaPrev = 0;
 var currentTerm;
