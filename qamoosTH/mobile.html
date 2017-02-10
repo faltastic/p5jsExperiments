@@ -77,7 +77,7 @@
             document.getElementById("mainTitle").innerHTML = words[i]['term'];
             document.getElementById("theImg").src = "img/full.png";
             
-            var fileName = "./data/txt/" + i + ".txt";
+            var fileName = "./data/txt/" + (i+1) + ".txt";
             jQuery.get(fileName, function(data) {
                 var termText = data.split(/\r\n|\r|\n/g);
                 termText = '<p>' + termText.join('</p><p>') + '</p>';
