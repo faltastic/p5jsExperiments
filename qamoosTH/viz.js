@@ -103,8 +103,8 @@ function chordAll() {
         stroke(pal[words[i]['cat'] - 1]);
         noFill();
         for (var j = 0; j < N; j++) {
-            if (d[i][j] > 0) {
-                strokeWeight(d[i][j] / 40); // console.log(i + " 
+            if (d[i][j] > 2) {
+                strokeWeight(d[i][j] / 25); // console.log(i + " 
                 bezier(x[i], y[i], Cx, height / 2, Cx, height / 2, x[j], y[j]);
             }
         }
@@ -144,10 +144,13 @@ function chordAllSelect() {
     chordAll();
     if (currentTerm !=null) {
         var hoverTerm = currentTerm;
+        var maxCo = max(d[hoverTerm]);
+       // console.log(maxCo);
         for (var j = 0; j < N; j++) {
-            if (d[hoverTerm][j] > 0.1) {
-                stroke(20);
-                strokeWeight(2);
+            if (d[hoverTerm][j] !=0) {
+                stroke(30);
+                strokeWeight(map(d[hoverTerm][j],1,maxCo, 1.5,4));
+                //strokeWeight(2);
                 bezier(x[hoverTerm], y[hoverTerm], Cx, height / 2, Cx, height / 2, x[j], y[j]);
             }
         }
@@ -242,7 +245,7 @@ function chordOne(newTerm) {
         }
     }
     backTerms.push(i);
-    console.log(backTerms);
+   // console.log(backTerms);
 }
 
 function chordOneDraw(t, t0, tAnime) {
