@@ -10,9 +10,7 @@ var coTerms = [];
 var linesTerm = [];
 var arrayTerm = [];
 var wholeTerm = [];
-var Din = []
-    , Dout = []
-    , D = [];
+var D = [];
 var bugout = new debugout();
 
 function setup() {
@@ -33,25 +31,21 @@ function parseData(lines) {
         if (parseInt(lines[i]) < 200) {
             // console.log(lines[i]);
             terms.push(lines[i + 1]);
-            
-            arrayTerm.push(linesTerm);
-            wholeTerm.push(linesTerm.join(" "));
-            linesTerm = [];
             if (lines[i + 2].indexOf(")") > 0) {
                 lines[i + 2] = lines[i + 2].replace(")", "");
                 lines[i + 2] = lines[i + 2].replace("(", "");
                 lines[i + 2] = lines[i + 1] + " - " + lines[i + 2];
                 lines[i + 2] = lines[i + 2].split(" - ");
-                coTerms.push(lines[i + 2] );
-                
+                coTerms.push(lines[i + 2]);
             }
             else {
-                lines[i + 1] = [lines[i + 1], "XYsdaeftgZ"];
+                lines[i+1] = [lines[i+1], "XYZ" ];
                 coTerms.push(lines[i + 1]);
-                
                 //coTerms.push(li);
             }
-            i = i + 1;
+            arrayTerm.push(linesTerm);
+            wholeTerm.push(linesTerm.join(" "));
+            linesTerm = [];
             n = n + 1;
         }
         else {
@@ -64,8 +58,8 @@ function parseData(lines) {
     wholeTerm.push(linesTerm.join(" "));
     //linesTerm = [];
     wholeTerm.shift();
-    coTerms[53][0] = " خل ";
-    coTerms[58][0] = " دم ";
+    coTerms[53][0] =" خل "; 
+    coTerms[58][0] = " دم "; 
     // All the same length now
     //    txtData.push(lines);
     // join() joins the elements of an array
@@ -76,68 +70,41 @@ function parseData(lines) {
     var m, lm;
     var newText, newTerm;
     for (var i = 0; i < terms.length; i++) {
-        Din[i] = [];
-        Dout[i] = [];
-        D[i] = [];
-        for (var j = 0; j < terms.length; j++) {
-            Din[i][j] = 0;
-            Dout[i][j] = 0;
-            D[i][j] = 0;
-        }
-    }
-    // First Direction
-    // check term's text for all other terms
-    
-    for (var i = 0; i < terms.length; i++) {
+      //  var i=0;
         newText = wholeTerm[i];
+        D[i] = [];
+        
+        
         for (var j = 0; j < terms.length; j++) {
             for (var k = 0; k < coTerms[j].length; k++) {
-                newTerm = coTerms[j][k];
-                 Dout[j][i] += coOccur(newTerm, newText);
-            }
-        }
-    }
-    
-    // Second Direction
-    // check all texts for term
-    for (var j = 0; j < terms.length; j++) {
-        for (var k = 0; k < coTerms[j].length; k++) {
-            newTerm = coTerms[j][k];
-            for (var i = 0; i < terms.length; i++) {
-                newText = wholeTerm[i];
-                //console.log(i + " " + j + " " + k + " " + newTerm);
-               Din[i][j] += coOccur(newTerm, newText);
-                
-            }
-        }
-    }
-    for (var i = 0; i < terms.length; i++) {
-        for (var j = 0; j < terms.length; j++) {
-            D[i][j] = Din[i][j] + Dout[i][j];
+            if(k==0) {D[i][j] = 0;}
+            //else if(k>1){ D[i][j] = 33;}
             
-            if(i==j){D[i][j] =0;} // no self co relation
+            //if(k==0) {D[i][j] = 0;}
+            newTerm = coTerms[j][k];
+            console.log(i + " " + j + " " + k+ " " + newTerm);
+                
+                //newTerm = terms[j];
+                if (i != j) {
+                    m = newText.indexOf(newTerm);
+                    lm = newText.lastIndexOf(newTerm);
+//                    if(m>0)
+//                    {
+//                        console.log("m = " + m);    
+//                        console.log("lm = " + lm);
+//                    }
+                    while (m < lm) {
+                        //console.log(m); 
+                        D[i][j] += 1;
+                        m = newText.indexOf(newTerm, m + 1);
+                    }
+                }
+               
+            }
         }
     }
     // خل 53
     // ظ دم 58
-    //bugout.log(coTerms);
     bugout.log(JSON.stringify(D));
-    //  bugout.downloadLog();
-}
-
-function coOccur(theTerm, theText) {
-    var num = 0;
-    var m = theText.indexOf(theTerm);
-    var lm = theText.lastIndexOf(theTerm);
-   // console.log( m + " " + lm)
-    if (m > -1) {
-        num += 1;
-      //  console.log( " first occur at" + m)
-    }
-    while (m < lm) {
-        //console.log("m = " +m); 
-        m = theText.indexOf(theTerm, m + 1);
-        num += 1;
-    }
-    return num;
+   //  bugout.downloadLog();
 }

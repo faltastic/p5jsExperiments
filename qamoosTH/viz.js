@@ -103,8 +103,8 @@ function chordAll() {
         stroke(pal[words[i]['cat'] - 1]);
         noFill();
         for (var j = 0; j < N; j++) {
-            if (d[i][j] > 0.1) {
-                strokeWeight(d[i][j] / 10); // console.log(i + " 
+            if (d[i][j] > 0) {
+                strokeWeight(d[i][j] / 40); // console.log(i + " 
                 bezier(x[i], y[i], Cx, height / 2, Cx, height / 2, x[j], y[j]);
             }
         }
@@ -140,13 +140,14 @@ function chordAllSelect() {
         //theta[i] = i * TWO_PI / N;    with  i = myTerm
         currentTerm = int(N * rTheta[1] / TWO_PI) % N;
     }
+    else{ currentTerm = null;}
     chordAll();
-    if (currentTerm) {
+    if (currentTerm !=null) {
         var hoverTerm = currentTerm;
         for (var j = 0; j < N; j++) {
             if (d[hoverTerm][j] > 0.1) {
                 stroke(20);
-                strokeWeight(3);
+                strokeWeight(2);
                 bezier(x[hoverTerm], y[hoverTerm], Cx, height / 2, Cx, height / 2, x[j], y[j]);
             }
         }
