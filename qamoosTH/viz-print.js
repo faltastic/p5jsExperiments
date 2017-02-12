@@ -1,4 +1,5 @@
-
+// Controls
+var autoPlay = true;
 var isChordAll = true;
 // fixed variables for data
 var N;
@@ -19,7 +20,7 @@ var muteIcn, playIcn;
 ////
 // temp. variables
 var hostLoc = "";
-var loadId = 0;
+var currentLoc = "";
 var backTerms = [];
 var namesP;
 var vol = 0
@@ -27,7 +28,7 @@ var vol = 0
 var fontAR;
 var pal = [];
 var t0 = 0;
-var tAnime = 600;
+var tAnime = 300;
 var termText;
 var termTextAreaHtml;
 var termTextHtml; // html element for term text
@@ -55,43 +56,49 @@ function setup() {
     textFont('NotoKufi');
     pal = [color(74, 139, 115, 175), color(37, 93, 108, 175), color(92, 93, 136, 175), color(59, 137, 201, 175)];
     // prepare data
+    //N = 20;
     N = words.length;
-    d = Drough;
+    rndData = Drough;
     //console.log(Drough); 
     R = height / 3.25;
     Cx = (windowWidth * 2.5 / 100) + width / 2;
-   
-   
+    //nMax = 0;
+    nMax = 20;
+    /*    
+    for (var i = 0; i < N; i++) {
+      if( n[i] = words[i]['ex'].length > nMax){
+        nMax = words[i]['ex'].length;
+      }
+    }
+    */
+    // N =30;
     for (var i = 0; i < N; i++) {
         t[i] = words[i]['term'];
+        n[i] = floor(random(5, 20)); //words[i]['ex'].length; 
+        h[i] = map(n[i], 0, nMax, 2, 20);
         theta[i] = i * TWO_PI / N;
         x[i] = Cx + 1.1 * R * cos(theta[i]);
         y[i] = (height / 2) + 1.1 * R * sin(theta[i]);
-       
+        d = rndData; //words[i]['con'];
+        //names[i] = "";
+        for (var j = 0; j < n[i]; j++) {
+            // names[i] += "<p>" + words[i]['ex'][j] + " </p> " ;
+        }
     }
+    //console.log(d);
+    //console.log(namesP);
     stroke(0);
     noFill();
-    hostLoc = window.location.href; 
-    if(hostLoc.indexOf('#') > 0 ){
-        if(hostLoc.indexOf('about') > 0){
-            loadId = 126;
-        }
-        else{
-        loadId = parseInt(hostLoc.substring(hostLoc.indexOf('#')+1));
-        }
-        console.log(loadId);
-        hostLoc = hostLoc.substring(0,hostLoc.indexOf('#'));
-        console.log(hostLoc);
-    }
-    else{ loadId=-1;}
+    //console.log(t);
+    //chordOne();
+    hostLoc = window.location.href;
+    console.log(hostLoc);
 }
 
-var opac =175;
 function chordAll() {
     isChordAll = true;
     background(255);
     textSize(12);
-     pal = [color(74, 139, 115, opac), color(37, 93, 108, opac), color(92, 93, 136, opac), color(59, 137, 201, opac)];
     for (var i = 0; i < N; i++) {
         stroke(pal[words[i]['cat'] - 1]);
         noFill();
@@ -122,6 +129,7 @@ function chordAll() {
         fill(pal[words[i]['cat'] - 1], 10);
         strokeWeight(1.5);
         noStroke();
+        //rect(-0.04 * R, -6, h[i], 5);
         pop();
     }
 }
@@ -131,10 +139,8 @@ function chordAllSelect() {
     if (rTheta[0] > 0.3 * R && rTheta[0] < 2.0 * R) {
         //theta[i] = i * TWO_PI / N;    with  i = myTerm
         currentTerm = int(N * rTheta[1] / TWO_PI) % N;
-        opac = 175/3;
     }
-    else{ currentTerm = null; opac =175;}
-   
+    else{ currentTerm = null;}
     chordAll();
     if (currentTerm !=null) {
         var hoverTerm = currentTerm;
@@ -216,6 +222,7 @@ function chordOne(newTerm) {
     strokeNew[0] = color(0);
     incoming[0] = false;
     var maxCo = max(d[i]);
+    //console.log(maxCo);
     for (var j = 0; j < N; j++) {
         
         if (d[i][j] != 0 ) {
@@ -223,31 +230,24 @@ function chordOne(newTerm) {
             originalN.push(j);
             incoming.push(true);
             tNew.push(t[j]);
-            strokeNew.push(map(d[i][j],1,maxCo, 1,4));
+            
+            strokeNew.push(map(d[i][j],1,maxCo, 1,6));
+           
         }
-        /*
-        if (d[j][i] != 0) {
-            incoming[nNew - 1] = false;
-            if (d[j][i] < 3) {
-                strokeNew[nNew - 1] = d[j][i];
-            }
-            else {
-                strokeNew[nNew - 1] = 3;
-            }
-        }*/
     }
     backTerms.push(i);
+   
 }
 
 function chordOneDraw(t, t0, tAnime) {
     // zoom = 1; // map(zoomVal,-3,3,0.5,1.5);
-    R1 = map(t - t0, 0, tAnime, R, width / 12);
-    W1 = map(t - t0, 0, tAnime, Cx, 1.7 * width / 10);
-    H1 = 0.33 * height;
+    R1 = 0.7*R; //map(t - t0, 0, tAnime, R, width / 12);
+    W1 = Cx; //map(t - t0, 0, tAnime, Cx, 1.7 * width / 10);
+    H1 = 0.5 * height;
     //map(t-t0, 0, tAnime, height/2, height/3);
-    textSize(map(nNew, 1, 26, 13, 10));
+    textSize(map(nNew, 1, 26, 18, 14));
     if (nNew > 25) {
-        textSize(9);
+        textSize(14);
     }
     //console.log(nNew);
     //console.log(incoming);
@@ -263,7 +263,7 @@ function chordOneDraw(t, t0, tAnime) {
         if (incoming[j]) {
             stroke(strokeIn);
         }
-         else {
+        else {
             stroke(strokeOut);
         }
         // stroke(strokeOut);
@@ -272,6 +272,7 @@ function chordOneDraw(t, t0, tAnime) {
     for (var j = 0; j < nNew; j++) {
         push();
         noStroke();
+        //
         translate(W1, H1);
         rotate(thetaMove[j]);
         translate(1.1 * R1, 0);
@@ -291,31 +292,69 @@ function chordOneDraw(t, t0, tAnime) {
         text(tNew[j], 0, 0);
         pop();
     }
-    if (t - t0 > tAnime - 20) {
-        window.location.replace(hostLoc+"#"+originalN[0]);
-        select('#textBox').style("visibility", "visible");
-        select('#linkBox').style("visibility", "visible");
-        select('#aboutLink').style("visibility", "visible");
-        var fileName = "data/txt/" + (originalN[0] + 1) + ".txt";
-        document.getElementById("downLink").href = fileName;
-        //console.log(fileName);
-        loadStrings(fileName, showTermText);
-        showLinks();
-        if (tNew.length > 25) {
-            select('#zoom-photo').style("visibility", "visible");
-            zoomPhoto = true;
-            document.getElementById("zoomInPhoto").src = "img/full.png";
-        }
-        else {
-            select('#zoom-photo').style("visibility", "hidden");
-            zoomPhoto = false;
-        }
-    }
-    if (t - t0 > tAnime - 5) {
-        // Cx = W1;
-    }
-   
+    
 }
+
+var printTerm = -1;
+function draw() {
+    // console.log(mouseX/width);
+    
+    if (document.readyState === "complete" && frameCount > 60 && frameCount < 65) {
+        chordAll();
+         
+    }
+    
+    if(printTerm<5 && frameCount> 90 && (millis() - t0) > tAnime){
+        
+        printTerm = (printTerm+1)%125; 
+        saveCanvas("diagram"+printTerm, "png");
+       // printTerm = originalN[printTerm];
+        t0 = millis();
+      //console.log(printTerm);
+         chordOne(printTerm);
+    }
+    if (!isChordAll && (millis() - t0) < tAnime) {
+        chordOneDraw(millis(), t0, tAnime);
+    }
+}
+
+function mouseMoved() {
+    if (isChordAll && frameCount > 65) {
+        chordAllSelect();
+        
+    }
+    else {
+        rTheta = cartesToPolar(mouseX, mouseY, W1, H1, thetaEnd[0]);
+        if (rTheta[0] < 1.33 * R1) {
+            push();
+            translate(W1, H1);
+            noFill();
+            stroke(255);
+            strokeWeight(6);
+            ellipse(0, 0, 1.1 * R1, 1.1 * R1);
+            currentTerm = abs(int(originalN.length * rTheta[1] / TWO_PI) % originalN.length);
+            //ceil(N * rTheta[1] / TWO_PI) % N;
+            //console.log(currentTerm);
+            //
+            rotate(thetaEnd[0]);
+            translate(1.1 * R1, 0);
+            stroke(0, 100, 100);
+            strokeWeight(1.0);
+            ellipse(0, 0, 3, 3);
+            pop();
+            push();
+            translate(W1, H1);
+            rotate(thetaEnd[currentTerm]);
+            translate(1.1 * R1, 0);
+            fill(0, 100, 100);
+            noStroke();
+            //noFill();
+            ellipse(0, 0, 2, 2);
+            pop();
+        }
+    }
+}
+
 
 function showTermText(lines) {
     termText = '<p>' + lines.join('</p><p>') + '</p>';
@@ -374,7 +413,6 @@ function cancelAbout() {
 
 function showAbout() {
     about = true;
-    window.location.replace(hostLoc+"#about");
     var fileName = "data/about.txt";
     loadStrings(fileName, showAboutText);
     var aboutTitle = "عن القاموس";
@@ -397,57 +435,6 @@ function showAboutText(lines) {
     termTextHtml.html(aboutText);
     document.getElementById("termTextArea").scrollTop = 0;
 };
-
-function draw() {
-    // console.log(mouseX/width);
-    if (document.readyState === "complete" && frameCount > 60 && frameCount < 65) {
-        chordAll();
-       
-    }
-    if(loadId>=0 && frameCount > 120 ){
-     loadIdWorkAround();
-    }
-    if (!isChordAll && (millis() - t0) < tAnime) {
-        chordOneDraw(millis(), t0, tAnime);
-    }
-}
-
-function mouseMoved() {
-    if (isChordAll && frameCount > 65) {
-        chordAllSelect();
-    }
-    else {
-        rTheta = cartesToPolar(mouseX, mouseY, W1, H1, thetaEnd[0]);
-        if (rTheta[0] < 1.33 * R1) {
-            push();
-            translate(W1, H1);
-            noFill();
-            stroke(255);
-            strokeWeight(6);
-            ellipse(0, 0, 1.1 * R1, 1.1 * R1);
-            currentTerm = abs(int(originalN.length * rTheta[1] / TWO_PI) % originalN.length);
-            //ceil(N * rTheta[1] / TWO_PI) % N;
-            //console.log(currentTerm);
-            //
-            rotate(thetaEnd[0]);
-            translate(1.1 * R1, 0);
-            stroke(0, 100, 100);
-            strokeWeight(1.0);
-            ellipse(0, 0, 3, 3);
-            pop();
-            push();
-            translate(W1, H1);
-            rotate(thetaEnd[currentTerm]);
-            translate(1.1 * R1, 0);
-            fill(0, 100, 100);
-            noStroke();
-            //noFill();
-            ellipse(0, 0, 2, 2);
-            pop();
-        }
-    }
-}
-
 
 var rTheta = 0;
 var rThetaPrev = 0;
@@ -473,29 +460,13 @@ function mouseReleased() {
         var newTerm = currentTerm;
         newTerm = originalN[newTerm];
         t0 = millis();
-        //console.log(originalN);
+        console.log(originalN);
         chordOne(newTerm);
     }
    
 }
 
-function loadIdWorkAround(){
-      if(loadId<125){
-        var newTerm = loadId;
-        t0 = millis();
-        chordOne(newTerm);
-        loadId=-1;
-       }
-        else if(loadId==126){
-        t0 = millis();
-        chordOne(0);
-        loadId++;
-        }
-        else{
-        loadId++;
-        if(loadId>200) {showAbout();loadId=-1;}
-        }
-}
+
 
 function cartesToPolar(x, y, xOff, yOff, thetaStart) {
     var rTheta = [];

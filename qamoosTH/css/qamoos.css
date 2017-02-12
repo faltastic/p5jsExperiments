@@ -91,6 +91,7 @@ theCanvas{
 #textBox{
     position: absolute;
     top: 0px;
+    height: 97%;
     width:60%;
     right: 0%; 
     /*right: 39.5%;*/
