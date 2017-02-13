@@ -49,7 +49,7 @@
         <div class="row" id="mainImg">
           <img id="theImg" src="img/full.png"  width="100%" height="auto" />
         </div>
-        <div class="row" id="mainTitle"> القاموس </div>
+        <div class="row" id="mainTitle"> المقدمة </div>
         <div class="row" id="mainText">
             <p>
             
@@ -70,6 +70,13 @@
                 dictList += '<li><a href="#' + i + '" onClick="listClick(' + i + ')" >' + words[i]['term'] + '</a> </li>';
             }
             document.getElementById("dictUL").innerHTML = dictList;
+            var fileName = "./data/mobile-intro.txt";
+            jQuery.get(fileName, function(data) {
+                var termText = data.split(/\r\n|\r|\n/g);
+                termText = '<p>' + termText.join('</p><p>') + '</p>';
+                document.getElementById("mainText").innerHTML = termText;
+            });
+            
         }
 
         function listClick(i) {

@@ -4,6 +4,7 @@ body {
     color: black;
     direction: rtl;
     font-family: 'NotoKufi';
+   /* line-height:1.75em;*/
 }
 
 @font-face {
@@ -68,3 +69,6 @@ body {
     padding-top: 1.5em;
 }
 
+#mainText p{
+    margin-bottom: 0.75em;
+}
