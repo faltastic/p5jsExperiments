@@ -1,9 +1,4 @@
-#zoom-photo{
- position: absolute;
- top:  29%;
- left: 17.85%;
- visibility: hidden;
-}
+
 .modal {
   display: none;
 }

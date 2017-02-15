@@ -92,6 +92,7 @@ function chordAll() {
     background(255);
     textSize(12);
      pal = [color(74, 139, 115, opac), color(37, 93, 108, opac), color(92, 93, 136, opac), color(59, 137, 201, opac)];
+    dThetaN = TWO_PI/(2*N);
     for (var i = 0; i < N; i++) {
         stroke(pal[words[i]['cat'] - 1]);
         noFill();
@@ -130,7 +131,7 @@ function chordAllSelect() {
     rTheta = cartesToPolar(mouseX, mouseY, width / 2, height / 2, 0);
     if (rTheta[0] > 0.3 * R && rTheta[0] < 2.0 * R) {
         //theta[i] = i * TWO_PI / N;    with  i = myTerm
-        currentTerm = int(N * rTheta[1] / TWO_PI) % N;
+        currentTerm = int(N * (dThetaN + rTheta[1]) / TWO_PI) % N;
         opac = 175/3;
     }
     else{ currentTerm = null; opac =175;}
@@ -191,6 +192,7 @@ var strokeNew = [];
 var strokeOut;
 var strokeIn;
 var originalN = [];
+var dThetaN;
 
 function chordOne(newTerm) {
     isChordAll = false;
@@ -209,7 +211,7 @@ function chordOne(newTerm) {
     originalN = [];
     originalN[0] = i;
     tNew[0] = t[i]; // wont be used
-    thetaEnd[0] = theta[i]; //  = selected old Theta;
+    thetaEnd[0] = 0; //theta[i]; //  = selected old Theta;
     thetaMove[0] = theta[i];
     xNew[0] = x[i]; // = selcted xOld;
     yNew[0] = y[i]; // = selcted yOld;
@@ -236,13 +238,14 @@ function chordOne(newTerm) {
             }
         }*/
     }
+    dThetaN = TWO_PI/(2*originalN.length);
     backTerms.push(i);
 }
 
 function chordOneDraw(t, t0, tAnime) {
     // zoom = 1; // map(zoomVal,-3,3,0.5,1.5);
-    R1 = map(t - t0, 0, tAnime, R, width / 12);
-    W1 = map(t - t0, 0, tAnime, Cx, 1.7 * width / 10);
+    R1 = width/12; //map(t - t0, 0, tAnime, R, width / 12);
+    W1 =1.7 * width / 10 ; // map(t - t0, 0, tAnime, Cx, 1.7 * width / 10);
     H1 = 0.33 * height;
     //map(t-t0, 0, tAnime, height/2, height/3);
     textSize(map(nNew, 1, 26, 13, 10));
@@ -251,14 +254,19 @@ function chordOneDraw(t, t0, tAnime) {
     }
     //console.log(nNew);
     //console.log(incoming);
-    background(255, map(t - t0, 0, tAnime, 25, 275));
+    background(255, map(t - t0, 0, tAnime, 25, 255));
+   // background(255);
     noFill();
-    for (var j = 0; j <= nNew; j++) {
+    for (var j = 0; j < nNew; j++) {
         thetaEnd[j] = (thetaEnd[0] + (j * TWO_PI / nNew)) % (TWO_PI);
-        thetaMove[j] = map(t - t0, 0, tAnime, thetaEnd[0], thetaEnd[j]);
+        thetaMove[j] = map(t - t0, 0, tAnime, 0, thetaEnd[j]);
+        if( t-t0 > tAnime/1.1){
+            // make sure thetas end up perfect
+            thetaMove[j]  = thetaEnd[j];
+        }
         xNew[j] = W1 + R1 * cos(thetaMove[j]);
         yNew[j] = H1 + R1 * sin(thetaMove[j]);
-        //console.log(thetaEnd[j]);
+        
         strokeWeight(strokeNew[j]);
         if (incoming[j]) {
             stroke(strokeIn);
@@ -269,6 +277,7 @@ function chordOneDraw(t, t0, tAnime) {
         // stroke(strokeOut);
         bezier(xNew[0], yNew[0], W1, H1, W1, H1, xNew[j], yNew[j]);
     }
+    
     for (var j = 0; j < nNew; j++) {
         push();
         noStroke();
@@ -286,7 +295,6 @@ function chordOneDraw(t, t0, tAnime) {
             translate(0, 0);
             rotate(PI);
             textAlign(RIGHT);
-            // console.log(thetaEnd[j]);
         }
         text(tNew[j], 0, 0);
         pop();
@@ -311,10 +319,7 @@ function chordOneDraw(t, t0, tAnime) {
             zoomPhoto = false;
         }
     }
-    if (t - t0 > tAnime - 5) {
-        // Cx = W1;
-    }
-   
+    
 }
 
 function showTermText(lines) {
@@ -425,7 +430,7 @@ function mouseMoved() {
             stroke(255);
             strokeWeight(6);
             ellipse(0, 0, 1.1 * R1, 1.1 * R1);
-            currentTerm = abs(int(originalN.length * rTheta[1] / TWO_PI) % originalN.length);
+            currentTerm = abs(int(originalN.length * (dThetaN + rTheta[1]) / TWO_PI) % originalN.length);
             //ceil(N * rTheta[1] / TWO_PI) % N;
             //console.log(currentTerm);
             //

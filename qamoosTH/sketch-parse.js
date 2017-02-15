@@ -64,8 +64,14 @@ function parseData(lines) {
     wholeTerm.push(linesTerm.join(" "));
     //linesTerm = [];
     wholeTerm.shift();
+    
     coTerms[53][0] = " خل ";
     coTerms[58][0] = " دم ";
+    coTerms[26][0] = " بصل ";
+    coTerms[76][0] = " ظلم ";
+    coTerms[82][0] = " عيش ";
+    coTerms[42][1] = " جيش ";
+    coTerms[73][1] = " حي ";
     // All the same length now
     //    txtData.push(lines);
     // join() joins the elements of an array
@@ -130,9 +136,9 @@ function coOccur(theTerm, theText) {
     var m = theText.indexOf(theTerm);
     var lm = theText.lastIndexOf(theTerm);
    // console.log( m + " " + lm)
-    if (m > -1) {
-        num += 1;
-      //  console.log( " first occur at" + m)
+    if (m != -1 ) {
+      num = 1;
+      //console.log( " first occur at" + m)
     }
     while (m < lm) {
         //console.log("m = " +m); 

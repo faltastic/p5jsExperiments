@@ -151,6 +151,10 @@ theCanvas{
 
 #termTextArea a{
     text-decoration: none;
+    color: #086565;
+}
+#termTextArea a:hover {
+    text-decoration: underline;
 }
 
 

@@ -28,7 +28,7 @@ var vol = 0
 var fontAR;
 var pal = [];
 var t0 = 0;
-var tAnime = 300;
+var tAnime = 100;
 var termText;
 var termTextAreaHtml;
 var termTextHtml; // html element for term text
@@ -215,7 +215,7 @@ function chordOne(newTerm) {
     originalN = [];
     originalN[0] = i;
     tNew[0] = t[i]; // wont be used
-    thetaEnd[0] = theta[i]; //  = selected old Theta;
+    thetaEnd[0] = 0; //theta[i]; //  = selected old Theta;
     thetaMove[0] = theta[i];
     xNew[0] = x[i]; // = selcted xOld;
     yNew[0] = y[i]; // = selcted yOld;
@@ -251,11 +251,12 @@ function chordOneDraw(t, t0, tAnime) {
     }
     //console.log(nNew);
     //console.log(incoming);
-    background(255, map(t - t0, 0, tAnime, 25, 275));
+    background(255);
     noFill();
     for (var j = 0; j <= nNew; j++) {
         thetaEnd[j] = (thetaEnd[0] + (j * TWO_PI / nNew)) % (TWO_PI);
-        thetaMove[j] = map(t - t0, 0, tAnime, thetaEnd[0], thetaEnd[j]);
+        thetaMove[j] = thetaEnd[j];
+            //map(t - t0, 0, tAnime/2, thetaEnd[0], thetaEnd[j]);
         xNew[j] = W1 + R1 * cos(thetaMove[j]);
         yNew[j] = H1 + R1 * sin(thetaMove[j]);
         //console.log(thetaEnd[j]);
@@ -304,10 +305,10 @@ function draw() {
          
     }
     
-    if(printTerm<5 && frameCount> 90 && (millis() - t0) > tAnime){
+    if(printTerm<126 && frameCount> 90 && (millis() - t0) > tAnime){
         
         printTerm = (printTerm+1)%125; 
-        saveCanvas("diagram"+printTerm, "png");
+        saveCanvas("print/diagram"+printTerm, "png");
        // printTerm = originalN[printTerm];
         t0 = millis();
       //console.log(printTerm);
