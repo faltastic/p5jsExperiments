@@ -35,11 +35,159 @@ var infoButton; //
 var chordSize = 30;
 var zoomPhoto = false;
 var about = false;
-var aboutText = "<h5>يعني ايه قاموس الثورة؟</h5>" + "<p>     اتكلمنا كتير فى السنين الأخيرة فى مصر وعن طريق الكلام ده اتوصلنا لنوع من اللغة الجديدة. بنستخدم مفردات زى “عيش – حرية – عدالة اجتماعية” للتعبير عن مطالبنا، و بنستخدم مفردات تانية عشان نميز الاحداث المختلفة اللى حصلت.</p><p>" + "اللغة الجديدة اللى طورناها دى، اتاحت لنا اسلوب مشترك نتكلم بيه حوالين موضوع محدد. قاموس الثورة بيجمع المفردات المستخدمة فى اللغة الجديدة وبيطلب منك انك تحاول تعرّف الكلمات، لأن تحت عباية اللغة المشتركة فيه كتير من الأفكار و الآراء المختلفة والدليل على كده ان ممكن شخصين يستخدموا نفس الكلمة و كل واحد فيهم يقصد حاجة مختلفة تماماً.</p>";
+var aboutText ="";
 
-function preload() {}
+
+
+
+var text;
+var terms = [];
+var coTerms = [];
+var linesTerm = [];
+var arrayTerm = [];
+var wholeTerm = [];
+var Din = []
+    , Dout = []
+    , D = [];
+
+// The data from the file comes in as the array lines
+function parseData(lines) {
+    var n = 0;
+    for (var i = 0; i < lines.length; i++) {
+        if (parseInt(lines[i]) < 200) {
+            // console.log(lines[i]);
+            terms.push(lines[i + 1]);
+            
+            arrayTerm.push(linesTerm);
+            wholeTerm.push(linesTerm.join(" "));
+            linesTerm = [];
+            if (lines[i + 2].indexOf(")") > 0) {
+                lines[i + 2] = lines[i + 2].replace(")", "");
+                lines[i + 2] = lines[i + 2].replace("(", "");
+                lines[i + 2] = lines[i + 1] + " - " + lines[i + 2];
+                lines[i + 2] = lines[i + 2].split(" - ");
+                coTerms.push(lines[i + 2] );
+                
+            }
+            else {
+                lines[i + 1] = [lines[i + 1], "XYsdaeftgZ"];
+                coTerms.push(lines[i + 1]);
+                
+                //coTerms.push(li);
+            }
+            i = i + 1;
+            n = n + 1;
+        }
+        else {
+            n = 0;
+            linesTerm.push(lines[i]);
+        }
+    }
+    // for the last term
+    arrayTerm.push(linesTerm);
+    wholeTerm.push(linesTerm.join(" "));
+    //linesTerm = [];
+    wholeTerm.shift();
+    
+    coTerms[53][0] = " خل ";
+    coTerms[58][0] = " دم ";
+    coTerms[26][0] = " بصل ";
+    coTerms[49][0] =  "حكم ";
+    coTerms[76][0] = " ظلم ";
+    coTerms[82][0] = " عيش ";
+    coTerms[42][1] = " جيش ";
+    coTerms[73][1] = " حي ";
+    
+    // All the same length now
+    //    txtData.push(lines);
+    // join() joins the elements of an array
+    // Here we pass in a line break to retain formatting
+    //text = lines.join(' <br /> ');
+    //var par = createP(text);
+    //par.id('text');
+    var m, lm;
+    var newText, newTerm;
+    for (var i = 0; i < terms.length; i++) {
+        Din[i] = [];
+        Dout[i] = [];
+        D[i] = [];
+        for (var j = 0; j < terms.length; j++) {
+            Din[i][j] = 0;
+            Dout[i][j] = 0;
+            D[i][j] = 0;
+        }
+    }
+    // First Direction
+    // check term's text for all other terms    
+    for (var i = 0; i < wholeTerm.length; i++) {
+        newText = wholeTerm[i];
+        for (var j = 0; j < terms.length; j++) {
+            for (var k = 0; k < coTerms[j].length; k++) {
+                newTerm = coTerms[j][k];
+                Dout[i][j] += coOccur(newTerm, newText);
+                // connection between term j and text i
+            }
+        }
+    }
+    
+    // Second Direction
+    // check all texts for term
+    for (var j = 0; j < terms.length; j++) {
+        for (var k = 0; k < coTerms[j].length; k++) {
+            newTerm = coTerms[j][k];
+            for (var i = 0; i < terms.length; i++) {
+                newText = wholeTerm[i];
+               Din[j][i] += coOccur(newTerm, newText);
+              // connection between term j and text i
+            }
+        }
+    }
+    for (var i = 0; i < terms.length; i++) {
+        for (var j = 0; j < terms.length; j++) {
+            D[j][i] = Din[j][i] + Dout[j][i];
+            
+            if(i==j){D[i][j] =0;} // no self co relation
+        }
+    }
+    
+     for (var j = 0; j < terms.length; j++) {
+           // var iTest = 1;
+          //  console.log(D[j][35]- D[j][35]);
+           // symmetry
+    }
+    // خل 53
+    // ظ دم 58
+    //bugout.log(coTerms);
+   // bugout.log(JSON.stringify(D));
+    //  bugout.downloadLog();
+}
+
+function coOccur(theTerm, theText) {
+    var num = 0;
+    var m = theText.indexOf(theTerm);
+    var lm = theText.lastIndexOf(theTerm);
+   // console.log( m + " " + lm)
+    if (m != -1 && m==lm) {
+      num = 1;
+      //console.log( " first occur at" + m)
+    }
+    while (m < lm) {
+        //console.log("m = " +m); 
+        m = theText.indexOf(theTerm, m + 1);
+        num += 1;
+    }
+    return num;
+}
 
 function setup() {
+    
+     var fileName = "data/all.txt";
+    // The second argument to loadStrings() is the name
+    // of the function that will run when the file is loaded
+    // This is known as a "callback"
+    loadStrings(fileName, parseData);
+    
+    
     var myCanvas = createCanvas(0.97 * windowWidth, 0.97 * windowHeight);
     myCanvas.parent("theCanvas");
     // HTML elements
@@ -56,7 +204,7 @@ function setup() {
     pal = [color(74, 139, 115, 175), color(37, 93, 108, 175), color(92, 93, 136, 175), color(59, 137, 201, 175)];
     // prepare data
     N = words.length;
-    d = Drough;
+    d = D;
     //console.log(Drough); 
     R = height / 3.25;
     Cx = (windowWidth * 2.5 / 100) + width / 2;
@@ -93,9 +241,9 @@ function chordAll() {
     textSize(12);
      pal = [color(74, 139, 115, opac), color(37, 93, 108, opac), color(92, 93, 136, opac), color(59, 137, 201, opac)];
     dThetaN = TWO_PI/(2*N);
-    noFill();
     for (var i = 0; i < N; i++) {
         stroke(pal[words[i]['cat'] - 1]);
+        noFill();
         for (var j = 0; j < N; j++) {
             if (d[i][j] > 2) {
                 strokeWeight(d[i][j] / 25); // console.log(i + " 
@@ -128,11 +276,11 @@ function chordAll() {
 }
 
 function chordAllSelect() {
-    rTheta = cartesToPolar(mouseX, mouseY, Cx, height / 2, 0);
+    rTheta = cartesToPolar(mouseX, mouseY, width / 2, height / 2, 0);
     if (rTheta[0] > 0.3 * R && rTheta[0] < 2.0 * R) {
         //theta[i] = i * TWO_PI / N;    with  i = myTerm
         currentTerm = int(N * (dThetaN + rTheta[1]) / TWO_PI) % N;
-        opac = 0; // 175/5;
+        opac = 175/3;
     }
     else{ currentTerm = null; opac =175;}
    
@@ -140,15 +288,18 @@ function chordAllSelect() {
     if (currentTerm !=null) {
         var hoverTerm = currentTerm;
         var maxCo = max(d[hoverTerm]);
-       stroke(30);
+       // console.log(maxCo);
         for (var j = 0; j < N; j++) {
-            if (d[hoverTerm][j]) {
-                
-                 if( d[hoverTerm][j] <maxCo/2 || maxCo<6) {
+            if (d[hoverTerm][j] >0) {
+                stroke(30);
+                strokeWeight(ceil(map(d[hoverTerm][j],1,maxCo, 1.5,2.9)));
+                if( d[hoverTerm][j] <maxCo/2 || maxCo<6) {
                     strokeWeight(2);
                 }else{
                     strokeWeight(4);
                 }
+                
+                //strokeWeight(2);
                 bezier(x[hoverTerm], y[hoverTerm], Cx, height / 2, Cx, height / 2, x[j], y[j]);
             }
         }
@@ -471,7 +622,8 @@ function mouseReleased() {
             clickChord = true;
         }
     }
-    if (isChordAll && currentTerm!=null) {
+    if (isChordAll) {
+        //theta[i] = i * TWO_PI / N;    with  i = myTerm
         var newTerm = currentTerm;
         t0 = millis();
         chordOne(newTerm);

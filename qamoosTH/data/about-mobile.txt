@@ -17,11 +17,3 @@
 
 اشترك معنا فى تعريف مفردات اللغة الجديدة عن طريق اضافة معناها بالنسبة لك
 
-<hr />
-
-تواصلوا معنا على
- <a href='https://www.facebook.com/RevolutionDictionary/' target ='_blank'> <img src='../icns/facebook-4-32.png' /></a> <br />
-<a href='https://twitter.com/qamosalthawra' target ='_blank'> <img src='../icns/twitter-4-32.png' /></a>  <br />
- او مباشرةً على qamos@qamosalthawra.com
-
-<br />

@@ -28,7 +28,7 @@ var vol = 0
 var fontAR;
 var pal = [];
 var t0 = 0;
-var tAnime = 100;
+var tAnime = 200;
 var termText;
 var termTextAreaHtml;
 var termTextHtml; // html element for term text
@@ -36,7 +36,7 @@ var infoButton; //
 var chordSize = 30;
 var zoomPhoto = false;
 var about = false;
-var aboutText = "<h5>يعني ايه قاموس الثورة؟</h5>" + "<p>     اتكلمنا كتير فى السنين الأخيرة فى مصر وعن طريق الكلام ده اتوصلنا لنوع من اللغة الجديدة. بنستخدم مفردات زى “عيش – حرية – عدالة اجتماعية” للتعبير عن مطالبنا، و بنستخدم مفردات تانية عشان نميز الاحداث المختلفة اللى حصلت.</p><p>" + "اللغة الجديدة اللى طورناها دى، اتاحت لنا اسلوب مشترك نتكلم بيه حوالين موضوع محدد. قاموس الثورة بيجمع المفردات المستخدمة فى اللغة الجديدة وبيطلب منك انك تحاول تعرّف الكلمات، لأن تحت عباية اللغة المشتركة فيه كتير من الأفكار و الآراء المختلفة والدليل على كده ان ممكن شخصين يستخدموا نفس الكلمة و كل واحد فيهم يقصد حاجة مختلفة تماماً.</p>";
+var aboutText = "";
 
 function preload() {}
 
@@ -290,6 +290,8 @@ function chordOneDraw(t, t0, tAnime) {
             textAlign(RIGHT);
             // console.log(thetaEnd[j]);
         }
+        if( j==0){textFont('NotoKufiBold');}
+        else{textFont('NotoKufi');}
         text(tNew[j], 0, 0);
         pop();
     }
@@ -305,7 +307,7 @@ function draw() {
          
     }
     
-    if(printTerm<126 && frameCount> 90 && (millis() - t0) > tAnime){
+    if(printTerm<5 && frameCount> 90 && (millis() - t0) > tAnime){
         
         printTerm = (printTerm+1)%125; 
         saveCanvas("print/diagram"+printTerm, "png");

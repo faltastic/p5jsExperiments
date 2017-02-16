@@ -68,10 +68,12 @@ function parseData(lines) {
     coTerms[53][0] = " خل ";
     coTerms[58][0] = " دم ";
     coTerms[26][0] = " بصل ";
+    coTerms[49][0] =  "حكم ";
     coTerms[76][0] = " ظلم ";
     coTerms[82][0] = " عيش ";
     coTerms[42][1] = " جيش ";
     coTerms[73][1] = " حي ";
+    
     // All the same length now
     //    txtData.push(lines);
     // join() joins the elements of an array
@@ -92,14 +94,14 @@ function parseData(lines) {
         }
     }
     // First Direction
-    // check term's text for all other terms
-    
-    for (var i = 0; i < terms.length; i++) {
+    // check term's text for all other terms    
+    for (var i = 0; i < wholeTerm.length; i++) {
         newText = wholeTerm[i];
         for (var j = 0; j < terms.length; j++) {
             for (var k = 0; k < coTerms[j].length; k++) {
                 newTerm = coTerms[j][k];
-                 Dout[j][i] += coOccur(newTerm, newText);
+                Dout[i][j] += coOccur(newTerm, newText);
+                // connection between term j and text i
             }
         }
     }
@@ -111,18 +113,23 @@ function parseData(lines) {
             newTerm = coTerms[j][k];
             for (var i = 0; i < terms.length; i++) {
                 newText = wholeTerm[i];
-                //console.log(i + " " + j + " " + k + " " + newTerm);
-               Din[i][j] += coOccur(newTerm, newText);
-                
+               Din[j][i] += coOccur(newTerm, newText);
+              // connection between term j and text i
             }
         }
     }
     for (var i = 0; i < terms.length; i++) {
         for (var j = 0; j < terms.length; j++) {
-            D[i][j] = Din[i][j] + Dout[i][j];
+            D[j][i] = Din[j][i] + Dout[j][i];
             
             if(i==j){D[i][j] =0;} // no self co relation
         }
+    }
+    
+     for (var j = 0; j < terms.length; j++) {
+           // var iTest = 1;
+            console.log(D[j][35]- D[j][35]);
+           // symmetry
     }
     // خل 53
     // ظ دم 58
@@ -136,7 +143,7 @@ function coOccur(theTerm, theText) {
     var m = theText.indexOf(theTerm);
     var lm = theText.lastIndexOf(theTerm);
    // console.log( m + " " + lm)
-    if (m != -1 ) {
+    if (m != -1 && m==lm) {
       num = 1;
       //console.log( " first occur at" + m)
     }
