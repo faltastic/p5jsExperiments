@@ -141,9 +141,10 @@ function chordAllSelect() {
         var hoverTerm = currentTerm;
         var maxCo = max(d[hoverTerm]);
        stroke(30);
+        pal = [color(74, 139, 115), color(37, 93, 108), color(92, 93, 136), color(59, 137, 201)];
+        stroke(pal[words[hoverTerm]['cat'] - 1]);
         for (var j = 0; j < N; j++) {
             if (d[hoverTerm][j]) {
-                
                  if( d[hoverTerm][j] <maxCo/2 || maxCo<6) {
                     strokeWeight(2);
                 }else{
@@ -208,9 +209,8 @@ function chordOne(newTerm) {
     yNew = [];
     tNew = [];
     strokeNew = [];
-    strokeOut = color(0, 100, 100); //color(39,97,105);//color(13,181,203);//,color(39,97,105, 175), color(0,223,252, 175),color(26,139,154, 175)//color(175); // pal[words[i]['cat'] - 1];
+    strokeOut = color(0, 100, 100); 
     strokeIn = color(0, 100, 100);
-    //color(39,97,105);//color(0);//color(39,97,105); //
     originalN = [];
     originalN[0] = i;
     tNew[0] = t[i]; // wont be used
@@ -246,11 +246,11 @@ function chordOne(newTerm) {
 }
 
 function chordOneDraw(t, t0, tAnime) {
-    // zoom = 1; // map(zoomVal,-3,3,0.5,1.5);
+    
     R1 = width/12; //map(t - t0, 0, tAnime, R, width / 12);
     W1 =1.7 * width / 10 ; // map(t - t0, 0, tAnime, Cx, 1.7 * width / 10);
     H1 = 0.33 * height;
-    //map(t-t0, 0, tAnime, height/2, height/3);
+    
     textSize(map(nNew, 1, 26, 13, 10));
     if (nNew > 25) {
         textSize(9);
@@ -386,6 +386,7 @@ function showAbout() {
     var fileName = "data/about.txt";
     loadStrings(fileName, showAboutText);
     var aboutTitle = "عن القاموس";
+    aboutTitle += "&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://www.facebook.com/RevolutionDictionary/' target ='_blank'> <img src='icns/facebook-4-24.png' /></a> &nbsp; <a href='https://twitter.com/qamosalthawra' target ='_blank'> <img src='icns/twitter-4-24.png' /></a> &nbsp; <a href='https://soundcloud.com/qamos-al-thawra' target ='_blank'> <img src='icns/soundcloud-4-24.png' /></a>";
     select('#title').html(aboutTitle);
     document.getElementById("linkBox").style.maxHeight = "70vh";
     var linksText = "";

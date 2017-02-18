@@ -310,7 +310,7 @@ function draw() {
     if(printTerm<5 && frameCount> 90 && (millis() - t0) > tAnime){
         
         printTerm = (printTerm+1)%125; 
-        saveCanvas("print/diagram"+printTerm, "png");
+        saveCanvas("graph"+printTerm, "png");
        // printTerm = originalN[printTerm];
         t0 = millis();
       //console.log(printTerm);

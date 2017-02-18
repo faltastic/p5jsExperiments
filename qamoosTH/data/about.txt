@@ -77,7 +77,7 @@
  <br /> 
 حجم المشروع كان مستحيل يتعمل من غير الدعم الإضافي وكرم الاشخاص اللي اتبرعوا من خلال حملة Kickstarter في ٢٠١٥.
 
- <br /> 
+ <br />  <br /> 
  
-<right><img src="img/afac.png"></right>
+<img src="img/afac.png" width="50%" height="auto">
  <br />  <br /> 

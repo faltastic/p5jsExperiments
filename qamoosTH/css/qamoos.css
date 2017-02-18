@@ -122,6 +122,10 @@ theCanvas{
     
 }
 
+#title a{
+    text-decoration: none;
+}
+
 #titleLinks{
     font-size: 1.0em;
     font-family:'Cairo', sans-serif;

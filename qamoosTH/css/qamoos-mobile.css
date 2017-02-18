@@ -58,14 +58,28 @@ body {
 }
 
 #mainText {
+     
     width: 96%;
     background: #f0ffff;
-    text-align: right;
+    /*text-align: right;*/
     direction: rtl;
     font-family: 'NotoNaskh', serif;
     font-size: 1.1em;
     padding-left: 2%;
     padding-right: 2%;
+    padding-top: 1.5em;
+}
+
+#mainTextEng {
+     
+    width: 80%;
+    background: #f0ffff;
+    /*text-align: right;*/
+    direction: ltr;
+    font-family: 'NotoNaskh', serif;
+    font-size: 1.3em;
+    padding-left: 10%;
+    padding-right: 10%;
     padding-top: 1.5em;
 }
 

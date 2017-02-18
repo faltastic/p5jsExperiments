@@ -1,0 +1,54 @@
+<p>A Dictionary of the Revolution is a project that documents the rapid amplification of public political speech following the revolution of 25 January 2011 in Egypt.</p>
+            <p> The texts in the Dictionary were collected in conversations with around 200 individuals in Egypt from March to August 2014. Participants reacted to vocabulary cards containing 160 words that were frequently used in political conversation, talking about what the words meant to them, who they heard using them, and how their meanings had changed since the revolution.</p>
+            <p> The Arabic website contains the unchanged words of the participants, arranged in imaginary dialogues. </p>
+            <p> Each word is accompanied by a diagram that shows its relationship to other words in the Dictionary. The thicker the line connecting two words, the closer their relationship is. The diagrams are the result of an analysis of the complete text of the Dictionary. You can explore the diagrams in English here.</p>
+            <p> A Dictionary of the Revolution is a project by <a href="http‪://‬www.amirahanafi.com‪" ‬> Amira Hanafi </a> . </p>
+            <p> The website was designed by <a href="http://faltastico.tumblr.com"> Youssef Faltas </a>. </p>
+            <h3>
+Participants
+</h3>
+            <left><img src="../img/participantsEnglish.png"  width="100%"></left>
+            <h3> Vocabulary Cards </h3>
+            <center> <img src="../img/box1.jpg" width="90%" height="auto" /> <img src="../img/box2.jpg" width="90%" height="auto" /> <img src="../img/box3.jpg" width="90%" height="auto" /> <img src="../img/box4.jpg" width="90%" height="auto" /> </center>
+            <h3> Published Translations</h3>
+            <ul>
+                <li> <a href="https://www.indexoncensorship.org/magazine/"> Index on Censorship </a> Vol. 46.01 Spring 2017 </li>
+                <li> <a href="http://www.ibraaz.org/projects/143#author475"> Ibraaz </a> Platform 10: Where to Now?, 30 September 2016 </li>
+            </ul>
+            <h3>Press</h3>
+            <ul>
+                <li> <a href="http://www.middleeasteye.net/news/crafting-dictionary-egypts-revolution-478834121"> Crafting a dictionary of Egypt’s revolution </a>, Mary Atkinson, Middle East Eye, 8 April 2015 </li>
+                <li> <a href="http://www.yourmiddleeast.com/columns/article/a-dictionary-of-the-revolution-so-we-dont-forget-the-uprising_30034"> A Dictionary of the Revolution – so we don’t forget uprising </a>, Marcia Lynx Qualey, Your Middle East, 20 February 2015 </li>
+                <li> <a href="http://www.elmundo.es/internacional/2014/11/08/5453bb57268e3eea078b4573.html"> De la A a la Z, el diccionario de la truncada revolucion egipcia </a>, El Mundo 9 November 2014 </li>
+                <li> <a href="https://www.theguardian.com/world/2014/jul/18/egypt-battle-for-language-dictionary-revolution-amira-hanafi"> Egypt: After the revolution comes the battle for language </a>, Patrick Kingsley, The Guardian, 18 July 2014 </li>
+                <li> <a href=""> New website seeks to define the vocabulary of the Egyptian revolution </a>, Marwa Morgan, Daily News Egypt, 4 June 2014 </li>
+                <li> <a href="http://www.dailynewsegypt.com/2014/06/04/new-website-seeks-define-vocabulary-egyptian-revolution/"> As palavras se movem no Cairo </a>, Diogo Bercito, Folha de S.Paolo, 1 December 2013 </li>
+                <li> <a href="http://www.alhayat.com/Details/560651"> A Dictionary of the Revolution documents Egyptian events in colloquial language </a>, Yasser Sultan, Al Hayat, 10 October 2013 </li>
+                <li> <a href="http://mideastposts.com/middle-east-society/thuginfiltrator-words-mean/"> ‘Thug’, ‘Infiltrator’: What do these words mean to you? </a>, Mideast Posts, Marcia Lynx Qualey, 29 September 2013 </li>
+                <li> <a href="http://www.almasryalyoum.com/news/details/321703"> A Dictionary of the Revolution…a popular documentation of the vocabulary of the Egyptian revolution  </a>, Ahmed Elhawary, Al Masry Al Youm, 23 September 2013 </li>
+            </ul>
+            <br /><br />
+            <h3>Thanks</h3>
+            <p> First and foremost, I'd like to thank the nearly 200 individuals who enthusiastically engaged with the project and shared their viewpoints. </p>
+            <p> I'm very grateful to the following people who made significant contributions to the project:
+                <br /> Ahmed Refaat
+                <br /> Youssef Faltas
+                <br /> Ahmed Elhawary
+                <br /> Magda Magdy
+                <br /> Sondos Ayman
+                <br /> Abdo Hemdan
+                <br /> Mahmoud Belal
+                <br /> Amanda KM
+                <br /> Shatha Al-Deghady
+                <br /> Nini Ayach
+                <br /> Hany Hommos
+                <br /> Amado Alfadni
+                <br /> Amani Hanafi
+                <br /> Cheryl Weisser
+                <br /> Hussein Hanafi
+                <br /> </p>
+            <p> This project was funded by the Arab Fund for Arts and Culture, and the digital publication commissioned by Rhizome. </p>
+            <p> The scale of the project would not have been possible without the additional support of generous individuals who made contributions to a 2015 Kickstarter crowdfunding campaign. </p>
+            <br /> <br />
+            <left><img src="../img/afac.png"  width="90%"></left>
+            <br /> <br /><br />

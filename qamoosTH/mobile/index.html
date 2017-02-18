@@ -15,7 +15,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <script type="text/javascript">
         if (screen.width > 700) {
-            window.location = "http://faltastic.github.io/p5jsExperiments/qamoosTH;
+          //  window.location = "http://faltastic.github.io/p5jsExperiments/qamoosTH";
         }
     </script>
     <!-- CSS
@@ -40,10 +40,11 @@
     <div class="container">
         <ul id="menu">
             <li><a href=".">الرئيسية</a></li>
-            <li><a href="#" onClick="showAbout()">عن القاموس</a></li>
+            <li><a href="#about" onClick="showAbout()">عن القاموس</a></li>
             <li> المصطلحات
                 <ul id="dictUL"> </ul>
             </li>
+            <li> <a href="#english" onClick="showEnglish()">English</a></li>
         </ul>
         <div class="row" id="mainImg"> <img id="theImg" src="../img/full.png" width="100%" height="auto" /> </div>
         <div class="row" id="mainTitle"> المقدمة </div>
@@ -79,6 +80,7 @@
             jQuery.get(fileName, function (data) {
                 var termText = data.split(/\r\n|\r|\n/g);
                 termText = '<p>' + termText.join('</p><p>') + '</p>';
+                document.getElementById("mainText").style.direction = "rtl";
                 document.getElementById("mainText").innerHTML = termText;
             });
             //document.getElementById("mainText").style.backgroundColor = "#f0ffff";
@@ -87,12 +89,29 @@
         }
 
         function showAbout() {
+            
             document.getElementById("mainTitle").innerHTML = " عن القاموس";
             document.getElementById("theImg").src = "";
             var fileName = "../data/about-mobile.txt";
             jQuery.get(fileName, function (data) {
                 var termText = data.split(/\r\n|\r|\n/g);
                 termText = '<p>' + termText.join('</p><p>') + '</p>';
+                document.getElementById("mainText").style.direction = "rtl";
+                document.getElementById("mainText").innerHTML = termText;
+                 
+            });
+            //document.getElementById("mainText").style.backgroundColor = "#f0ffff";
+            document.getElementById("mainText").scrollTop = 0;
+            $('#menu').slicknav('close');
+        }
+        function showEnglish() {
+            document.getElementById("mainTitle").innerHTML = "A Dictionary of the Revolution";
+            document.getElementById("theImg").src = "../img/full.png";
+            var fileName = "../data/about-Eng.txt";
+            jQuery.get(fileName, function (data) {
+                var termText = data.split(/\r\n|\r|\n/g);
+                termText =  termText.join('');
+                document.getElementById("mainText").style.direction = "ltr";
                 document.getElementById("mainText").innerHTML = termText;
             });
             //document.getElementById("mainText").style.backgroundColor = "#f0ffff";
