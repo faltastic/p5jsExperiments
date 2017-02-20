@@ -89,6 +89,7 @@ function setup() {
 var opac =175;
 function chordAll() {
     isChordAll = true;
+    select('#englishLink').style("visibility", "visible");
     background(255);
     textSize(12);
      pal = [color(74, 139, 115, opac), color(37, 93, 108, opac), color(92, 93, 136, opac), color(59, 137, 201, opac)];
@@ -200,6 +201,7 @@ var dThetaN;
 
 function chordOne(newTerm) {
     isChordAll = false;
+    select('#englishLink').style("visibility", "hidden");
     var i = newTerm; //floor(random(N));
     incoming = [];
     nNew = 1;
@@ -315,7 +317,7 @@ function chordOneDraw(t, t0, tAnime) {
         if (tNew.length > 25) {
             select('#zoom-photo').style("visibility", "visible");
             zoomPhoto = true;
-            document.getElementById("zoomInPhoto").src = "img/full.png";
+            document.getElementById("zoomInPhoto").src = "img/graphs/graph" + (originalN[0] + 1) +".png";
         }
         else {
             select('#zoom-photo').style("visibility", "hidden");

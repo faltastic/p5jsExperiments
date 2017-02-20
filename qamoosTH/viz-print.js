@@ -93,6 +93,13 @@ function setup() {
     //chordOne();
     hostLoc = window.location.href;
     console.log(hostLoc);
+    
+//     printTerm = 45; 
+//     saveCanvas("graph"+printTerm, "png");
+//       // printTerm = originalN[printTerm];
+//        t0 = millis();
+//      //console.log(printTerm);
+//         chordOne(printTerm);
 }
 
 function chordAll() {
@@ -222,7 +229,7 @@ function chordOne(newTerm) {
     strokeNew[0] = color(0);
     incoming[0] = false;
     var maxCo = max(d[i]);
-    //console.log(maxCo);
+    console.log(maxCo);
     for (var j = 0; j < N; j++) {
         
         if (d[i][j] != 0 ) {
@@ -245,10 +252,8 @@ function chordOneDraw(t, t0, tAnime) {
     W1 = Cx; //map(t - t0, 0, tAnime, Cx, 1.7 * width / 10);
     H1 = 0.5 * height;
     //map(t-t0, 0, tAnime, height/2, height/3);
-    textSize(map(nNew, 1, 26, 18, 14));
-    if (nNew > 25) {
-        textSize(14);
-    }
+    textSize(map(nNew, 1, 50, 16, 12));
+    //textSize(13);
     //console.log(nNew);
     //console.log(incoming);
     background(255);
@@ -267,7 +272,7 @@ function chordOneDraw(t, t0, tAnime) {
         else {
             stroke(strokeOut);
         }
-        // stroke(strokeOut);
+        //strokeWeight(1.5);
         bezier(xNew[0], yNew[0], W1, H1, W1, H1, xNew[j], yNew[j]);
     }
     for (var j = 0; j < nNew; j++) {
@@ -298,7 +303,7 @@ function chordOneDraw(t, t0, tAnime) {
     
 }
 
-var printTerm = -1;
+var printTerm = 124;
 function draw() {
     // console.log(mouseX/width);
     
@@ -307,15 +312,16 @@ function draw() {
          
     }
     
-    if(printTerm<5 && frameCount> 90 && (millis() - t0) > tAnime){
-        
-        printTerm = (printTerm+1)%125; 
-        saveCanvas("graph"+printTerm, "png");
-       // printTerm = originalN[printTerm];
+    if(printTerm<127 && frameCount> 90 && (millis() - t0) > tAnime){
         t0 = millis();
       //console.log(printTerm);
          chordOne(printTerm);
+         
+        if(printTerm == 124){saveCanvas("graph"+printTerm, "png"); printTerm = (printTerm+1)%126;}
+       // printTerm = originalN[printTerm];
+        
     }
+    
     if (!isChordAll && (millis() - t0) < tAnime) {
         chordOneDraw(millis(), t0, tAnime);
     }

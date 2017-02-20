@@ -182,7 +182,7 @@ input[type="button"] {
   font-weight: 600;
   line-height: 20px;
   letter-spacing: .1rem;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   text-decoration: none;
   white-space: nowrap;
   background-color: transparent;
@@ -200,9 +200,9 @@ button:focus,
 input[type="submit"]:focus,
 input[type="reset"]:focus,
 input[type="button"]:focus {
-  background-color: #000;
-    color: #fff;
-  border-color: #000;
+  background-color: #f0ffff;
+    color: #000;
+  /*border-color: #000;*/
   outline: 0; }
 .button.button-primary,
 button.button-primary,
