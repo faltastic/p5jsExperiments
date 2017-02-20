@@ -7,10 +7,10 @@
 
 
 <center>
-<img src="../img/about1.jpg" width="90%" height="auto" /></a>
-<img src="../img/about2.jpg" width="90%" height="auto" /></a>
-<img src="../img/about3.jpg" width="90%" height="auto" /></a>
-<img src="../img/box2.jpg" width="90%" height="auto" /></a>
+<img src="../img/box-s1.jpg" width="90%" height="auto" /></a>
+<img src="../img/box-s2.jpg" width="90%" height="auto" /></a>
+<img src="../img/box-s3.jpg" width="90%" height="auto" /></a>
+<img src="../img/box-s4.jpg" width="90%" height="auto" /></a>
 </center>
 
 اللغة الجديدة اللى طورناها دى، اتاحت لنا اسلوب مشترك نتكلم بيه حوالين موضوع محدد. قاموس الثورة بيجمع المفردات المستخدمة فى اللغة الجديدة للثورة و بيطلب من المصريين انهم يحاولوا يعرّفوا الكلمات، لأن تحت عباية اللغة المشتركة فيه كتير من الأفكار و الآراء المختلفة و الدليل على كده ان ممكن شخصين يستخدموا نفس الكلمة و كل واحد فيهم يقصد حاجة مختلفة تماماً.

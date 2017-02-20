@@ -75,8 +75,8 @@
 
         function listClick(i) {
             document.getElementById("mainTitle").innerHTML = words[i]['term'];
-            document.getElementById("theImg").src = "../img/full.png";
-            var fileName = "../data/txt/" + (i + 1) + ".txt";
+            document.getElementById("theImg").src = "../img/graphs/graph" + (i+1) +".png";
+            var fileName = "../data/txt/" + (i+1) + ".txt";
             jQuery.get(fileName, function (data) {
                 var termText = data.split(/\r\n|\r|\n/g);
                 termText = '<p>' + termText.join('</p><p>') + '</p>';

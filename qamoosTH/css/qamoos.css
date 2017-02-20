@@ -103,7 +103,7 @@ theCanvas{
     margin: 0 auto;
     text-align: right;
     
-    background: rgb(240,255,255);
+    background: #f0ffff; /*rgb(240,255,255);*/
     border-left: 3px solid black;
     visibility: hidden;
 }
@@ -175,8 +175,8 @@ theCanvas{
      
     position: absolute;
     top: 1em;
-    width:10.5%;
-    right: 5%;
+    width:7em;
+    right: 1em;
     line-height: 1.9em;
     font-size: 1em;
 }

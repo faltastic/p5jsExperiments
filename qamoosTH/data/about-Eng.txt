@@ -9,7 +9,8 @@ Participants
 </h3>
             <left><img src="../img/participantsEnglish.png"  width="100%"></left>
             <h3> Vocabulary Cards </h3>
-            <center> <img src="../img/box1.jpg" width="90%" height="auto" /> <img src="../img/box2.jpg" width="90%" height="auto" /> <img src="../img/box3.jpg" width="90%" height="auto" /> <img src="../img/box4.jpg" width="90%" height="auto" /> </center>
+            <center> <img src="../img/box-s1.jpg" width="90%" height="auto" /> <img src="../img/box-s2.jpg" width="90%" height="auto" /> <img src="../img/box-s3.jpg" width="90%" height="auto" /> <img src="../img/box-s4.jpg" width="90%" height="auto" /> </center> 
+            <br /><br />
             <h3> Published Translations</h3>
             <ul>
                 <li> <a href="https://www.indexoncensorship.org/magazine/"> Index on Censorship </a> Vol. 46.01 Spring 2017 </li>
