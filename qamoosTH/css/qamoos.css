@@ -174,9 +174,9 @@ theCanvas{
 #englishLink{
      
     position: absolute;
-    top: 1em;
-    width:7em;
-    right: 1em;
+    bottom: 1em;
+    width:5em;
+    left: 2em;
     line-height: 1.9em;
     font-size: 1em;
 }

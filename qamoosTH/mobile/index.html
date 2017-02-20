@@ -81,6 +81,7 @@
                 var termText = data.split(/\r\n|\r|\n/g);
                 termText = '<p>' + termText.join('</p><p>') + '</p>';
                 document.getElementById("mainText").style.direction = "rtl";
+                document.getElementById("mainText").style.fontFamily = "'NotoNaskh', serif;"
                 document.getElementById("mainText").innerHTML = termText;
             });
             //document.getElementById("mainText").style.backgroundColor = "#f0ffff";
@@ -97,6 +98,7 @@
                 var termText = data.split(/\r\n|\r|\n/g);
                 termText = '<p>' + termText.join('</p><p>') + '</p>';
                 document.getElementById("mainText").style.direction = "rtl";
+                document.getElementById("mainText").style.fontFamily = "'NotoNaskh', serif;"
                 document.getElementById("mainText").innerHTML = termText;
                  
             });
@@ -106,12 +108,13 @@
         }
         function showEnglish() {
             document.getElementById("mainTitle").innerHTML = "A Dictionary of the Revolution";
-            document.getElementById("theImg").src = "../img/full.png";
+            document.getElementById("theImg").src = "../img/fullEnglish.png";
             var fileName = "../data/about-Eng.txt";
             jQuery.get(fileName, function (data) {
                 var termText = data.split(/\r\n|\r|\n/g);
                 termText =  termText.join('');
                 document.getElementById("mainText").style.direction = "ltr";
+                document.getElementById("mainText").style.fontFamily = "'Helvetica Neue', Helvetica, Arial, sans-serif";
                 document.getElementById("mainText").innerHTML = termText;
             });
             //document.getElementById("mainText").style.backgroundColor = "#f0ffff";
