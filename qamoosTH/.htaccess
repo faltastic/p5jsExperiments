@@ -1,0 +1,4 @@
+#Alternate default index page
+#DirectoryIndex comingsoon.html
+
+RewriteEngine on

@@ -6,7 +6,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <meta charset="utf-8">
     <title>قاموس الثورة </title>
-    <meta name="description" content="">
+    <meta name="description" content="قاموس الثورة هو مشروع يوثق التضخم السريع للتعبير عن الرأي السياسي في الاماكن العامة في مصر بعد ثورة ٢٥ يناير.">
     <meta name="author" content="">
     <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -14,8 +14,9 @@
     <!-- mobile Redirect
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <script type="text/javascript">
-        if (screen.width > 700) {
-          //  window.location = "http://faltastic.github.io/p5jsExperiments/qamoosTH";
+        //if (screen.width > 700) {
+        if( !navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/) ){
+            window.location = "http://qamosalthawra.com/index.html";
         }
     </script>
     <!-- CSS
@@ -39,7 +40,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div class="container">
         <ul id="menu">
-            <li><a href=".">الرئيسية</a></li>
+            <li><a href="http://qamosalthawra.com/mobile/index.html">الرئيسية</a></li>
             <li><a href="#about" onClick="showAbout()">عن القاموس</a></li>
             <li> المصطلحات
                 <ul id="dictUL"> </ul>
@@ -65,6 +66,7 @@
                 dictList += '<li><a href="#' + i + '" onClick="listClick(' + i + ')" >' + words[i]['term'] + '</a> </li>';
             }
             document.getElementById("dictUL").innerHTML = dictList;
+            document.getElementById("mainText").style.fontFamily = "'NotoNaskh', serif;"
             var fileName = "../data/mobile-intro.txt";
             jQuery.get(fileName, function (data) {
                 var termText = data.split(/\r\n|\r|\n/g);
@@ -92,7 +94,7 @@
         function showAbout() {
             
             document.getElementById("mainTitle").innerHTML = " عن القاموس";
-            document.getElementById("theImg").src = "";
+            document.getElementById("theImg").src = "../img/full.png";
             var fileName = "../data/about-mobile.txt";
             jQuery.get(fileName, function (data) {
                 var termText = data.split(/\r\n|\r|\n/g);

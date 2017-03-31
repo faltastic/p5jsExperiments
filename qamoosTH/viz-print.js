@@ -60,7 +60,7 @@ function setup() {
     N = words.length;
     rndData = Drough;
     //console.log(Drough); 
-    R = height / 3.5;
+    R = height / 3.25;
     Cx = (windowWidth * 2.5 / 100) + width / 2;
     //nMax = 0;
     nMax = 20;
@@ -73,7 +73,7 @@ function setup() {
     */
     // N =30;
     for (var i = 0; i < N; i++) {
-        t[i] = words[i]['English'];//words[i]['term'];
+        t[i] = words[i]['term'];
         n[i] = floor(random(5, 20)); //words[i]['ex'].length; 
         h[i] = map(n[i], 0, nMax, 2, 20);
         theta[i] = i * TWO_PI / N;
@@ -304,7 +304,7 @@ function chordOneDraw(t, t0, tAnime) {
     
 }
 
-var printTerm =0;
+var printTerm =120;
 function draw() {
     // console.log(mouseX/width);
     
@@ -316,11 +316,11 @@ function draw() {
     if(printTerm<127 && frameCount> 90 && (millis() - t0) > tAnime){
         t0 = millis();
       //console.log(printTerm);
-      //   chordOne(printTerm);
+        chordOne(printTerm);
          
-    //    saveCanvas("graph"+printTerm, "png");
-      //  printTerm = (printTerm+1)%126;}
-       // printTerm = originalN[printTerm];
+        if(printTerm==122){saveCanvas("graph"+printTerm, "png");}
+        printTerm = (printTerm+1)%126;
+        // printTerm = originalN[printTerm];
         
     }
     

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta charset="utf-8">
+    <title> Thawra Dict.</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– 
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <style>
+@import url('https://fonts.googleapis.com/css?family=Cairo:200,300,400,600,700,900&subset=arabic');
+</style -->
+    <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/qamoos.css">
+    <!--link type="text/css" rel="stylesheet" href="css/jquery.sSlider.min.css" /-->
+    <link rel="stylesheet" href="css/modal.css">
+    <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <!-- Javascript Libraries
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <script language="javascript" src="lib/newp5.min.js"></script>
+    <script language="javascript" src="lib/p5.dom.min.js"></script>
+    <!--script src="lib/jquery.js"></script
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="lib/jquery.sSlider.min.js" type="text/javascript" charset="utf-8"></script>
+
+    <!--script language="javascript" src="lib/p5.sound.js"></script>
+<script src="lib/typed.js"></script>
+    -->
+</head>
+
+<body>
+    <!-- THE DATA
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <script src="data/termsEN.js"></script>
+    <script src="data/theCoMatrix.js"></script>
+    <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="container">
+        <div class="row" id="textBox">
+            <div id="title"> قاموس الثورة </div>
+            <div id="titleLinks">
+                <a id="downLink" title="Open PDF" href="data/1.txt" target="_blank"> <img src="icns/download-2-24.png" /></a>&nbsp;&nbsp;
+                <a id="homeLink" title="Home" href="."> <img src="icns/chord-24.png" /></a> &nbsp;
+                <a id="backLink" title="Previous Term" href="#" onClick="previousTerm()"> <img src="icns/arrow-96-24-wide.png" /></a>
+            </div>
+            <div id="termTextArea">
+                <div id="termText"> </div>
+            </div>
+        </div>
+        
+        <div id="theCanvas"></div>
+        
+        <a id="zoom-photo" href="#modal-1" data-modal-open><img src="icns/zoom-64.png" /></a>
+        <div id="linkBox"> </div>
+        <div id="listTitle" > الفهرس </div>
+        <div id="aboutLink"> <a href="#" onclick="showAbout(this.href); return false;">قاموس الثورة</a> </div>
+    </div>
+    <div id="modal-1" style="display:none">
+        <center><img id="zoomInPhoto" src="" width="90%" height="auto" alt=""> </center>
+    </div>
+    <div class="modal">
+        <div class="modal-inner"> <span data-modal-close>&times;</span>
+            <div class="modal-content"></div>
+        </div>
+    </div>
+    <!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <script language="javascript" src="viz-print.js"></script>
+    <script src="lib/modal.js"></script>
+    <script>
+        var modal = new VanillaModal.default();
+    </script>
+</body>
+
+</html>

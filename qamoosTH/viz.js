@@ -1,4 +1,3 @@
-
 var isChordAll = true;
 // fixed variables for data
 var N;
@@ -14,43 +13,37 @@ var theta = []
     , x = []
     , y = [];
 var R;
-var bell;
-var muteIcn, playIcn;
+
 ////
 // temp. variables
 var hostLoc = "";
 var loadId = 0;
 var backTerms = [];
 var namesP;
-var vol = 0
-    , soundOn = true;
 var fontAR;
 var pal = [];
 var t0 = 0;
-var tAnime = 600;
+var nFrames = 0;
+var totalFrames = 50;
 var termText;
 var termTextAreaHtml;
 var termTextHtml; // html element for term text
-var infoButton; // 
-var chordSize = 30;
 var zoomPhoto = false;
 var about = false;
-var aboutText = "<h5>يعني ايه قاموس الثورة؟</h5>" + "<p>     اتكلمنا كتير فى السنين الأخيرة فى مصر وعن طريق الكلام ده اتوصلنا لنوع من اللغة الجديدة. بنستخدم مفردات زى “عيش – حرية – عدالة اجتماعية” للتعبير عن مطالبنا، و بنستخدم مفردات تانية عشان نميز الاحداث المختلفة اللى حصلت.</p><p>" + "اللغة الجديدة اللى طورناها دى، اتاحت لنا اسلوب مشترك نتكلم بيه حوالين موضوع محدد. قاموس الثورة بيجمع المفردات المستخدمة فى اللغة الجديدة وبيطلب منك انك تحاول تعرّف الكلمات، لأن تحت عباية اللغة المشتركة فيه كتير من الأفكار و الآراء المختلفة والدليل على كده ان ممكن شخصين يستخدموا نفس الكلمة و كل واحد فيهم يقصد حاجة مختلفة تماماً.</p>";
+var aboutText = "";
+var myCanvas;
 
-function preload() {}
 
 function setup() {
-    var myCanvas = createCanvas(0.97 * windowWidth, 0.97 * windowHeight);
+    myCanvas = createCanvas(0.97 * windowWidth, 0.97 * windowHeight);
     myCanvas.parent("theCanvas");
     // HTML elements
     termTextHtml = select('#termText');
     termTextAreaHtml = select('#termTextArea');
-    //frameRate(2);
-    //rectMode(CORNERS);
     ellipseMode(RADIUS);
     smooth();
     strokeWeight(1);
-    textAlign(LEFT);
+    //textAlign(LEFT, CENTER);
     textSize(12);
     textFont('NotoKufi');
     pal = [color(74, 139, 115, 175), color(37, 93, 108, 175), color(92, 93, 136, 175), color(59, 137, 201, 175)];
@@ -60,40 +53,38 @@ function setup() {
     //console.log(Drough); 
     R = height / 3.25;
     Cx = (windowWidth * 2.5 / 100) + width / 2;
-   
-   
     for (var i = 0; i < N; i++) {
+        //words[i]['term'] = words[i]['term'].trim();
         t[i] = words[i]['term'];
         theta[i] = i * TWO_PI / N;
         x[i] = Cx + 1.1 * R * cos(theta[i]);
         y[i] = (height / 2) + 1.1 * R * sin(theta[i]);
-       
     }
     stroke(0);
     noFill();
-    hostLoc = window.location.href; 
-    if(hostLoc.indexOf('#') > 0 ){
-        if(hostLoc.indexOf('about') > 0){
+    hostLoc = window.location.href;
+    if (hostLoc.indexOf('#') > 0) {
+        if (hostLoc.indexOf('about') > 0) {
             loadId = 126;
         }
-        else{
-        loadId = parseInt(hostLoc.substring(hostLoc.indexOf('#')+1));
+        else {
+            loadId = parseInt(hostLoc.substring(hostLoc.indexOf('#') + 1));
         }
-        console.log(loadId);
-        hostLoc = hostLoc.substring(0,hostLoc.indexOf('#'));
-        console.log(hostLoc);
+        hostLoc = hostLoc.substring(0, hostLoc.indexOf('#'));
     }
-    else{ loadId=-1;}
+    else {
+        loadId = -1;
+    }
 }
+var opac = 175;
 
-var opac =175;
 function chordAll() {
     isChordAll = true;
     select('#englishLink').style("visibility", "visible");
     background(255);
     textSize(12);
-     pal = [color(74, 139, 115, opac), color(37, 93, 108, opac), color(92, 93, 136, opac), color(59, 137, 201, opac)];
-    dThetaN = TWO_PI/(2*N);
+    pal = [color(74, 139, 115, opac), color(37, 93, 108, opac), color(92, 93, 136, opac), color(59, 137, 201, opac)];
+    dThetaN = TWO_PI / (2 * N);
     noFill();
     for (var i = 0; i < N; i++) {
         stroke(pal[words[i]['cat'] - 1]);
@@ -109,11 +100,11 @@ function chordAll() {
         translate(Cx, height / 2);
         rotate(theta[i]);
         translate(1.2 * R, 0);
-        textAlign(LEFT);
+        textAlign(LEFT, CENTER);
         if (i > floor(N / 4) && i < floor(3 * N / 4)) {
-            translate(0, -6);
+            translate(0,2);
             rotate(PI);
-            textAlign(RIGHT);
+            textAlign(RIGHT, CENTER);
         }
         text(t[i], 0, 0);
         pop();
@@ -135,20 +126,23 @@ function chordAllSelect() {
         currentTerm = int(N * (dThetaN + rTheta[1]) / TWO_PI) % N;
         opac = 0; // 175/5;
     }
-    else{ currentTerm = null; opac =175;}
-   
+    else {
+        currentTerm = null;
+        opac = 175;
+    }
     chordAll();
-    if (currentTerm !=null) {
+    if (currentTerm != null) {
         var hoverTerm = currentTerm;
         var maxCo = max(d[hoverTerm]);
-       stroke(30);
+        stroke(30);
         pal = [color(74, 139, 115), color(37, 93, 108), color(92, 93, 136), color(59, 137, 201)];
         stroke(pal[words[hoverTerm]['cat'] - 1]);
         for (var j = 0; j < N; j++) {
             if (d[hoverTerm][j]) {
-                 if( d[hoverTerm][j] <maxCo/2 || maxCo<6) {
+                if (d[hoverTerm][j] < maxCo / 2 || maxCo < 6) {
                     strokeWeight(2);
-                }else{
+                }
+                else {
                     strokeWeight(4);
                 }
                 bezier(x[hoverTerm], y[hoverTerm], Cx, height / 2, Cx, height / 2, x[j], y[j]);
@@ -160,11 +154,11 @@ function chordAllSelect() {
         translate(Cx, height / 2);
         rotate(theta[hoverTerm]);
         translate(1.2 * R, 0);
-        textAlign(LEFT);
+        textAlign(LEFT, CENTER);
         if (hoverTerm > floor(N / 4) && hoverTerm < floor(3 * N / 4)) {
-            translate(0, -6);
+            translate(0,2);
             rotate(PI);
-            textAlign(RIGHT);
+            textAlign(RIGHT, CENTER);
         }
         fill(255);
         text(t[hoverTerm], 0, 0);
@@ -185,6 +179,7 @@ function chordAllSelect() {
         pop();
     }
 }
+
 var incoming = [];
 var nNew = 1;
 var thetaEnd = [];
@@ -198,9 +193,11 @@ var strokeOut;
 var strokeIn;
 var originalN = [];
 var dThetaN;
+var barWidth;
 
 function chordOne(newTerm) {
     isChordAll = false;
+    nFrames = 0;
     select('#englishLink').style("visibility", "hidden");
     var i = newTerm; //floor(random(N));
     incoming = [];
@@ -211,7 +208,7 @@ function chordOne(newTerm) {
     yNew = [];
     tNew = [];
     strokeNew = [];
-    strokeOut = color(0, 100, 100); 
+    strokeOut = color(0, 100, 100);
     strokeIn = color(0, 100, 100);
     originalN = [];
     originalN[0] = i;
@@ -224,108 +221,106 @@ function chordOne(newTerm) {
     incoming[0] = false;
     var maxCo = max(d[i]);
     for (var j = 0; j < N; j++) {
-        
-        if (d[i][j] != 0 ) {
+        if (d[i][j] != 0) {
             nNew++;
             originalN.push(j);
             incoming.push(true);
             tNew.push(t[j]);
-            strokeNew.push(map(d[i][j],1,maxCo, 1,4));
+            strokeNew.push(map(d[i][j], 1, maxCo, 1, 4));
         }
-        /*
-        if (d[j][i] != 0) {
-            incoming[nNew - 1] = false;
-            if (d[j][i] < 3) {
-                strokeNew[nNew - 1] = d[j][i];
-            }
-            else {
-                strokeNew[nNew - 1] = 3;
-            }
-        }*/
+
     }
-    dThetaN = TWO_PI/(2*originalN.length);
+    R1 = width / 12;
+    W1 = 1.75 * width / 10;
+    H1 = 0.33 * height;
+    dThetaN = TWO_PI / (2 * originalN.length);
     backTerms.push(i);
+
+//    barWidth = getScrollBarWidth();
+//    console.log(barWidth);
+//     document.getElementById("aboutLink").style.marginRight =(2*barWidth +5)+"px";
 }
 
-function chordOneDraw(t, t0, tAnime) {
-    
-    R1 = width/12; //map(t - t0, 0, tAnime, R, width / 12);
-    W1 =1.7 * width / 10 ; // map(t - t0, 0, tAnime, Cx, 1.7 * width / 10);
-    H1 = 0.33 * height;
-    
-    textSize(map(nNew, 1, 26, 13, 10));
-    if (nNew > 25) {
-        textSize(9);
+function chordOneDraw() {
+    if (nFrames < totalFrames) {
+        textSize(map(nNew, 1, 26, 13, 10));
+        if (nNew > 25) {
+            textSize(9);
+        }
+        textFont('NotoKufi');
+        background(255);
+        noFill();
+        for (var j = 0; j < nNew; j++) {
+            thetaEnd[j] = (thetaEnd[0] + (j * TWO_PI / nNew)) % (TWO_PI);
+            //thetaMove[j] = map(t - t0, 0, tAnime, 0, thetaEnd[j]);
+            thetaMove[j] = map(nFrames, 0, totalFrames, 0, thetaEnd[j]);
+            if (nFrames + 3 > totalFrames) {
+                // make sure thetas end up perfect
+                thetaMove[j] = thetaEnd[j];
+            }
+            xNew[j] = W1 + R1 * cos(thetaMove[j]);
+            yNew[j] = H1 + R1 * sin(thetaMove[j]);
+            strokeWeight(strokeNew[j]);
+            if (incoming[j]) {
+                stroke(strokeIn);
+            }
+            else {
+                stroke(strokeOut);
+            }
+            // stroke(strokeOut);\
+            if (j>0){
+                bezier(xNew[0], yNew[0], W1, H1, W1, H1, xNew[j], yNew[j]);
+            }
+        }
+        for (var j = 0; j < nNew; j++) {
+            push();
+            noStroke();
+            translate(W1, H1);
+            rotate(thetaMove[j]);
+            translate(1.1 * R1, 0);
+            if (j == 0) {
+                fill(strokeOut);
+                ellipse(0, 0, 4, 4);
+            }
+            fill(0);
+            translate(0.1 * R1, 0);
+            textAlign(LEFT, CENTER);
+            if (thetaMove[j] > (TWO_PI / 4) && thetaMove[j] < (3 * TWO_PI / 4)) {
+                translate(0, 2);
+                rotate(PI);
+                textAlign(RIGHT, CENTER);
+            }
+            text(tNew[j], 0, 0);
+            pop();
+        }
+        if (nFrames + 3 > totalFrames) {
+            window.location.replace(hostLoc + "#" + originalN[0]);
+            select('#textBox').style("visibility", "visible");
+            select('#linkBox').style("visibility", "visible");
+            select('#aboutLink').style("visibility", "visible");
+            var fileName = "data/txt/" + (originalN[0] + 1) + ".txt";
+            var pdfFileName = "data/pdfs/" + (originalN[0] + 1) + ".pdf";
+            document.getElementById("downLink").href = pdfFileName;
+            //console.log(fileName);
+            loadStrings(fileName, showTermText);
+            showLinks();
+
+
+                select('#zoom-photo').style("visibility", "visible");
+                zoomPhoto = true;
+                document.getElementById("zoomInPhoto").src = "img/graphs/graph" + (originalN[0] + 1) + ".png";
+
+//            if (tNew.length > 10){
+//                document.getElementById("linkBox").style.marginRight ="0px";
+//            }
+//            else{
+//                document.getElementById("linkBox").style.marginRight = barWidth +"px";
+//            }
+        }
+        nFrames++;
     }
-    //console.log(nNew);
-    //console.log(incoming);
-    // background(255, map(t - t0, 0, tAnime, 25, 255));
-    background(255);
-    noFill();
-    for (var j = 0; j < nNew; j++) {
-        thetaEnd[j] = (thetaEnd[0] + (j * TWO_PI / nNew)) % (TWO_PI);
-        thetaMove[j] = map(t - t0, 0, tAnime, 0, thetaEnd[j]);
-        if( t-t0 > tAnime/1.1){
-            // make sure thetas end up perfect
-            thetaMove[j]  = thetaEnd[j];
-        }
-        xNew[j] = W1 + R1 * cos(thetaMove[j]);
-        yNew[j] = H1 + R1 * sin(thetaMove[j]);
-        
-        strokeWeight(strokeNew[j]);
-        if (incoming[j]) {
-            stroke(strokeIn);
-        }
-         else {
-            stroke(strokeOut);
-        }
-        // stroke(strokeOut);
-        bezier(xNew[0], yNew[0], W1, H1, W1, H1, xNew[j], yNew[j]);
-    }
-    
-    for (var j = 0; j < nNew; j++) {
-        push();
-        noStroke();
-        translate(W1, H1);
-        rotate(thetaMove[j]);
-        translate(1.1 * R1, 0);
-        if (j == 0) {
-            fill(strokeOut);
-             ellipse(0, 0, 4, 4);
-        }
-        fill(0);
-        translate(0.1 * R1, 0);
-        textAlign(LEFT);
-        if (thetaMove[j] > (TWO_PI / 4) && thetaMove[j] < (3 * TWO_PI / 4)) {
-            translate(0, 0);
-            rotate(PI);
-            textAlign(RIGHT);
-        }
-        text(tNew[j], 0, 0);
-        pop();
-    }
-    if (t - t0 > tAnime - 20) {
-        window.location.replace(hostLoc+"#"+originalN[0]);
-        select('#textBox').style("visibility", "visible");
-        select('#linkBox').style("visibility", "visible");
-        select('#aboutLink').style("visibility", "visible");
-        var fileName = "data/txt/" + (originalN[0] + 1) + ".txt";
-        document.getElementById("downLink").href = fileName;
-        //console.log(fileName);
-        loadStrings(fileName, showTermText);
-        showLinks();
-        if (tNew.length > 25) {
-            select('#zoom-photo').style("visibility", "visible");
-            zoomPhoto = true;
-            document.getElementById("zoomInPhoto").src = "img/graphs/graph" + (originalN[0] + 1) +".png";
-        }
-        else {
-            select('#zoom-photo').style("visibility", "hidden");
-            zoomPhoto = false;
-        }
-    }
-    
 }
+
 
 function showTermText(lines) {
     termText = '<p>' + lines.join('</p><p>') + '</p>';
@@ -356,7 +351,7 @@ function listTermClick(newTermId) {
     else {
         newTerm = originalN[newTerm];
     }
-    t0 = millis();
+    nFrames=0;
     //console.log(originalN);
     chordOne(newTerm);
 }
@@ -368,7 +363,7 @@ function previousTerm() {
     if (backTerms.length > 1) {
         backTerms.pop();
         var newTerm = backTerms[backTerms.length - 1];
-        t0 = millis();
+        nFrames=0;
         backTerms.pop();
         chordOne(newTerm);
     }
@@ -376,7 +371,7 @@ function previousTerm() {
 
 function cancelAbout() {
     about = false;
-    document.getElementById("linkBox").style.maxHeight = "30vh";
+    document.getElementById("linkBox").style.maxHeight = "33vh";
     select('#theCanvas').style("visibility", "visible");
     select('#listTitle').style("visibility", "hidden");
     select('#downLink').style("visibility", "visible");
@@ -384,13 +379,13 @@ function cancelAbout() {
 
 function showAbout() {
     about = true;
-    window.location.replace(hostLoc+"#about");
+    window.location.replace(hostLoc + "#about");
     var fileName = "data/about.txt";
     loadStrings(fileName, showAboutText);
     var aboutTitle = "عن القاموس";
     aboutTitle += "&nbsp;&nbsp;&nbsp;&nbsp;<a href='https://www.facebook.com/RevolutionDictionary/' target ='_blank'> <img src='icns/facebook-4-24.png' /></a> &nbsp; <a href='https://twitter.com/qamosalthawra' target ='_blank'> <img src='icns/twitter-4-24.png' /></a> &nbsp; <a href='https://soundcloud.com/qamos-al-thawra' target ='_blank'> <img src='icns/soundcloud-4-24.png' /></a>";
     select('#title').html(aboutTitle);
-    document.getElementById("linkBox").style.maxHeight = "70vh";
+    document.getElementById("linkBox").style.maxHeight = "75vh";
     var linksText = "";
     for (var i = 0; i < N; i++) {
         linksText += '<a href="#' + i + '" onClick="listTermClick(' + i + ')" >' + t[i] + '</a> <br/>';
@@ -400,6 +395,7 @@ function showAbout() {
     select('#listTitle').style("visibility", "visible");
     select('#zoom-photo').style("visibility", "hidden");
     select('#downLink').style("visibility", "hidden");
+    //document.getElementsByClassName("modal").style.Background="#000";
     zoomPhoto = false;
 }
 
@@ -410,16 +406,15 @@ function showAboutText(lines) {
 };
 
 function draw() {
-    // console.log(mouseX/width);
+
     if (document.readyState === "complete" && frameCount > 60 && frameCount < 65) {
         chordAll();
-       
     }
-    if(loadId>=0 && frameCount > 120 ){
-     loadIdWorkAround();
+    if (loadId >= 0 && frameCount > 120) {
+        loadIdWorkAround();
     }
-    if (!isChordAll && (millis() - t0) < tAnime) {
-        chordOneDraw(millis(), t0, tAnime);
+    if (!isChordAll && nFrames < totalFrames) {
+        chordOneDraw();
     }
 }
 
@@ -458,8 +453,6 @@ function mouseMoved() {
         }
     }
 }
-
-
 var rTheta = 0;
 var rThetaPrev = 0;
 var currentTerm;
@@ -474,38 +467,64 @@ function mouseReleased() {
             clickChord = true;
         }
     }
-    if (isChordAll && currentTerm!=null) {
+    if (isChordAll && currentTerm != null) {
         var newTerm = currentTerm;
-        t0 = millis();
+        nFrames =0;
         chordOne(newTerm);
     }
     else if (clickChord) {
         var newTerm = currentTerm;
         newTerm = originalN[newTerm];
-        t0 = millis();
+        nFrames = 0;
         //console.log(originalN);
         chordOne(newTerm);
     }
-   
 }
 
-function loadIdWorkAround(){
-      if(loadId<125){
+function loadIdWorkAround() {
+    if (loadId < 125) {
         var newTerm = loadId;
-        t0 = millis();
+        nFrames=0;
         chordOne(newTerm);
-        loadId=-1;
-       }
-        else if(loadId==126){
-        t0 = millis();
+        loadId = -1;
+    }
+    else if (loadId == 126) {
+        nFrames=0;
         chordOne(0);
         loadId++;
-        }
-        else{
+    }
+    else {
         loadId++;
-        if(loadId>200) {showAbout();loadId=-1;}
+        if (loadId > 200) {
+            showAbout();
+            loadId = -1;
         }
+    }
 }
+
+//function getScrollBarWidth(){
+//    var outer = document.createElement("div");
+//    outer.style.visibility = "hidden";
+//    outer.style.width = "100px";
+//    outer.style.msOverflowStyle = "scrollbar"; // needed for WinJS apps
+//    document.body.appendChild(outer);
+//
+//var widthNoScroll = outer.offsetWidth;
+//// force scrollbars
+//outer.style.overflow = "scroll";
+//
+//// add innerdiv
+//var inner = document.createElement("div");
+//inner.style.width = "100%";
+//outer.appendChild(inner);
+//
+//var widthWithScroll = inner.offsetWidth;
+//
+//// remove divs
+//outer.parentNode.removeChild(outer);
+//
+//    return widthNoScroll - widthWithScroll;
+//}
 
 function cartesToPolar(x, y, xOff, yOff, thetaStart) {
     var rTheta = [];
@@ -532,59 +551,8 @@ function cartesToPolar(x, y, xOff, yOff, thetaStart) {
     }
     return rTheta;
 }
-/*
 
-function chordOneZoom(t, t0, tAnime) {
-    zoom = map(zoomVal,-3,3,0.5,1.5);
-    var txtWidth = map(zoomVal,-3,3,75,45);
-    termTextAreaHtml.style("width", txtWidth.toString()+"%");
-    var R1 = map(t - t0, 0, tAnime, R, zoom*R/1.5);
-    var W1 = map(t - t0, 0, tAnime, Cx, zoom*Cx/1.75);
-    var H1 = height / 2;
-    //map(t-t0, 0, tAnime, height/2, height/3);
-    textSize(map(nNew, 1, 50, 16, 12));
-    //console.log(nNew);
-    //console.log(incoming);
-    background(255, map(t - t0, 0, tAnime, 25, 275));
-    noFill();
-    for (var j = 0; j <= nNew; j++) {
-        thetaEnd[j] = (thetaEnd[0] + (j * TWO_PI / nNew)) % (TWO_PI);
-        thetaMove[j] = thetaEnd[j];
-        xNew[j] = W1 + R1 * cos(thetaMove[j]);
-        yNew[j] = H1 + R1 * sin(thetaMove[j]);
-        //console.log(thetaEnd[j]);
-        strokeWeight(strokeNew[j]);
-        if (incoming[j]) {
-            stroke(strokeIn);
-        }
-        else {
-            stroke(strokeOut);
-        }
-        // stroke(strokeOut);
-        bezier(xNew[0], yNew[0], W1, H1, W1, H1, xNew[j], yNew[j]);
-    }
-    for (var j = 0; j < nNew; j++) {
-        push();
-        noStroke();
-        fill(0);
-        translate(W1, H1);
-        rotate(thetaMove[j]);
-        translate(1.1 * R1, 0);
-        if (j == 0) {
-            ellipse(0, 0, 4, 4);
-        }
-        translate(0.1 * R1, 0);
-        textAlign(LEFT);
-        if (thetaMove[j] > (TWO_PI / 4) && thetaMove[j] < (3 * TWO_PI / 4)) {
-            translate(0, 0);
-            rotate(PI);
-            textAlign(RIGHT);
-            // console.log(thetaEnd[j]);
-        }
-        text(tNew[j], 0, 0);
-        pop();
-    }
-}
+/*
 function randomData(r) {
     //words = [];
     for (var i = 0; i < N; i++) {

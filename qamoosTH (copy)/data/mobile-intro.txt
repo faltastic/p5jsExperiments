@@ -1,0 +1,20 @@
+قاموس الثورة هو مشروع يوثق التضخم السريع للتعبير عن الرأي السياسي في الاماكن العامة في مصر بعد ثورة ٢٥ يناير.
+
+
+نصوص القاموس اتجمعت من لقاءات اتعملت مع حوالي ٢٠٠ شخص في ست محافظات مصرية ما بين مارس وأغسطس ٢٠١٤. المشتركين ردوا على كروت مفردات فيها ١٦٠ كلمة اللي كانت بتستخدم كتير في المناقشات السياسية من ٢٠١١ لحد ٢٠١٣. اتكلموا عن معاني الكلمات بنسبالهم، مين اللي كان بيستخدمها، وإزاي اتغيرت معانيها من ساعة ما قامت الثورة.
+
+
+<ul><li><a href="#0" onClick="listClick(0)"> 25 يناير </a> </li><li><a href="#46" onClick="listClick(46)"> حزب الكنبة </a></li><li><a href="#29" onClick="listClick(29)"> تحرش</a> </li><li><a href="#97" onClick="listClick(97)"> كنتاكي</a> </li></ul>
+
+وممكن تتصفح القاموس بطريقة تفاعلية اكتر من خلال الرسومات البيانية على جهاز الكومبيوتر.
+
+<hr />
+
+<center>
+
+تواصلوا معنا على
+ &nbsp;&nbsp; <a href='https://www.facebook.com/RevolutionDictionary/' target ='_blank'> <img src='../icns/facebook-4-24.png' /></a> &nbsp; &nbsp; &nbsp; <a href='https://twitter.com/qamosalthawra' target ='_blank'> <img src='../icns/twitter-4-24.png' /></a> &nbsp; &nbsp; &nbsp; <a href='https://soundcloud.com/qamos-al-thawra' target ='_blank'> <img src='../icns/soundcloud-4-24.png' /></a> <br />
+ او مباشرةً على qamos@qamosalthawra.com
+</center>
+<br />
+

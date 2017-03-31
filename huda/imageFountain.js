@@ -39,6 +39,7 @@ function xfimage(fountain, particle) {
     //rotate(particle.rotation);
     scale(particle.partSize / 100);
     image(kaz, 0, 0);
+    //tint(175,100);
     image(eyes[particle.id % 7], 0, 0);
     pop();
     noTint();
@@ -94,7 +95,8 @@ function draw() {
     noiseY = map(mouseY, 0, height, height/20, -height/20);
     //noiseX = constrain(noiseX+deltax,0,width);
     //noiseY = constrain(noiseY+deltay,0,height);
-    background(51, 51, 51);
+    background(157, 20, 20);
+    //background(0);
     of.Draw();
     of.Create();
     of.Step();

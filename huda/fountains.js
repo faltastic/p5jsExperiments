@@ -67,7 +67,7 @@ function setup() {
 }
 
 function draw() {
-  background(51);
+  background(0);
   of.Draw();
   of.Create();
   of.Step();

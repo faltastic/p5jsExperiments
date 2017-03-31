@@ -1,0 +1,200 @@
+
+/* always show scroll bar */
+html {
+    /*overflow-y:none;*/
+    height: 90vh;
+}
+
+
+
+body {
+  background-color: white;
+  color: black;
+  direction: rtl;
+ max-height: 100%;
+}
+/*
+@font-face
+{
+font-family:'Amiri';
+src: url('fonts/Amiri-Regular.ttf') format('TrueType');
+}
+*/
+
+@font-face
+{
+font-family:'CairoReg';
+src: url('fonts/Cairo-Regular.ttf') format('TrueType');
+}
+
+@font-face
+{
+font-family:'CairoBold';
+src: url('fonts/Cairo-Bold.ttf') format('TrueType');
+}
+
+@font-face
+{
+font-family:'DroidNaskh';
+src: url('fonts/DroidNaskh-Regular.ttf') format('TrueType');
+}
+
+@font-face
+{
+font-family:'DroidKufi';
+src: url('fonts/DroidKufi-Regular.ttf') format('TrueType');
+}
+/*
+@font-face
+{
+font-family:'Lateef';
+src: url('fonts/LateefRegOT.ttf') format('TrueType');
+}
+@font-face
+{
+font-family:'Wasm';
+src: url('fonts/WasmFont.ttf') format('TrueType');
+}
+
+@font-face
+{
+font-family:'Sche';
+src: url('fonts/ScheherazadeRegOT.ttf') format('TrueType');
+}*/
+
+#title{
+    position: absolute;
+    top: 2px;
+    padding-top: 1.0em;
+    padding-right: 0.5em;
+    width: 100%;
+    margin: 0 auto;
+    text-align: right;
+    font-size: 2.0em;
+    font-family:'CairoBold', sans-serif;
+    font-weight: 700;
+    z-index: 3;
+    background: rgba(255,255,255,255,0.01);
+
+    /*'DroidKufi';*/
+}
+
+theCanvas{
+    position: absolute;
+    top: 13em;
+    height: 95%;
+    z-index: -1;
+    font-family:'CairoReg', sans-serif;
+}
+
+
+#termTextArea{
+	width: 45%;
+    position: absolute;
+    top: 6em;
+    overflow-y:auto;
+    direction:ltr;
+    max-height: 82.5vh;
+    margin-top: 1.0em;
+}
+
+
+#termText{
+	text-align: right;
+    direction:rtl;
+	/*font-family:  'Amiri';
+	 font-family: 'DroidNaskh';*/
+    font-family:'DroidKufi', sans-serif;
+	font-size: 1.0em;
+    padding-top: 1.0em;
+    padding-right: 1.0em;
+    padding-left: 1.0em;
+
+}
+
+::-webkit-scrollbar
+{
+  width: 0.5em;;  /* for vertical scrollbars */
+  height: 0.5em; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: rgba(0, 0, 0, 0.5);
+}
+
+
+#hint{
+	float:right;
+	text-align: right;
+}
+
+.demo-overlay {
+  /*text-align: right;*/
+  font-family:'CairoReg', sans-serif;
+font-weight: 400;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 2;
+}
+.demo-overlay .hover-area {
+  color: #ff9900;
+  font-size: 2em;
+  position: relative;
+  top: 2em;
+  left: 2em;
+}
+.demo-overlay .info {
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  margin-bottom: -20px;
+  box-sizing: border-box;
+  padding: 0 20px;
+  padding-bottom: 50px;
+    padding-top: 1.5em;
+  color: #fff;
+  transition: all .75s ease-in-out;
+}
+.demo-overlay .info h1 {
+  padding-top: 20;
+  margin-top: 40px;
+  font-size: 1.5em;
+  font-family: 'CairoBold';
+}
+.demo-overlay .info p {
+ /* font-family: 'DroidNaskh';*/
+}
+
+.demo-overlay .info a {
+ color:rgb(59,137,201);
+}
+.demo-overlay:hover .info {
+  max-height: 600px;
+  background-color: rgba(0, 0, 0, 0.65);
+}
+.demo-overlay .footer {
+
+}
+.demo-overlay .twitter-share-button, .demo-overlay .twitter-follow-button {
+  margin-left: 10px;
+}
+#twitter-widget-0 {
+  margin-bottom: -5px;
+}
+.demo-overlay a.follow-link {
+  float: right;
+  color: #33bbff;
+}
+
+@media (max-width: 600px) {
+  .demo-overlay a.follow-link {
+    float: left;
+  }
+}

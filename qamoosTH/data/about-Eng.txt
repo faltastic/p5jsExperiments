@@ -1,16 +1,27 @@
-<p>A Dictionary of the Revolution is a project that documents the rapid amplification of public political speech following the revolution of 25 January 2011 in Egypt.</p>
-            <p> The texts in the Dictionary were collected in conversations with around 200 individuals in Egypt from March to August 2014. Participants reacted to vocabulary cards containing 160 words that were frequently used in political conversation, talking about what the words meant to them, who they heard using them, and how their meanings had changed since the revolution.</p>
-            <p> The Arabic website contains the unchanged words of the participants, arranged in imaginary dialogues. </p>
-            <p> Each word is accompanied by a diagram that shows its relationship to other words in the Dictionary. The thicker the line connecting two words, the closer their relationship is. The diagrams are the result of an analysis of the complete text of the Dictionary. You can explore the diagrams in English here.</p>
-            <p> A Dictionary of the Revolution is a project by <a href="http‪://‬www.amirahanafi.com‪" ‬> Amira Hanafi </a> . </p>
-            <p> The website was designed by <a href="http://faltastico.tumblr.com"> Youssef Faltas </a>. </p>
-            <h3>
-Participants
+<p>A Dictionary of the Revolution documents the rapid amplification of public political speech following the revolution of 25 January 2011 in Egypt.</p>
+
+<p>You can explore the Dictionary in Arabic <a href="http://qamosalthawra.com/index.html">here</a>, and interact with a diagram describing the relationships between the terms in the Dictionary in English translation <a href="http://qamosalthawra.com/english.html">here</a>. The content of the Dictionary is currently only available in Arabic.</p>
+
+<p> Material for the Dictionary was collected in conversations with around 200 individuals in Egypt from March to August 2014. Participants reacted to vocabulary cards containing 160 words that were frequently used in political conversation, talking about what the words meant to them, who they heard using them, and how their meanings had changed since the revolution.</p>
+<p> The Arabic website contains 125 imagined dialogues woven from transcription of this speech. </p>
+<p> Each word is accompanied by a diagram that shows its relationship to other words in the Dictionary. The thicker the line connecting two words, the closer their relationship is. The diagrams are the result of an analysis of the complete text of the Dictionary.</p>
+<p> A Dictionary of the Revolution is a project by <a href="http://www.amirahanafi.com" target="blank">Amira Hanafi</a>. </p>
+<p> The website was built by <a href="https://faltastic.github.io/hello/" target="blank">Youssef Faltas</a>. </p>
+<p> Questions or comments? Write to us at <a href="mailto:qamos@qamosalthawra.com">qamos@qamosalthawra.com</a>.</p>
+<br />
+<h3>
+    Participants
 </h3>
+
             <left><img src="../img/participantsEnglish.png"  width="100%"></left>
             <h3> Vocabulary Cards </h3>
             <center> <img src="../img/box-s1.jpg" width="90%" height="auto" /> <img src="../img/box-s2.jpg" width="90%" height="auto" /> <img src="../img/box-s3.jpg" width="90%" height="auto" /> <img src="../img/box-s4.jpg" width="90%" height="auto" /> </center> 
             <br /><br />
+              <p><strong>Vocabulary Cards for A Dictionary of the Revolution</strong> is a set of 160 cards housed in a palm-sized box. Each card holds a term that was frequently used in public political speech between 2011 and 2013 in Egypt. The object encourages conversation, and can be a game for an individual or a group.</p>
+            <p>The terms are in four categories:<br/><br/>
+            <img src="../img/Key_en.png">
+            </p>
+             <br /><br />
             <h3> Published Translations</h3>
             <ul>
                 <li> <a href="https://www.indexoncensorship.org/magazine/"> Index on Censorship </a> Vol. 46.01 Spring 2017 </li>
@@ -52,4 +63,14 @@ Participants
             <p> The scale of the project would not have been possible without the additional support of generous individuals who made contributions to a 2015 Kickstarter crowdfunding campaign. </p>
             <br /> <br />
             <left><img src="../img/afac.png"  width="90%"></left>
-            <br /> <br /><br />
+            <br /> <br />
+            
+            <hr />
+
+<center>
+
+Get in touch with us
+<br /> <br />
+ &nbsp;&nbsp; <a href='https://www.facebook.com/RevolutionDictionary/' target ='_blank'> <img src='../icns/facebook-4-24.png' /></a> &nbsp; &nbsp; &nbsp; <a href='https://twitter.com/qamosalthawra' target ='_blank'> <img src='../icns/twitter-4-24.png' /></a> &nbsp; &nbsp; &nbsp; <a href='https://soundcloud.com/qamos-al-thawra' target ='_blank'> <img src='../icns/soundcloud-4-24.png' /></a> <br />
+</center>
+<br /><br /> <br />

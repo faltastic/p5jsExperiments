@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Huda Lutfi</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/imagelightbox.css">
+    <link rel="icon" type="image/png" href="icns/faveye.png"> 
+    
+    <!-- load pieces of work data -->
+    <script src='pieces.js'></script>
+
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- header -->
+        <div class="controls" id="myheader">
+            <br class="not-for-large" />
+            <h1> huda lutfi </h1>
+            <div id="nav">
+                <router-link to="/">works</router-link> -
+                <router-link to="/bio">biography</router-link> -
+                <router-link to="/contact">contact</router-link>
+            </div>
+            <br class="not-for-large" /> </div>
+        <div class="gap"></div>
+        <div class="gap"></div>
+        <transition name="fade" mode="out-in">
+            <router-view class="view"></router-view>
+        </transition>
+    </div>
+    
+<!-- View Templates
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+ 
+    <template id="worksTemplate">
+        <div>
+            <div class="controls">
+                <label>Medium:</label>
+                <button class="filter" data-filter="all">all</button>
+                <button class="filter" data-filter=".cat-1">installation</button>
+                <button class="filter" data-filter=".cat-2">collage / mixed media</button>
+                <button class="filter" data-filter=".cat-3">sculpture</button>
+                <button class="filter" data-filter=".cat-4">objects</button>
+                <br class="not-for-large" /> 
+            </div>
+            <div id="myContainer" class="container">
+                 
+                <div v-for="piece in works">
+                    <div :class="piece.categories" :data-myorder="piece.order" :id="piece.id">
+                        <a data-imagelightbox="b" :href="piece.img[0]"> <img :src="piece.thumb" :alt="piece.caption" /> </a>
+                        
+                        <a v-if="piece.nPhotos > 1" data-imagelightbox="b" :href="piece.img[1]"> <img style="display: none;" src=""  :alt="piece.caption" /> </a>
+                        
+                        <a v-if="piece.nPhotos > 2" data-imagelightbox="b" :href="piece.img[2]"> <img style="display: none;" src=""  :alt="piece.caption" /> </a>
+                        
+                        <a v-if="piece.nPhotos > 3" data-imagelightbox="b" :href="piece.img[3]"> <img style="display: none;" src=""  :alt="piece.caption" /> </a>
+                      
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </template>
+        <template id="contactTemplate">
+        <div class="normaltext">
+            <p> You can reach me at <a href="#"> somewhere</a>
+                <br/> </p>
+            <p> something about <a href="http://www.thetownhousegallery.com/" target="_blank"> Townhouse </a> and <a href="hhttp://www.thethirdline.com/" target="_blank"> ThirdLine </a> </p>
+        </div>
+    </template>
+    <template id="bioTemplate">
+        <div class="normaltext">
+            <p> Huda Lutfi is a cultural, feminist historian by professional training whose work in the field of the visual arts translates these affiliations in multiple complex ways. In her artwork, Huda excavates and makes vocal the silenced voices and marginalized spaces that cross various historical and cultural contexts mapping, as it does the politics of her engagement both as a historian and as an artist. Cultural hybridity is Huda's genealogy; it lies at the heart of her work enabling her to travel among and dialogue with many artistic traditions with which she shares the desire to liberate the human spirit and imaginary while tracing an inner meditative state of being. </p>
+            <p> Huda's solo shows include: Magnetic Bodies, Townhouse Gallery, Cairo, Egypt (2015); Cut and Paste, Townhouse Gallery, Cairo, Egypt (2013); Huda Lutfi: Twenty Years of Art, Tache Art, Cairo, Egypt (2011); Making a Man out of Him, Townhouse Gallery, Cairo, Egypt (2010); Zan'it al-Sittat, The Third Line, Dubai, UAE (2008); From Egypt with Love; The Third Line, Dubai, UAE (2008). She has been part of eminent group presentations internationally including: La Bienal del Sur, Caracas, Venezuela (2015); Fotofest: View from Inside Contemporary Arab Photography Emirates Palace, Abu Dhabi, UAE (2015); Homage to Moustapha Hasnaoui, Frederic Moison Gallery, Paris, France (2013); I am not there Townhouse Gallery, Cairo, Egypt (2012); Dak'Art-African Contemporary Art Biennale, Dakar, Senegal (2010); Icons Reloaded, Elysee Arts Gallery, Liege, Belgium (2009). </p>
+            <p> Her work is part of major collections including Barjeel Art Foundation, Sharjah, UAE; Jordan National Gallery of Fine Arts, Amman, Jordan; Museum of Modern Art, Hague, Netherlands; The American University in Cairo; Egypt and The British Museum, London, UK. </p>
+            <br />
+            <div id="biolink"> <a href="TTL BIO_Huda Lutfi_2015.pdf">Complete Bio</a> </div>
+            <br/> </div>
+    </template>
+    
+    
+    <script src='js/vue.min.js'></script>
+    <script src='js/vue-router.min.js'></script>
+    
+    <script src='js/jquery213.min.js'></script>
+    <script src='js/jquery.mixitup.min.js'></script>
+    
+    <script src='js/imagelightbox.js'></script>
+    <script src='js/imagelightbox-options.js'></script>
+    
+    
+    <script>
+        $(document).ready(function () {
+            // to disable right click on images
+            $("body").on("contextmenu", "img", function (e) {
+                return false;
+            });
+            $('#myContainer').mixItUp();
+            var nPieces = 19;
+            for (var i = 1; i < nPieces + 1; i++) {
+                $("#pc-" + i + " a").data('imagelightbox', 'b').imageLightbox({
+                    onStart: function () {
+                        overlayOn();
+                    }
+                    , onEnd: function () {
+                        captionOff();
+                        overlayOff();
+                        activityIndicatorOff();
+                    }
+                    , onLoadStart: function () {
+                        captionOff();
+                        activityIndicatorOn();
+                    }
+                    , onLoadEnd: function () {
+                        captionOn();
+                        activityIndicatorOff();
+                    }
+                });
+            };
+            /* extra
+            $( 'a[data-imagelightbox="b"]' ).imageLightbox(
+            {
+             onStart:   function() { overlayOn(); },
+             onEnd:     function() { captionOff();overlayOff(); activityIndicatorOff(); },
+             onLoadStart: function() { captionOff();activityIndicatorOn(); },
+             onLoadEnd:   function() { captionOn(); activityIndicatorOff(); }
+            });
+            */
+        });
+    </script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
+
+
+<!-- Mix It Up Gallery ->
+    <div class="controls">
+        
+        <label>Medium:</label>
+        <button class="filter" data-filter="all">all</button>
+        <button class="filter" data-filter=".cat-1">installation</button>
+        <button class="filter" data-filter=".cat-2">collage / mixed media</button>
+        <button class="filter" data-filter=".cat-3">sculpture</button>
+        <button class="filter" data-filter=".cat-4">objects</button>
+        <br class="not-for-large" />
+        
+    </div>
+    
+    
+    <div id="myContainer" class="container">
+        
+        <div class="mix cat-1 cat-2" data-myorder="1" id="pc-1">
+            <a data-imagelightbox="b" href="img/all/1-1.jpg"> <img src="img/all/thumbs/1.png" alt="Mashrabiya Dolls - (230 x 300 cm) paper cut outs , acrylic, 2006" /> </a>
+            <a data-imagelightbox="b" href="img/all/1-2.jpg"> <img style="display: none;" src="" alt="Mashrabiya Dolls - (230 x 300 cm) paper cut outs , acrylic, 2006" /> </a>
+        </div>
+        <div class="mix cat-1 cat-2 cat-4" data-myorder="2" id="pc-2">
+            <a data-imagelightbox="b" href="img/all/2-1.jpg"> <img src="img/all/thumbs/2.png" alt="Mulid Dolls - synthetic resin, wood, lights (210 x 175 x 135 cm) 2006
+" /> </a>
+        </div>
+        <div class="mix cat-1 cat-4" data-myorder="3" id="pc-3">
+            <a data-imagelightbox="b" href="img/all/3-1.jpg"> <img src="img/all/thumbs/3.png" alt="The Masha Labyrinth - 	stainless steel masha dolls, wood (180 x 210 cm x 2) 2006" /></a>
+        </div>
+        <div class="mix cat-1 cat-3" data-myorder="4" id="pc-4">
+            <a data-imagelightbox="b" href="img/all/4-1.jpg"> <img src="img/all/thumbs/4.png" alt="The Other - enlarged aluminum masha dolls, wall text, broken mirror (172 x 40 x 12 cm; 165 x 38 x 11 cm) 2007" /></a>
+        </div>
+        <div class="mix cat-4" data-myorder="5" id="pc-5">
+            <a data-imagelightbox="b" href="img/all/5-1.jpg"> <img src="img/all/thumbs/5.png" alt="Bounty Dolls - stuffed fabric dolls, acrylic, text (170 x 45 x 75 cm) 2006" /></a>
+        </div>
+        <div class="mix cat-1 cat-4" data-myorder="6" id="pc-6">
+            <a data-imagelightbox="b" href="img/all/6-1.jpg"> <img src="img/all/thumbs/6.png" alt="Mandala (Clogs of al-sitt) - wooden clogs, acrylic (200 cm diameter) 2006
+" /></a>
+        </div>
+        <div class="mix cat-1 cat-3 cat-4" data-myorder="7" id="pc-7">
+            <a data-imagelightbox="b" href="img/all/7-1.jpg"> <img src="img/all/thumbs/7.png" alt="To the Children of Africa - vintage dolls, wood (180 x 95 x 5 cm) 2006" /></a>
+            <a data-imagelightbox="b" href="img/all/7-2.jpg"> <img style="display: none;" src="" alt="To the Children of Africa - vintage dolls, wood (180 x 95 x 5 cm) 2006" /> </a>
+        </div>
+        
+        <div class="mix cat-1 cat-4" data-myorder="8" id="pc-8">
+            <a data-imagelightbox="b" href="img/all/8-1.jpg"> <img src="img/all/thumbs/8.png" alt="Sitting on the Ladder - stuffed dolls, fabric, acrylic, wood (190 x 130 x 6 cm) 2006" /></a>
+            <a data-imagelightbox="b" href="img/all/8-2.jpg"> <img style="display: none;" src="" alt="Sitting on the Ladder - stuffed dolls, fabric, acrylic, wood (190 x 130 x 6 cm) 2006" /></a>
+        </div>
+        
+        <div class="mix cat-1 cat-4" data-myorder="9" id="pc-9">
+            <a data-imagelightbox="b" href="img/all/9-1.jpg"> <img src="img/all/thumbs/9.png" alt="Energy - synthetic resin, electric lights (200 cm diameter) 2010" /></a>
+        </div>
+        
+        <div class="mix cat-1 cat-4" data-myorder="10" id="pc-10">
+            <a data-imagelightbox="b" href="img/all/10-1.jpg"> <img src="img/all/thumbs/10.png" alt="Circle of Silence - wooden moulds, white fabric (70 cm diameter) 2003" /></a>
+            
+        </div>
+        <div class="mix cat-1 cat-2 cat-4" data-myorder="11" id="pc-11">
+            <a data-imagelightbox="b" href="img/all/11-1.jpg"> <img src="img/all/thumbs/11.png" alt="Carpet of Remembrance - wooden moulds, acrylic, text, mirror (200 x 180 cm) 2003" /></a>
+            <a data-imagelightbox="b" href="img/all/11-2.jpg"> <img style="display: none;" src="" alt="Carpet of Remembrance - wooden moulds, acrylic, text, mirror (200 x 180 cm) 2003" /></a>
+        </div>
+        
+        <div class="mix cat-1 cat-3" data-myorder="12" id="pc-12">
+            <a data-imagelightbox="b" href="img/all/12-1.jpg"> <img src="img/all/thumbs/12.png" alt="Elusive Kingship - wooden crutches, acrylic, plastic toy (105 x 16 x 5 cm x 2) 2010" /></a>
+            <a data-imagelightbox="b" href="img/all/12-2.jpg"> <img style="display: none;" src="" alt="Elusive Kingship - wooden crutches, acrylic, plastic toy (105 x 16 x 5 cm x 2) 2010" /></a>
+        </div>
+        <div class="mix cat-2 cat-3" data-myorder="13" id="pc-13">
+            <a data-imagelightbox="b" href="img/all/13-1.jpg"> <img src="img/all/thumbs/13.png" alt="House Bound - mannequin legs, photo collage (63 x 39 x 16 cm x2) 2008" /></a>
+        </div>
+        <div class="mix cat-1cat-4" data-myorder="14" id="pc-14">
+            <a data-imagelightbox="b" href="img/all/14-1.jpg"> <img src="img/all/thumbs/14.png" alt="Zan’a - synthetic resin, electric lights (14 heads, 35  x 14 x 16 cm each) 2008" /></a>
+        </div>
+        <div class="mix cat-1 cat-4" data-myorder="15" id="pc-15">
+            <a data-imagelightbox="b" href="img/all/15-1.jpg"> <img src="img/all/thumbs/15.png" alt="Stripping off the Garments - perfume bottles, white fabric, black violet light, wood (110 x 110 cm) 2010" /></a>
+            <a data-imagelightbox="b" href="img/all/15-2.jpg"> <img style="display: none;" src="" alt="Stripping off the Garments - perfume bottles, white fabric, black violet light, wood (110 x 110 cm) 2010"/></a>
+        </div>
+        <div class="mix cat-1 cat-3" data-myorder="16" id="pc-16">
+            <a data-imagelightbox="b" href="img/all/16-1.jpg"> <img src="img/all/thumbs/16.png" alt="Obelisk - wood, acrylic, text, photo collage (80 x 80 x 200 cm) 2010" /></a>
+        </div>
+        <div class="mix cat-1 cat-2 cat-4" data-myorder="17" id="pc-17">
+            <a data-imagelightbox="b" href="img/all/17-1.jpg"> <img src="img/all/thumbs/17.png" alt="The Perfumed Garden - recycled perfume bottles, hand painted photos, wood (120 x 190 x 12 cm) 2008" /></a>
+            <a data-imagelightbox="b" href="img/all/17-2.jpg"> <img style="display: none;" src="" alt="The Perfumed Garden - recycled perfume bottles, hand painted photos, wood (120 x 190 x 12 cm) 2008" /></a>
+            <a data-imagelightbox="b" href="img/all/17-3.jpg"> <img style="display: none;" src="" alt="The Perfumed Garden - recycled perfume bottles, hand painted photos, wood (120 x 190 x 12 cm) 2008" /></a>
+        </div>
+        <div class="mix cat-1 cat-2 cat-4" data-myorder="18" id="pc-18">
+            <a data-imagelightbox="b" href="img/all/18-1.jpg"> <img src="img/all/thumbs/18.png" alt="Cactus Feet, Cactus Crutches - printed canvas, wood, synthetic resin, 2015" /></a>
+        </div>
+    
+    <template id="worksTemplateAll">
+
+        <div>
+            <div class="controls">
+                <label>Medium:</label>
+                <button class="filter" data-filter="all">all</button>
+                <button class="filter" data-filter=".cat-1">installation</button>
+                <button class="filter" data-filter=".cat-2">collage / mixed media</button>
+                <button class="filter" data-filter=".cat-3">sculpture</button>
+                <button class="filter" data-filter=".cat-4">objects</button>
+                <br class="not-for-large" /> </div>
+            <div id="myContainer" class="container">
+                <div class="mix cat-1 cat-2" data-myorder="1" id="pc-1">
+                    <a data-imagelightbox="b" href="img/all/1-1.jpg"> <img src="img/all/thumbs/1.png" alt="Mashrabiya Dolls - (230 x 300 cm) paper cut outs , acrylic, 2006" /> </a>
+                    <a data-imagelightbox="b" href="img/all/1-2.jpg"> <img style="display: none;" src="" alt="Mashrabiya Dolls - (230 x 300 cm) paper cut outs , acrylic, 2006" /> </a>
+                </div>
+            </div>
+        </div>
+    </template>
+    
+        
+    -->
