@@ -68,7 +68,7 @@ var nPhotos =[
     1
 ];
 
-var extraBase = "p5jsExperiments/huda/en/"
+var extraBase = "https://raw.githubusercontent.com/faltastic/p5jsExperiments/gh-pages/huda/en/";
 
 for (var i = 0; i < N-1; i++) {
    preWork[i]={};
