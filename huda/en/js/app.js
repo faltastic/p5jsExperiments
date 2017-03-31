@@ -21,7 +21,7 @@ var works = {
 // Create the router
 var router = new VueRouter({
     mode: 'history',
-    base: 'en',//window.location.href,
+    base: window.location.href,
     routes: [
         {
             path: '/'
