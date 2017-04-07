@@ -23,6 +23,7 @@ body, button{
   font-family: 'Hind', sans-serif;
   font-size: 100%;
 
+
 }
 
 
@@ -148,6 +149,7 @@ button + label{
   text-align: left;
   background: #eee; 
   padding-bottom: 5%;
+  color: #333;
 }
 
 
