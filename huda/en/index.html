@@ -31,7 +31,7 @@
         <div class="gap"></div>
         <div class="gap"></div>
         <transition name="fade" mode="out-in">
-            <router-view class="view"></router-view>
+            <router-view class="view" :key="$route.path"></router-view>
         </transition>
     </div>
 
