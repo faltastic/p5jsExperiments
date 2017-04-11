@@ -35,7 +35,7 @@ var aboutText = "";
 function preload() {}
 
 function setup() {
-    var myCanvas = createCanvas( windowWidth,  0.94*windowHeight);
+    var myCanvas = createCanvas( 0.95*windowWidth,  0.97*(windowHeight-32));
     myCanvas.parent("chordEN");
     //frameRate(2);
     //rectMode(CORNERS);
@@ -51,7 +51,7 @@ function setup() {
     d = Drough;
     //console.log(Drough);
     R = height / 4;
-    Cx = width/2;
+    Cx = 1.05*width/2;
     for (var i = 0; i < N; i++) {
         t[i] = words[i]['English'];
         theta[i] = i * TWO_PI / N;
@@ -195,7 +195,7 @@ var dThetaN;
 
 function draw() {
     // console.log(mouseX/width);
-    if (document.readyState === "complete" && frameCount > 60 && frameCount < 65) {
+    if (document.readyState === "complete" && frameCount < 45) {
         chordAll();
     }
 }
