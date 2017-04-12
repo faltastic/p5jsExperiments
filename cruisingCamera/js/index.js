@@ -11,12 +11,14 @@ for (var i = 0; i < 3000; i++) {
     perlinPoints.push(new THREE.Vector3(noise(nx + i / 5) * window.innerHeight - window.innerHeight / 2, noise(ny + i / 5) * window.innerHeight - window.innerHeight / 2, noise(nz + i / 5) * window.innerHeight - window.innerHeight / 2));
 }
 var splines = [
-  ["Spline", new THREE.SplineCurve3(randomPoints.slice(1, 100))]
+
+
+ ["Spline", new THREE.SplineCurve3(randomPoints.slice(1, 100))]
 , ["Perlin Spline", new THREE.SplineCurve3(perlinPoints.slice(1, 200))]
-, ["Helix Curve", new THREE.Curves.HelixCurve(200)]
+, ["Cinquefoil Knot", new THREE.Curves.CinquefoilKnot(90)]
+    , ["Helix Curve", new THREE.Curves.HelixCurve(200)]
 , ["Trefoil Knot", new THREE.Curves.TrefoilKnot(50)]
 , ["Torus Knot", new THREE.Curves.TorusKnot(100)]
-, ["Cinquefoil Knot", new THREE.Curves.CinquefoilKnot(100)]
 , ["Trefoil poly Knot", new THREE.Curves.TrefoilPolynomialKnot(50)]
 , ["Granny Knot", new THREE.Curves.GrannyKnot()]
 , ["Heart Curve", new THREE.Curves.HeartCurve(1)]
@@ -40,7 +42,7 @@ var gui;
 var guiP;
 var guiParams = function () {
     this.speed = 50;
-    this.curves = 0;
+    this.curves = 2;
 };
 
 function initGUI() {
@@ -48,6 +50,7 @@ function initGUI() {
     gui = new dat.GUI();
     gui.add(guiP, 'speed', 0, 100);
     gui.add(guiP, 'curves', splinesNames);
+
 };
 
 function updateParams() {
@@ -64,8 +67,10 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, .1, 2000);
-    speed = 1;
-    spline = splines[0][1];
+
+    speed=1;
+    spline = splines[parseInt(guiP.curves)][1];
+
     for (var i = 0; i < 3000; i++) {
         var b = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1)
             , //new THREE.SphereGeometry( 1 ),
