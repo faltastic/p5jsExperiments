@@ -16,7 +16,7 @@ var splines = [
  ["Spline", new THREE.SplineCurve3(randomPoints.slice(1, 100))]
 , ["Perlin Spline", new THREE.SplineCurve3(perlinPoints.slice(1, 200))]
 , ["Cinquefoil Knot", new THREE.Curves.CinquefoilKnot(90)]
-    , ["Helix Curve", new THREE.Curves.HelixCurve(200)]
+, ["Helix Curve", new THREE.Curves.HelixCurve(200)]
 , ["Trefoil Knot", new THREE.Curves.TrefoilKnot(50)]
 , ["Torus Knot", new THREE.Curves.TorusKnot(100)]
 , ["Trefoil poly Knot", new THREE.Curves.TrefoilPolynomialKnot(50)]
@@ -122,7 +122,7 @@ function update() {
         camPosIndex += speed / 10;
     }
     if (camPosIndex > 10000) {
-        camPosIndex = 0;
+       camPosIndex = 0;
     }
     /*
     nx += speed/1000;
