@@ -25,130 +25,26 @@ var imgCat = [
     ];
 
 var imgCaption = [
-    "Mashrabiyya Dolls <br /> paper cut outs , acrylic (230 x 300 cm) 2006",
-    "mix cat-4 cat-2",
-    "mix cat-3",
-    "mix cat-1 cat-4",
-    "mix cat-2 cat-3",
-    "mix cat-1 cat-2",
-    "mix cat-4 cat-2",
-    "mix cat-3",
-    "mix cat-1 cat-4",
-    "mix cat-2 cat-3",
-    "mix cat-1 cat-2",
-    "mix cat-4 cat-2",
-    "mix cat-3",
-    "mix cat-1 cat-4",
-    "mix cat-2 cat-3",
-    "mix cat-1 cat-2",
-    "mix cat-4 cat-2",
-    "mix cat-3",
-    "mix cat-1 cat-4",
-    "mix cat-2 cat-3",
-    ];
-/*
-1- Title: Mashrabiyya Dolls
-	 paper cut outs , acrylic (230 x 300 cm) 2006
+    "Mashrabiyya Dolls - paper cut outs , acrylic (230 x 300 cm) 2006",
+    "Mulid Dolls - synthetic resin, wood, lights (210 x 175 x 135 cm) 2006",
+    "The Masha Labyrinth - steenles steel masha dolls, wood (180 x 210 cm x 2) 2006",
+    "The Other - Enlarged aluminum masha dolls, wall text, broken mirror (172 x 40 x 12 cm; 165 x 38 x 11 cm) 2007",
+    "Bounty Dolls - stuffed fabric dolls, acrylic, text (170 x 45 x 75 cm) 2006",
+    "Mandala (Clogs of al-sitt) - wooden clogs, acrylic (200 cm diameter) 2006",
+    "To the Children of Africa - Vintage dolls, wood (180 x 95 x 5 cm) 2006",
+    "Sitting on the Ladder - stuffed dolls, fabric, acrylic, wood (190 x 130 x 6 cm) 2006",
+    "Energy - synthetic resin, electric lights (200 cm diameter) 2010",
+    "Circle of Silence - wooden moulds, white fabric (70 cm diameter) 2003",
+    "Carpet of Remembrance - wooden moulds, acrylic, text, mirror (200 x 180 cm) 2003",
+    "Elusive Kingship - wooden crutches, acrylic, plastic toy (105 x 16 x 5 cm x 2) 2010",
+    "House Bound - mannequin legs, photo collage (63 x 39 x 16 cm x 2) 2008",
+    "Zan’a - synthetic resin, electric lights (14 heads, 35  x 14 x 16 cm each) 2008",
+    "Stripping off the Garments - perfume bottles, white fabric, black violet light, wood (110 x 110 cm) 2010 ",
+    "Obelisk - wood, acrylic, text, photo collage (80 x 80 x 200 cm) 2010",
+    "The Perfumed Garden - recycled perfume bottles, hand painted photos, wood (120 x 190 x 12 cm) 2008",
 
-2- Title: Mulid Dolls
-	Size: 210 x 175 x 135 cm
-	Medium: synthetic resin, wood, lights
-	Year: 2006
-
-3- Title: The Masha Labyrinth
-	Size: 180 x 210 cm x 2
-	Medium:  steenles steel masha dolls, wood
-	Year: 2006
-
-4- Title: The Other
-	Size: 172 x 40 x 12 cm; 165 x 38 x 11 cm
-	Medium: Enlarged aluminum masha dolls, wall text, broken mirror.
-	Year: 2007
-
-5- Title: Bounty Dolls
-	Size 170 x 45 x 75 cm
-	Medium: stuffed fabric dolls, acrylic, text
-	Year: 2006
-
-6- Title: Mandala (Clogs of al-sitt)
-	Size: 200 cm diameter
-	Medium: wooden clogs, acrylic
-	Year: 2006
-
-7- Title: To the Children of Africa
-	Size: 180 x 95 x 5 cm
-	Medium: Vintage dolls, wood
-	Year: 2006
-
-8- Title: To the Children of Africa (detail)
-
-8a- Title: Sitting on the Ladder
-	Size: 190 x 130 x 6 cm
-	Medium: Stuffed dolls, fabric, acrylic, wood
-	Year: 2006
-
-8b-	Title: Sitting on the Ladder (detail)
-
-9- Title: Energy
-	Size: 200 cm diameter
-	Medium: synthetic resin, electric lights
-	Year: 2010
-
-10- Title: Circle of Silence
-	Size: 70 cm diameter
-	Medium: wooden moulds, white fabric,
-	Year: 2003
-
-11- Title: Carpet of Remembrance
-	Size: 200 x 180 cm
-	Medium: wooden moulds, acrylic, text, mirror
-	Year: 2003
-
-12- Title: Carpet of Remembrance (detail)
-
-13- Title: Elusive Kingship
-	Size: 105 x 16 x 5 cm x 2
-	Medium: wooden crutches, acrylic, plastic toy
-	Year: 2010
-14- Title: Elusive Kingship (detail)
-
-15- Title: House Bound
-	Size: 63 x 39 x 16 cm x2
-	Medium: mannequin legs, photo collage
-	Year: 2008
-
-16- Title: Zan’a
-	Size: 14 heads, 35  x 14 x 16 cm each
-	Medium: synthetic resin, electric lights
-	Year: 2008
-
-17- Title: Stripping off the Garments
-	Size: 110 x 110 cm
-	Medium: perfume bottles, white fabric, black violet light, wood
-	Year: 2010
-
-18- Title: Stripping off the Garments (detail)
-
-19- Title: Obelisk
-	Size: 80 x 80 x 200 cm
-	Medium: wood, acrylic, text, photo collage
-	Year: 2010
-
-20- The Perfumed Garden
-	Size: 120 x 190 x 12 cm
-	Medium: recycled perfume bottles, hand painted photos, wood
-	Year: 2008
-
-21- The Perfumed Garden (detail)
-
-22- The Perfumed Garden (detail)
-
-23- Cactus Feet, Cactus Crutches (detail)
-	Size: Variable Sizes
-	Medium: Printed canvas, wood, synthetic resin
-	Year: 2015
-*/
-
+    "Cactus Feet, Cactus Crutches - printed canvas, wood, synthetic resin (variable sizes) 2015"
+];
 
 
 var nPhotos =[
