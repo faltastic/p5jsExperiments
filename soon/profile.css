@@ -1,0 +1,513 @@
+@import url(//fonts.googleapis.com/earlyaccess/notonaskharabic.css);
+
+
+body {
+    color: #000;
+    font-family: 'Noto Naskh Arabic', serif;
+    direction: rtl;
+    background: #ddd;
+
+
+}
+
+.pure-img-responsive {
+    max-width: 100%;
+    height: auto;
+
+}
+
+
+
+/* Grid
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.container {
+  position: relative;
+  width: 100%;
+  /*max-width: 960px;*/
+  margin: 0 auto;
+  padding: 0 10px;
+  box-sizing: border-box;
+max-height:100%;}
+.column,
+.columns {
+  width: 100%;
+  float: left;
+  box-sizing: border-box; }
+
+/* For devices larger than 400px */
+@media (min-width: 400px) {
+  .container {
+    width: 95%;
+    padding: 0; }
+}
+
+/* For devices larger than 550px */
+@media (min-width: 550px) {
+  .container {
+    width: 100%; }
+  .column,
+  .columns {
+   /* margin-left: 4%;*/ }
+  .column:first-child,
+  .columns:first-child {
+    margin-left: 0; }
+
+  .one.column,
+  .one.columns                    { width: 4.66666666667%; }
+  .two.columns                    { width: 13.3333333333%; }
+  .three.columns                  { width: 22%;            }
+  .four.columns                   { width: 30.6666666667%; }
+  .five.columns                   { width: 39.3333333333%; }
+  .six.columns                    { width: 48%;            }
+  .seven.columns                  { width: 56.6666666667%; }
+  .eight.columns                  { width: 65.3333333333%; }
+  .nine.columns                   { width: 74.0%;          }
+  .ten.columns                    { width: 82.6666666667%; }
+  .eleven.columns                 { width: 91.3333333333%; }
+  .twelve.columns                 { width: 100%; margin-left: 0; }
+
+  .one-third.column               { width: 30.6666666667%; }
+  .two-thirds.column              { width: 65.3333333333%; }
+
+  .one-half.column                { width: 48%; }
+
+  /* Offsets */
+  .offset-by-one.column,
+  .offset-by-one.columns          { margin-left: 8.66666666667%; }
+  .offset-by-two.column,
+  .offset-by-two.columns          { margin-left: 17.3333333333%; }
+  .offset-by-three.column,
+  .offset-by-three.columns        { margin-left: 26%;            }
+  .offset-by-four.column,
+  .offset-by-four.columns         { margin-left: 34.6666666667%; }
+  .offset-by-five.column,
+  .offset-by-five.columns         { margin-left: 43.3333333333%; }
+  .offset-by-six.column,
+  .offset-by-six.columns          { margin-left: 52%;            }
+  .offset-by-seven.column,
+  .offset-by-seven.columns        { margin-left: 60.6666666667%; }
+  .offset-by-eight.column,
+  .offset-by-eight.columns        { margin-left: 69.3333333333%; }
+  .offset-by-nine.column,
+  .offset-by-nine.columns         { margin-left: 78.0%;          }
+  .offset-by-ten.column,
+  .offset-by-ten.columns          { margin-left: 86.6666666667%; }
+  .offset-by-eleven.column,
+  .offset-by-eleven.columns       { margin-left: 95.3333333333%; }
+
+  .offset-by-one-third.column,
+  .offset-by-one-third.columns    { margin-left: 34.6666666667%; }
+  .offset-by-two-thirds.column,
+  .offset-by-two-thirds.columns   { margin-left: 69.3333333333%; }
+
+  .offset-by-one-half.column,
+  .offset-by-one-half.columns     { margin-left: 52%; }
+
+}
+
+/* Utilities
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.u-full-width {
+  width: 100%;
+  box-sizing: border-box; }
+.u-max-full-width {
+  max-width: 100%;
+  box-sizing: border-box; }
+.u-pull-right {
+  float: right; }
+.u-pull-left {
+  float: left; }
+
+/* Clearing
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+/* Self Clearing Goodness */
+.container:after,
+.row:after,
+.u-cf {
+  content: "";
+  display: table;
+  clear: both; }
+/*
+Add transition to containers so they can push in and out.
+*/
+#layout,
+#menu,
+.menu-link {
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+/*
+This is the parent `<div>` that contains the menu and the content area.
+*/
+#layout {
+    position: relative;
+    right: 0;
+    padding-right: 0;
+}
+    #layout.active #menu {
+        right: 200px;
+        width: 200px;
+    }
+
+    #layout.active .menu-link {
+        right: 200px;
+    }
+/*
+The content `<div>` is where all your content goes.
+*/
+.content {
+    margin: 0 auto;
+   padding-left: 1em;
+    padding-right: 1em;
+    max-width: 800px;
+    margin-bottom: 50px;
+    line-height: 1.6em;
+    direction: rtl;
+    -webkit-overflow-scrolling: touch;
+}
+
+.header {
+     margin: 0;
+     color: #000;
+     text-align: center;
+     padding-bottom: 0.5em;
+
+ }
+    .header h1 {
+
+        font-size: 1.25em;
+        line-height: 1.2em;
+        font-weight: 700;
+
+    }
+     .header h2 {
+        font-weight: 300;
+        color: #ccc;
+        padding: 0;
+        margin-top: 0;
+    }
+
+.content-subhead {
+    margin: 50px 0 20px 0;
+    font-weight: 300;
+    color: #888;
+}
+
+#textData{
+    direction: rtl;
+    padding-left: 1em;
+}
+
+#photoData{
+    padding-top: 1em;
+    padding-left: 1.5em;
+    align-content: center;
+    line-height: 1em;
+    padding-bottom: 1em;
+
+}
+
+
+
+/*-------------------------
+    The search input
+--------------------------*/
+
+form{
+    margin-top: 12px;
+    width: 90%;
+}
+
+.bar{
+    background-color:#000;
+
+    /*background-image:-webkit-linear-gradient(top, #5c9bb7, #5392ad);
+    background-image:-moz-linear-gradient(top, #5c9bb7, #5392ad);
+    background-image:linear-gradient(top, #5c9bb7, #5392ad);
+    */
+    height: 32px;
+
+    border-radius: 2px;
+    width: 95%;
+    margin-right:6%;
+    position:relative;
+}
+
+.bar input{
+    background:#fff no-repeat 4px;
+
+    background-image: url(../img/search.png);
+    border: none;
+    width: 100%;
+    height: 30px;
+    line-height: 24px;
+    border-radius: 2px;
+    text-align: right;
+    font-size: 16px;
+    color: #000;
+    font-weight: normal;
+    padding-right: 4px;
+
+}
+
+
+/*
+The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
+appears on the right side of the page.
+*/
+
+#menu {
+    margin-right: -200px; /* "#menu" width */
+    width: 200px;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000; /* so the menu or its navicon stays above all content */
+    background: #000;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    direction:rtl;
+
+}
+    /*
+    All anchors inside the menu should be styled like this.
+    */
+    #menu a {
+        color: #fff;
+        border: none;
+        text-decoration: none;
+        margin:0;
+        padding:0;
+
+
+    }
+
+    /*
+    Remove all background/borders, since we are applying them to #menu.
+    */
+#menu .pure-menu{
+        border: none;
+        background: transparent;
+         width:100%;
+         padding-right:0px;
+    margin-left:0px;
+
+
+    }
+#menu .pure-menu ul {
+    width:100%;
+    padding-right: 10%;
+}
+
+
+
+    /*
+    Add that light border to separate items into groups.
+    */
+    #menu .pure-menu ul,
+    #menu .pure-menu .menu-item-divided {
+        margin:0;
+        padding-top: 1em;
+        padding-bottom:4px;
+        width: 95%;
+
+    }
+        /*
+        Change color of the anchor links on hover/focus.
+        */
+        #menu .pure-menu li a:hover,
+        #menu .pure-menu li a:focus {
+            background: #333;
+        }
+
+
+    /*
+    This styles the selected menu item `<li>`.
+    */
+    #menu .pure-menu-selected,
+    #menu .pure-menu-heading {
+        /*background: #1f8dd6;*/
+    }
+        /*
+        This styles a link within a selected menu item `<li>`.
+        */
+        #menu .pure-menu-selected a {
+            color: #fff;
+        }
+
+    /*
+    This styles the menu heading.
+    */
+    #menu .pure-menu-heading {
+        font-size: 110%;
+        color: #fff;
+        margin: 0;
+    }
+
+/* -- Dynamic Button For Responsive Menu -------------------------------------*/
+
+/*
+The button to open/close the Menu is custom-made and not part of Pure. Here's
+how it works:
+*/
+
+/*
+`.menu-link` represents the responsive menu toggle that shows/hides on
+small screens.
+*/
+.menu-link {
+    position: fixed;
+    display: block; /* show this only on small screens */
+    top: 1em;
+    right: 0; /* "#menu width" */
+    background: #000;
+    /*background: rgba(0,0,0,0.7);*/
+    font-size: 10px; /* change this value to increase/decrease button size */
+    z-index: 10;
+    width: 2.5em;
+    height: auto;
+    padding: 2.1em 1.6em;
+}
+
+    .menu-link:hover,
+    .menu-link:focus {
+        background: #000;
+    }
+
+    .menu-link span {
+        position: relative;
+        display: block;
+    }
+
+    .menu-link span,
+    .menu-link span:before,
+    .menu-link span:after {
+        background-color: #fff;
+        width: 100%;
+        height: 0.2em;
+    }
+
+        .menu-link span:before,
+        .menu-link span:after {
+            position: absolute;
+            margin-top: -0.6em;
+            content: " ";
+        }
+
+        .menu-link span:after {
+            margin-top: 0.6em;
+        }
+
+
+/* -- Responsive Styles (Media Queries) ------------------------------------- */
+
+
+@media (min-width: 35.5em) {
+/*
+    .photosColumn{
+        width: 25%;
+        left: 0px;
+        position: absolute;
+    }
+    .textdataColumn{
+        width: 75%;
+        padding-right: 2em;
+    }
+*/
+}
+
+
+/*
+Hides the menu at `48em`, but modify this based on your app's needs.
+*/
+@media (min-width: 48em) {
+
+    .header {
+        margin-top:-16px;
+        padding-right: 2em;
+        width:100%;
+    }
+    #bannerImg{
+        width: 80%;
+    }
+    #logoImg{
+        padding-top:1em;
+        width:60%;
+    }
+
+    #layout {
+        padding-right: 200px; /* right col width "#menu" */
+        right: 0;
+
+    }
+    #menu {
+        right: 200px;
+    }
+
+    .menu-link {
+        position: fixed;
+        right: 200px;
+        display: none;
+    }
+
+    #layout.active .menu-link {
+        right: 200px;
+    }
+}
+
+@media (max-width: 48em) {
+    /* Only apply this when the window is small. Otherwise, the following
+    case results in extra padding on the right:
+        * Make the window small.
+        * Tap the menu to trigger the active state.
+        * Make the window large again.
+    */
+
+
+    #bannerImg{
+        width: 100%;
+    }
+    #menu {
+       width: 300px;
+        min-width: 300px;
+        right: -400px;
+
+    margin-right: -200px; /* "#menu" width */
+
+    }
+     #layout.active .menu-link {
+        right: 300px;
+    }
+    #layout.active {
+        position: relative;
+        right:300px;
+    }
+    #logoImg{
+        width:60%;
+    }
+     #photoData{
+         padding-right: 3em;
+        width: 100%;
+    }
+    #textData{
+        width: 100%;
+        padding-right: 3%;
+    }
+}
+
+
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1.5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0
+}
+

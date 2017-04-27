@@ -1,7 +1,5 @@
 Vue.use(VueRouter)
-    //var headerT =  Vue.extend({
-    //   template: '#headerTemplate'
-    //});
+
 var bio = {
     template: '#bioTemplate'
 };
@@ -41,6 +39,7 @@ var router = new VueRouter({
 
 
 var pieces = {works: preWork};
+// at pieces.js
 
 
 
