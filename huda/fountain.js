@@ -50,19 +50,26 @@ function setup() {
         eyes[i].resize(w1, h1);
     }
     var t = {
-          name: "test"
+          name: "eyes"
         , shape: "ximage"
         , acceleration: -0.1
-        , colors: ["blue", [0, 255, 127, 127], [0, 255, 64, 32]]
+        , colors: ["blue"]
         , lifetime: 500
          // angle: [240, 300],
         , size: [32, 124]
         , partSize: 0.010 //dxy: [0.1, 0.1],
         , dxy: [0.33, 0.33]
-        , rate: [40, 0.001]
+        , rate: [0,1] //[40, 0.001]
         , x: 0.4
         , y: 0.4
     };
+    //less and slower particles for mobile
+    if(height > width){
+        t["lifetime"] = 75;
+        t["dxy"] = [0.33, 0.77]
+        frameRate(10);
+    }
+
     Fountain_display("ximage", xfimage);
     //set draw function based on shape name
     of = new Fountain(null, t);
@@ -73,8 +80,14 @@ function draw() {
     noffx += 0.005;
     noffy += 0.005;
 
+    if(mouseX){
     noiseX = map(mouseX, 0, width, width/20, -width/20);
     noiseY = map(mouseY, 0, height, height/20, -height/20);
+    }
+    else {
+        noiseX= 0;
+        noiseY= 0;
+    }
 
     background(157, 20, 20);
 
