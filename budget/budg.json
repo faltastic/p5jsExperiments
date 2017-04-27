@@ -1,0 +1,59 @@
+{
+ "name": "budget",
+    "size": 20000,
+ "children": [
+  {
+   "name": "health",
+    "size": 17800,
+   "children": [
+    {
+     "name": "h 1",
+        "size": 5785,
+     "children": [
+      {"name": "h 11", "size": 6938},
+      {"name": "h 12", "size": 3812}
+     ]
+    },
+       {"name" : "h 2",
+        "size": 2639
+       }
+    ]
+  },
+  {
+     "name": "education",
+      "size": 15125,
+     "children": [
+      {"name": "e 1", "size": 3534},
+      {"name": "e 2", "size": 5731},
+      {"name": "e 3", "size": 7840},
+      {"name": "e 4", "size": 5914}
+     ]
+   },
+    {
+     "name": "food",
+      "size": 9074,
+     "children": [
+      {"name": "b 1", "size": 7074},
+      {"name": "b 1", "size": 1074}
+     ]
+    },
+    {
+       "name": "طاقة",
+        "size": 10200,
+       "children": [
+        {"name": "p 1", "size": 17010},
+        {"name": "p 2", "size": 5842},
+        {
+         "name": "p 3",
+         "size": 5400,
+         "children": [
+          {"name": "p 31", "size": 1983},
+          {"name": "p 32", "size": 2047},
+          {"name": "p 33", "size": 1375}
+         ]
+        },
+        {"name": "p 4", "size": 1041}
+       ]
+    }
+  ]
+}
