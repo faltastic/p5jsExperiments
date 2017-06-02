@@ -1022,14 +1022,25 @@ var BubbleTree = function(config, onHover, onUnHover) {
 
 			da = a2rad(c.amount) / childRadSum * twopi;
 			ca = oa + da*0.5;
+            
+            /* Fixing for smaller radii 
+            YOUSSEF
+            c.id=10 is  beee2a
+            */
+               
+            if(da < 0.225 && c.id!=10 ){
+                da = 0.5;
+                ca = oa - Math.PI/6 ;
+            }
+            // für jedes kind einen bubble anlegen und mit dem parent verbinden
+			oa += da;
+            
 
 			if (isNaN(ca)) vis4.log(oa, da, c.amount, childRadSum, twopi);
 
 			c.centerAngle = ca;
 
 			childBubble = me.createBubble(c, parentBubble.pos, 0, ca, c.color);
-			// für jedes kind einen bubble anlegen und mit dem parent verbinden
-			oa += da;
 
 			me.traverseBubbles(childBubble);
 		});
@@ -1419,7 +1430,8 @@ var BubbleTree = function(config, onHover, onUnHover) {
 			node = node.parent;
 		}
 		parts.reverse();
-		return me.baseUrl+'/~/'+parts.join('/');
+		//return me.baseUrl+'/~/'+parts.join('/');
+        return me.baseUrl+parts.join('/');
 	};
 
 	me.onNodeClick = function(node) {
@@ -2221,6 +2233,11 @@ BubbleTree.Bubbles.Donut = function(node, bubblechart, origin, radius, angle, co
 			b = me.node.breakdowns[i];
 			b.famount = me.bc.config.formatValue(b.amount);
 			val = b.amount / me.node.amount;
+//            if(b.amount/me.node.amount > 5){
+//                console.log(val);
+//                console.log(b.amount);
+//                val = 3*val;
+//            }
 			breakdown.push(val);
 			bd.push(b);
 
