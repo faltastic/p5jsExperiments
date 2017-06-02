@@ -2,13 +2,14 @@ var budgetEgypt = {
  "label": "الموزانة العامة  <br />    (مليون جنية مصري)",
 "name": "الموزانة العامة xxxx",        
  "amount": 974.8,
- "color": '#8b0707',
+ "color": '#af4a4e',
  "id": 0,    
  "children": 
      [
       {
         "label": "خدمات عمومية عامة",
         "amount": 380.5,
+         "color":"#c370ae",  
         "id": 1, 
         "children":
           [
@@ -41,7 +42,8 @@ var budgetEgypt = {
       {
         "label": "الحماية الاجتماعية",
         "amount": 187.4,
-        "id": 2,   
+        "id": 2,
+        "color":"#618839",  
         "children":
           [
               {
@@ -73,6 +75,7 @@ var budgetEgypt = {
       {
         "label": "التعليم",
         "amount": 103.9,
+        "color":"#886ebd",
         "id": 3,   
         "children":
           [
@@ -105,6 +108,7 @@ var budgetEgypt = {
       {
         "label": "الإسكان والمرافق المجتمعية",
         "amount": 78.7,
+        "color":"#967e30",  
         "id": 4, 
         "children":
           [
@@ -137,6 +141,7 @@ var budgetEgypt = {
      {
         "label": "النظام والسلامة العامة",
         "amount": 50.8,
+        "color":"#4788cd",
         "id": 5, 
         "children":
           [
@@ -169,6 +174,7 @@ var budgetEgypt = {
        {
         "label": "الصحة",
         "amount": 48.9,
+        "color":"#ae6636",
         "id": 6,   
         "children":
           [
@@ -201,6 +207,7 @@ var budgetEgypt = {
       {
         "label": "دفاع وأمن قومى",
         "amount": 47.1,
+        "color":"#409866",
         "id": 7,   
         "children":
         [
@@ -233,6 +240,7 @@ var budgetEgypt = {
       {
         "label": "شئون اقتصادية",
         "amount": 43.6,
+        "color":"#a1477a",
         "id": 8, 
         "children":
           [
@@ -264,7 +272,8 @@ var budgetEgypt = {
       },
       {
         "label": "الشباب والثقافة والشئون الدينية",
-        "amount": 31.8,
+        "amount": 31.8,        
+        "color":"#d87662",
         "id": 9,   
         "children":
           [
@@ -297,7 +306,8 @@ var budgetEgypt = {
       {
         "label": "حماية البيئة",
         "amount": 1.9,
-         "id": 10,   
+        "color":"#d56985",
+        "id": 10,   
         "children":
           [
               {
