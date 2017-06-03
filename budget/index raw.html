@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Minimal BubbleTree Demo</title>
+<script type="text/javascript" src="egy2016.json"></script>
+  <script type="text/javascript" src="lib/jquery.min.js"></script>
+  <script type="text/javascript" src="lib/jquery-migrate.min.js"></script>
+  <script type="text/javascript" src="lib/jquery.history.js"></script>
+  <script type="text/javascript" src="lib/jquery.tooltip.min.js"></script>
+  <script type="text/javascript" src="lib/raphael-min.js"></script>
+  <script type="text/javascript" src="lib/Tween.js"></script>
+  <script type="text/javascript" src="lib/bubbletreeEGY.js"></script>
+<!--
+<script type="text/javascript" src="../assets/styles/cofog.js"></script>
+  <link rel="stylesheet" href="../assets/styles/bubbletree.css" />
+-->
+    <link rel="stylesheet" type="text/css" href="bubbletree.css" />
+
+</head>
+<body>
+
+
+
+
+<div id="header">
+   <a class="title">
+
+      الموزانة العامة المصرية 
+<!--
+       <br />
+       لجمهورية مصر العربية
+       
+-->
+       <br />
+       2016-17
+
+    </a>
+	    <div class="subtitle"></div>
+    </div>
+
+
+    
+	<div class="bubbletree-wrapper">
+		<div class="bubbletree"></div>
+	</div>
+
+ <script type="text/javascript">
+     /*var colores_g = ["#3366cc", "#dc3912", "#ff9900", "#109618", "#990099", "#0099c6", "#dd4477", "#66aa00", "#b82e2e", "#316395", "#994499", "#22aa99", "#aaaa11", "#6633cc", "#e67300", "#8b0707", "#651067", "#329262", "#5574a6", "#3b3eac"];
+     [
+"color":"#af4a4e",
+"color":"#c370ae",
+"color":"#618839",
+"color":"#886ebd",
+"color":"#967e30",
+"color":"#4788cd",
+"color":"#ae6636",
+"color":"#409866",
+"color":"#a1477a",
+"color":"#d87662",
+"color":"#d56985"
+]
+
+
+*/
+ 
+     var data;
+     
+		$(function() {
+            /*
+			var randomNames = ['Burgis', 'Pascal', 'Lysann', 'Theo', 'Julia', 'Barnabas', 'Immanuel', 'Marisa', 'Folker', 'Hadumod', 'Friedegunde', 'Marco', 'Otto', 'Sonnhardt', 'Arntraud', 'Andree', 'Wiltrudis', 'Astrid', 'Kathrein', 'Raoul', 'Vivien', 'Ole', 'Leo', 'Dankward', 'David', 'Ferfried', 'Sonngard', 'Fabio', 'Hansjakob', 'Huberta', 'Doro', 'Gordian', 'Sturmius', 'Sturmhard', 'Reintraud', 'Sabine', 'Georg', 'Sylvia', 'Ann', 'Editha', 'Gunhard', 'Etienne', 'Hildtraud', 'Noah', 'Margarete', 'Stilla', 'Brian', 'Pauline', 'Edgar', 'Kathrin'];
+			var nodeCount = 1;
+			function generateRandomData(node, level) {
+				if (!level) level = 1;
+				var numChildren = 10; //3+Math.round(Math.random()*6);
+				node.children = [];
+				var amount = node.amount;
+				for (var i=0; i<numChildren; i++) {
+					nodeCount ++;
+					var child = {
+						label: randomNames[Number(String(level-1)+String(i))],
+						amount: i+1 < numChildren ? amount*Math.random()*.6 : amount
+					};
+					if (level == 1) child.color = vis4color.fromHSL(i/numChildren*360, .7, .5).x;
+					if (level == 2) child.color = vis4color.fromHex(node.color).lightness('*'+(.5+Math.random()*.5)).x;
+					amount -= child.amount;
+					node.children.push(child);
+					if (level < 3) generateRandomData(child, level+1);
+				}
+				return node;
+			}
+
+			 data = generateRandomData({
+				label: 'Random Names, Random Amounts',
+				amount: 100000000
+			});
+            */
+            var $tooltip = $('<div class="tooltip">Tooltip</div>');
+			$('.bubble-chart').append($tooltip);
+			$tooltip.hide();
+			
+			var getTooltip = function() {
+				return this.getAttribute('tooltip');
+			};
+			
+			var initTooltip = function(node, domnode) {
+				domnode.setAttribute('tooltip', node.label+' &nbsp;<br /><big><b>'+node.famount+'</b></big>');
+				
+				vis4.log(domnode.getAttribute('tooltip'));
+				
+				$(domnode).tooltip({ delay: 100, bodyHandler: getTooltip });
+			};
+
+			new BubbleTree({
+				data: budgetEgypt,
+				container: '.bubbletree',
+                //tooltipCallback: tooltip,
+				bubbleType: 'donut',
+				initTooltip: initTooltip
+                //,maxNodesPerLevel: 12
+			});
+            
+                   /*     
+                        jQuery.ajax({
+              dataType: "json",
+              url: "budget.json",
+              data: data2,
+              success: makeBubbles()
+            });
+
+                        function makeBubbles(data) {
+                         //   console.log("hey");
+                           // console.log(data);
+                        }
+             var budJ = "budget.json"; 
+            jQuery.getJSON( "budget.json", {format: "json"})  
+
+                jQuery.done(function( data ) { 
+
+               console.log("hey");
+                           // console.log(data);
+            });
+                     */             
+		});
+
+	</script>    
+</body>
+</html>
