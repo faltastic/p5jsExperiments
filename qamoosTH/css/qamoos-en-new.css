@@ -1,0 +1,215 @@
+
+
+
+@font-face {
+    font-family: 'Alegreya';
+    src: url('fonts/Alegreya/AlegreyaSansSC-Regular.ttf') format('TrueType');
+}
+
+@font-face {
+    font-family: 'AlegreyaBold';
+    src: url('fonts/Alegreya/AlegreyaSansSC-Bold.ttf') format('TrueType');
+}
+
+/* always show scroll bar */
+html {
+    /*overflow-y:none;*/
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+body {
+  /*background-color: white;
+  color: black;
+  direction: rtl;
+ */
+
+
+   background-color: white;
+    color: black;
+    direction: ltr;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /* width: 100%;*/
+     max-height: 100%;
+
+}
+
+}
+
+
+
+
+
+theCanvas{
+    position: absolute;
+    top: 10em;
+    right: 2.5%;
+    height: 100%;
+    z-index: 99;
+    font-family:'NotoKufi', sans-serif;
+}
+
+
+#textBox{
+    position: absolute;
+    top: 0px;
+    height: 97%;
+    width:60%;
+    left: 0%;
+    /*right: 39.5%;*/
+
+    padding-top: 1.0em;
+    padding-right: 0.33em;
+    padding-bottom: 1.0em;
+
+    margin: 0 auto;
+    text-align: left;
+
+    background: #f0ffff; /*rgb(240,255,255);*/
+    border-right: 3px solid black;
+    visibility: hidden;
+}
+
+
+#title{
+/*    direction:rtl;*/
+    font-size: 1.67em;
+      font-family: 'AlegreyaBold';
+    font-weight: 700;
+    z-index: 3;
+    border-bottom: 3px solid black;
+    padding-bottom: 1.0em;
+    margin-right: 1.0em;
+    margin-left: 1.0em;
+    padding-top: 0.33em;
+}
+
+#title a{
+    text-decoration: none;
+}
+
+#titleLinks{
+    direction: ltr;
+    font-size: 1.13em;
+    font-family:'Cairo', sans-serif;
+    z-index: 3;
+    padding-bottom: 1.0em;
+    margin-right: 1.0em;
+    margin-left: 1.0em;
+    position: absolute;
+    top: 1.75em;
+    right: 1em;
+
+}
+
+#termTextArea{
+    overflow-y:auto;
+    direction:rtl;
+    max-height: 80.0vh;
+    font-size: 1.0em;
+    padding-top: 1.0em;
+    padding-right: 1.0em;
+
+
+}
+
+#termTextArea p{
+    margin-bottom: 0.75em;
+}
+
+#termTextArea a{
+    text-decoration: none;
+    color: #086565;
+}
+#termTextArea a:hover {
+    text-decoration: underline;
+}
+
+
+#termText{
+	text-align: left;
+    direction:ltr;
+/*    font-family:'Alegreya', serif;*/
+    padding-left: 1.5em;
+     padding-right: 0.5em;
+}
+
+#englishLink{
+    position: absolute;
+    bottom: 1em;
+    width:5em;
+    right: 2em;
+    line-height: 1.9em;
+    font-size: 1em;
+}
+#linkBox{
+     direction: rtl;
+    position: absolute;
+    bottom: 1.0em;
+    width:34.5%;
+    left: 64%;
+
+    overflow-y:auto;
+
+    max-height: 33vh;
+    color: rgb(1, 39, 39);
+    text-align: left;
+    font-family:'AlegreyaBold', serif;
+    font-size: 1.0em;
+    visibility: hidden;
+    padding-left:15px;
+    padding-bottom: 0.05em;
+
+}
+
+#linkBox a{
+   color: black;
+ text-decoration: none;
+}
+#linkBox a:hover{
+ text-decoration: underline;
+}
+
+#listTitle{
+    position: absolute;
+    top: 1.9em;
+    left:64%;
+    font-family:'AlegreyaBold', serif;
+    font-size: 1.33em;
+    visibility: hidden;
+    z-index: 3;
+    border-bottom: 3px solid black;
+    padding-bottom: 1.0em;
+}
+
+#aboutLink{
+    position: absolute;
+    bottom: 1.0em;
+    right: 1.5em;
+    color: rgba(0, 46, 46, 0.5);
+    text-align: right;
+    font-family:'Alegreya', serif;
+    font-size: 1.0em;
+    visibility: hidden;
+}
+
+#aboutLink a:link, a:visited{
+    color: rgba(0, 46, 46, 0.5);
+    text-decoration: none;
+}
+#aboutLink a:hover, a:active{
+    text-decoration:none;
+    color: #01a3a3;
+}
+
+#zoom-photo{
+ position: absolute;
+ top:  2em;
+ right: 1.5em;
+ visibility: hidden;
+}
+
+audio { width: 100%; height:50px; }
+
+
