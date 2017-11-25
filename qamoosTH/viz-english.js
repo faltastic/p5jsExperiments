@@ -213,7 +213,7 @@ function chordOne(newTerm) {
     originalN = [];
     originalN[0] = i;
     tNew[0] = t[i]; // wont be used
-    thetaEnd[0] = 0; //theta[i]; //  = selected old Theta;
+    thetaEnd[0] = PI; //theta[i]; //  = selected old Theta;
     thetaMove[0] = theta[i];
     xNew[0] = x[i]; // = selcted xOld;
     yNew[0] = y[i]; // = selcted yOld;
@@ -251,9 +251,9 @@ function chordOneDraw() {
         background(255);
         noFill();
         for (var j = 0; j < nNew; j++) {
-            thetaEnd[j] = (thetaEnd[0] + (j * TWO_PI / nNew)) % (TWO_PI);
+            thetaEnd[j] = (thetaEnd[0] - (j * TWO_PI / nNew)) % (TWO_PI);
             //thetaMove[j] = map(t - t0, 0, tAnime, 0, thetaEnd[j]);
-            thetaMove[j] = map(nFrames, 0, totalFrames, 0, thetaEnd[j]);
+            thetaMove[j] = map(nFrames, 0, totalFrames, PI, thetaEnd[j]);
             if (nFrames + 3 > totalFrames) {
                 // make sure thetas end up perfect
                 thetaMove[j] = thetaEnd[j];
