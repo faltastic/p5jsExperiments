@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="css/modal.css">
     <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="icon" type="image/png" href="icns/chord-24.png">
     <!-- Javascript Libraries
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <script language="javascript" src="lib/newp5.min.js"></script>
@@ -48,9 +48,8 @@
         <div class="row" id="textBox">
             <div id="title"> قاموس الثورة </div>
             <div id="titleLinks">
-                <a id="downLink" title="PDF" href="data/1.txt" target="_blank"> <img src="icns/download-2-24.png" /></a>&nbsp;&nbsp;&nbsp;
+                <a id="backLink" title="Previous Term" href="#" onClick="previousTerm()"> <img src="icns/arrow-96-24-wide.png" /></a>&nbsp;&nbsp;&nbsp;
                 <a id="homeLink" title="Home Page" href="english-new.html"> <img src="icns/chord-24.png" /></a>
-                <a id="backLink" title="Previous Term" href="#" onClick="previousTerm()"> <img src="icns/arrow-96-24-wide.png" /></a>
             </div>
             <div id="termTextArea">
                 <div id="termText"> </div>
@@ -60,9 +59,12 @@
 
         <a id="zoom-photo" href="#modal-1" data-modal-open><img src="icns/expand-24.png" /></a>
         <div id="linkBox"> </div>
-        <div id="listTitle">Terms</div>
-        <div id="aboutLink"> <a href="#about" onclick="showAbout(this.href); return false;">about </a> </div>
-        <a class="button" id="englishLink" href="index.html">en</a>
+        <div id="listTitle">
+            Terms &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <div id="aboutLink"> <a href="#about" onclick="showAbout(this.href); return false;">A Dictionary of the Revolution  </a> </div>
+        <a class="button" id="englishLink" href="index.html">ar</a>
     </div>
     <div id="modal-1" style="display:none">
         <center><img id="zoomInPhoto" src="" width="90%" height="auto" alt=""> </center>
