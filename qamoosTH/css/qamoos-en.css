@@ -1,13 +1,32 @@
+@font-face {
+    font-family: 'Arimo';
+	src: url('fonts/Arimo-Regular.ttf') format('TrueType');
+}
+
+@font-face {
+    font-family: 'Oswald';
+	src: url('fonts/Oswald-Regular.ttf') format('TrueType');
+}
+
+@font-face {
+    font-family: 'OswaldLight';
+	src: url('fonts/Oswald-Light.ttf') format('TrueType');
+}
+
 
 body {
     background-color: white;
     color: black;
     direction: ltr;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+/*    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
     width: 100%;
+    font-family: 'Arimo', sans-serif;
+	font-size: 1.6rem;
+	font-weight: 400;
+	line-height: 1.7rem;
 
 }
-
+/*
 @font-face {
     font-family: 'Alegreya';
     src: url('fonts/Alegreya/AlegreyaSansSC-Regular.ttf') format('TrueType');
@@ -18,6 +37,31 @@ body {
     src: url('fonts/Alegreya/AlegreyaSansSC-Bold.ttf') format('TrueType');
 }
 
+h3 {
+	font-family: 'OswaldLight', sans-serif;
+	font-size: 2em;
+}
+
+#title {
+	font-family: 'Oswald', sans-serif;
+	font-weight: 300;
+}
+
+#linkBox {
+	font-family:'OswaldLight', sans-serif;
+    	font-size: .9em;
+}
+
+#listTitle {
+    	font-family:'OswaldLight', sans-serif;
+    	font-size: 1.33em;
+}
+
+#aboutLink {
+	font-family:'Oswald', serif;
+}
+
+*/
 #moreLink{
     position: absolute;
     bottom: 1em;

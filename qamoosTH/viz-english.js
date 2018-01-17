@@ -45,17 +45,18 @@ function setup() {
     strokeWeight(1);
     //textAlign(LEFT, CENTER);
     textSize(12);
-    textFont('Alegreya');
+    textFont('OswaldLight');
     pal = [color(74, 139, 115, 175), color(37, 93, 108, 175), color(92, 93, 136, 175), color(59, 137, 201, 175)];
     // prepare data
     N = words.length;
     d = Drough;
     //console.log(Drough);
-    R = height / 3.25;
+    R = height / 3.5;
     Cx = (windowWidth * 2.5 / 100) + width / 2;
     for (var i = 0; i < N; i++) {
         //words[i]['term'] = words[i]['term'].trim();
         t[i] = words[i]['English'];
+        t[i] = t[i].charAt(0).toUpperCase() + t[i].slice(1);
         theta[i] = i * TWO_PI / N;
         x[i] = Cx + 1.1 * R * cos(theta[i]);
         y[i] = (height / 2) + 1.1 * R * sin(theta[i]);
@@ -165,7 +166,7 @@ function chordAllSelect() {
         text(t[hoverTerm], 0, 0);
         text(t[hoverTerm], 0, 0);
         fill(0);
-        textFont('AlegreyaBold');
+        textFont('Oswald');
         text(t[hoverTerm], 0, 0);
         pop();
         push();
@@ -236,9 +237,6 @@ function chordOne(newTerm) {
     dThetaN = TWO_PI / (2 * originalN.length);
     backTerms.push(i);
 
-//    barWidth = getScrollBarWidth();
-//    console.log(barWidth);
-//     document.getElementById("aboutLink").style.marginRight =(2*barWidth +5)+"px";
 }
 
 function chordOneDraw() {
@@ -247,7 +245,7 @@ function chordOneDraw() {
         if (nNew > 25) {
             textSize(9);
         }
-        textFont('Alegreya');
+        textFont('OswaldLight');
         background(255);
         noFill();
         for (var j = 0; j < nNew; j++) {
@@ -267,7 +265,7 @@ function chordOneDraw() {
             else {
                 stroke(strokeOut);
             }
-            // stroke(strokeOut);\
+            // stroke(strokeOut);
             if (j>0){
                 bezier(xNew[0], yNew[0], W1, H1, W1, H1, xNew[j], yNew[j]);
             }
@@ -299,8 +297,8 @@ function chordOneDraw() {
             select('#linkBox').style("visibility", "visible");
             select('#aboutLink').style("visibility", "visible");
             var fileName = "data/txt/en/" + (originalN[0] + 1) + ".txt";
-            var pdfFileName = "data/pdfs/" + (originalN[0] + 1) + ".pdf";
-            document.getElementById("downLink").href = pdfFileName;
+            // var pdfFileName = "data/pdfs/" + (originalN[0] + 1) + ".pdf";
+            // document.getElementById("downLink").href = pdfFileName;
             //console.log(fileName);
             loadStrings(fileName, showTermText);
             showLinks();
@@ -374,7 +372,7 @@ function cancelAbout() {
     document.getElementById("linkBox").style.maxHeight = "33vh";
     select('#theCanvas').style("visibility", "visible");
     select('#listTitle').style("visibility", "hidden");
-    select('#downLink').style("visibility", "visible");
+  //select('#downLink').style("visibility", "visible");
 }
 
 function showAbout() {
@@ -394,7 +392,7 @@ function showAbout() {
     select('#theCanvas').style("visibility", "hidden");
     select('#listTitle').style("visibility", "visible");
     select('#zoom-photo').style("visibility", "hidden");
-    select('#downLink').style("visibility", "hidden");
+    //select('#downLink').style("visibility", "hidden");
     //document.getElementsByClassName("modal").style.Background="#000";
     zoomPhoto = false;
 }
@@ -431,7 +429,7 @@ function mouseMoved() {
             stroke(255);
             strokeWeight(6);
             ellipse(0, 0, 1.1 * R1, 1.1 * R1);
-            currentTerm = abs(int(originalN.length * (dThetaN + rTheta[1]) / TWO_PI) % originalN.length);
+            currentTerm = abs(int(originalN.length * (rTheta[1] -TWO_PI) / TWO_PI) % originalN.length);
             //ceil(N * rTheta[1] / TWO_PI) % N;
             //console.log(currentTerm);
             //
@@ -502,29 +500,7 @@ function loadIdWorkAround() {
     }
 }
 
-//function getScrollBarWidth(){
-//    var outer = document.createElement("div");
-//    outer.style.visibility = "hidden";
-//    outer.style.width = "100px";
-//    outer.style.msOverflowStyle = "scrollbar"; // needed for WinJS apps
-//    document.body.appendChild(outer);
-//
-//var widthNoScroll = outer.offsetWidth;
-//// force scrollbars
-//outer.style.overflow = "scroll";
-//
-//// add innerdiv
-//var inner = document.createElement("div");
-//inner.style.width = "100%";
-//outer.appendChild(inner);
-//
-//var widthWithScroll = inner.offsetWidth;
-//
-//// remove divs
-//outer.parentNode.removeChild(outer);
-//
-//    return widthNoScroll - widthWithScroll;
-//}
+
 
 function cartesToPolar(x, y, xOff, yOff, thetaStart) {
     var rTheta = [];
