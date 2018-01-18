@@ -1,3 +1,7 @@
+
+
+
+
 var isChordAll = true;
 // fixed variables for data
 var N;
@@ -33,6 +37,8 @@ var about = false;
 var aboutText = "";
 var myCanvas;
 
+var transEn=[1,2,78,123,15,108,43,59,29,83,10,3,65,120,96,32,87,119,45,18,85,8,58,37,69,47,38,24,48,42,60,61,95,22,88,16,86,91,55,4,46,113,84,92,11,23,41,44,74,93,30,6,112,49,66,94,107,77,17,9,98,125,70,100,64,114,72,102,109,21,104,106,121,51,99,40,25,27,117,81,118,71,56,62,116,63,115,124,34,90,36,35,50, 7, 103, 82, 53, 67, 20, 80, 39, 14, 76, 19, 101, 111, 122, 33, 57, 12, 13, 75, 28, 31, 52, 110, 105, 5, 54, 97, 73, 26, 79, 89, 68];
+
 
 function setup() {
     myCanvas = createCanvas(0.97 * windowWidth, 0.97 * windowHeight);
@@ -49,10 +55,21 @@ function setup() {
     pal = [color(74, 139, 115, 175), color(37, 93, 108, 175), color(92, 93, 136, 175), color(59, 137, 201, 175)];
     // prepare data
     N = words.length;
-    d = Drough;
-    //console.log(Drough);
+
     R = height / 3.5;
     Cx = (windowWidth * 2.5 / 100) + width / 2;
+
+    var wordsEn = {};
+    var dEn ={};
+
+    for (var i = 0; i < N; i++) {
+        wordsEn[i] = words[transEn[i]-1];
+        dEn[i] = Drough[transEn[i]-1];
+    }
+
+    words = wordsEn;
+    d = dEn;
+
     for (var i = 0; i < N; i++) {
         //words[i]['term'] = words[i]['term'].trim();
         t[i] = words[i]['English'];
