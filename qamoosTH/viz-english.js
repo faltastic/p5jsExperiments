@@ -56,7 +56,7 @@ function setup() {
     // prepare data
     N = words.length;
 
-    R = height / 3.5;
+    R = height / 3.4;
     Cx = (windowWidth * 2.5 / 100) + width / 2;
 
     var wordsEn = {};
@@ -100,7 +100,7 @@ function chordAll() {
     isChordAll = true;
     select('#englishLink').style("visibility", "visible");
     background(255);
-    textSize(12);
+    textSize(12.5);
     pal = [color(74, 139, 115, opac), color(37, 93, 108, opac), color(92, 93, 136, opac), color(59, 137, 201, opac)];
     dThetaN = TWO_PI / (2 * N);
     noFill();
@@ -258,9 +258,9 @@ function chordOne(newTerm) {
 
 function chordOneDraw() {
     if (nFrames < totalFrames) {
-        textSize(map(nNew, 1, 26, 13, 10));
+        textSize(map(nNew, 1, 26, 14, 11));
         if (nNew > 25) {
-            textSize(9);
+            textSize(10);
         }
         textFont('OswaldLight');
         background(255);
