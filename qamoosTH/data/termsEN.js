@@ -16,21 +16,21 @@ var words =[
   },
   {
     "aZ": 3,
-    "English": "brotherhoodization",
+    "English": "Brotherhoodization",
     "term": "أخونة",
     "catName": "مفاهيم",
     "cat": 2
   },
   {
     "aZ": 4,
-    "English": "foreign hands",
+    "English": "foreign fingers",
     "term": "أصابع خارجية",
     "catName": "مفاهيم",
     "cat": 2
   },
   {
     "aZ": 5,
-    "English": "ultras",
+    "English": "the Ultras",
     "term": "الألتراس",
     "catName": "شخصيات",
     "cat": 3
@@ -58,14 +58,14 @@ var words =[
   },
   {
     "aZ": 9,
-    "English": "Itihadiya",
+    "English": "Itihadiya Palace",
     "term": "الإتحادية",
     "catName": "شخصيات",
     "cat": 3
   },
   {
     "aZ": 10,
-    "English": "Muslim Brotherhood",
+    "English": "the Brotherhood",
     "term": "الإخوان",
     "catName": "اماكن واحداث",
     "cat": 1
@@ -233,7 +233,7 @@ var words =[
   },
   {
     "aZ": 34,
-    "English": "the resignation",
+    "English": "resignation",
     "term": "التنحي",
     "catName": "مفاهيم",
     "cat": 2
@@ -303,7 +303,7 @@ var words =[
   },
   {
     "aZ": 44,
-    "English": "guards of the Square",
+    "English": "Square guards",
     "term": "حراس الميدان",
     "catName": "اشياء",
     "cat": 4
@@ -324,7 +324,7 @@ var words =[
   },
   {
     "aZ": 47,
-    "English": "Couch Party",
+    "English": "couch party",
     "term": "حزب الكنبة",
     "catName": "شخصيات",
     "cat": 3
@@ -387,7 +387,7 @@ var words =[
   },
   {
     "aZ": 56,
-    "English": "Ministry of the Interior",
+    "English": "police",
     "term": "الداخلية",
     "catName": "اماكن واحداث",
     "cat": 1
@@ -401,7 +401,7 @@ var words =[
   },
   {
     "aZ": 58,
-    "English": "constitution",
+    "English": "Constitution",
     "term": "دستور",
     "catName": "شخصيات",
     "cat": 3
@@ -415,7 +415,7 @@ var words =[
   },
   {
     "aZ": 60,
-    "English": "the deep state",
+    "English": "deep state",
     "term": "الدولة العميقة",
     "catName": "اشياء",
     "cat": 4
@@ -436,7 +436,7 @@ var words =[
   },
   {
     "aZ": 63,
-    "English": "Raba'a",
+    "English": "Rabaa",
     "term": "رابعة",
     "catName": "اشياء",
     "cat": 4
@@ -457,7 +457,7 @@ var words =[
   },
   {
     "aZ": 66,
-    "English": "ideal woman",
+    "English": "Ideal Girl",
     "term": "ست البنات",
     "catName": "مفاهيم",
     "cat": 2
@@ -478,7 +478,7 @@ var words =[
   },
   {
     "aZ": 69,
-    "English": "police",
+    "English": "cops",
     "term": "شرطة",
     "catName": "اشياء",
     "cat": 4
@@ -513,14 +513,14 @@ var words =[
   },
   {
     "aZ": 74,
-    "English": "live fire",
+    "English": "gunfire",
     "term": "ضرب نار",
     "catName": "شخصيات",
     "cat": 3
   },
   {
     "aZ": 75,
-    "English": "third party",
+    "English": "third hand",
     "term": "الطرف التالت",
     "catName": "مفاهيم",
     "cat": 2
@@ -569,14 +569,14 @@ var words =[
   },
   {
     "aZ": 82,
-    "English": "secularists",
+    "English": "secular",
     "term": "علمانيين",
     "catName": "اشياء",
     "cat": 4
   },
   {
     "aZ": 83,
-    "English": "bread/life",
+    "English": "bread",
     "term": "عيش",
     "catName": "مفاهيم",
     "cat": 2
@@ -597,7 +597,7 @@ var words =[
   },
   {
     "aZ": 86,
-    "English": "remnants of the old regime",
+    "English": "felool",
     "term": "فلول",
     "catName": "مفاهيم",
     "cat": 2
@@ -618,7 +618,7 @@ var words =[
   },
   {
     "aZ": 89,
-    "English": "World Bank loan",
+    "English": "World Bank Loan",
     "term": "قرض البنك الدولي",
     "catName": "مفاهيم",
     "cat": 2
@@ -667,7 +667,7 @@ var words =[
   },
   {
     "aZ": 96,
-    "English": "the throne",
+    "English": "the chair",
     "term": "الكرسي",
     "catName": "مفاهيم",
     "cat": 2
@@ -751,7 +751,7 @@ var words =[
   },
   {
     "aZ": 108,
-    "English": "armored vehicle",
+    "English": "armored car",
     "term": "مدرعة",
     "catName": "شخصيات",
     "cat": 3
@@ -772,14 +772,14 @@ var words =[
   },
   {
     "aZ": 111,
-    "English": "Supreme Guide",
+    "English": "supreme guide",
     "term": "مرشد",
     "catName": "اماكن واحداث",
     "cat": 1
   },
   {
     "aZ": 112,
-    "English": "hospital in the Square",
+    "English": "field hospital",
     "term": "مستشفى ميداني",
     "catName": "شخصيات",
     "cat": 3
@@ -807,14 +807,14 @@ var words =[
   },
   {
     "aZ": 116,
-    "English": "demonstration",
+    "English": "protest",
     "term": "مظاهرة",
     "catName": "اماكن واحداث",
     "cat": 1
   },
   {
     "aZ": 117,
-    "English": "dissenters",
+    "English": "opposition",
     "term": "معارضين",
     "catName": "شخصيات",
     "cat": 3
@@ -835,7 +835,7 @@ var words =[
   },
   {
     "aZ": 120,
-    "English": "the Camel Battle",
+    "English": "Camel Battle",
     "term": "موقعة الجمل",
     "catName": "اماكن واحداث",
     "cat": 1
@@ -863,7 +863,7 @@ var words =[
   },
   {
     "aZ": 124,
-    "English": "the regime",
+    "English": "regime",
     "term": "النظام",
     "catName": "اماكن واحداث",
     "cat": 1

@@ -3,18 +3,6 @@
     src: url('fonts/en/Arimo-Regular.ttf') format('TrueType');
 }
 
-/*
-@font-face {
-    font-family: 'Roboto';
-    src: url('fonts/en/Roboto-Regular.ttf') format('TrueType');
-}
-
-@font-face {
-    font-family: 'RobotoLight';
-    src: url('fonts/en/Roboto-Light.ttf') format('TrueType');
-}
-*/
-
 @font-face {
     font-family: 'Roboto';
     src: url('fonts/en/RobotoCondensed-Bold.ttf') format('TrueType');
