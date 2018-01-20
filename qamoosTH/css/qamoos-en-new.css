@@ -3,15 +3,29 @@
     src: url('fonts/en/Arimo-Regular.ttf') format('TrueType');
 }
 
+/*
 @font-face {
-    font-family: 'Oswald';
-    src: url('fonts/en/Oswald-Regular.ttf') format('TrueType');
+    font-family: 'Roboto';
+    src: url('fonts/en/Roboto-Regular.ttf') format('TrueType');
 }
 
 @font-face {
-    font-family: 'OswaldLight';
-    src: url('fonts/en/Oswald-Light.ttf') format('TrueType');
+    font-family: 'RobotoLight';
+    src: url('fonts/en/Roboto-Light.ttf') format('TrueType');
 }
+*/
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('fonts/en/RobotoCondensed-Bold.ttf') format('TrueType');
+}
+
+@font-face {
+    font-family: 'RobotoLight';
+    src: url('fonts/en/RobotoCondensed-Regular.ttf') format('TrueType');
+}
+
+
 
 
 /* always show scroll bar */
@@ -73,7 +87,7 @@ font-family: 'Arimo', sans-serif;
     /*    direction:rtl;*/
 
     font-size: 1.67em;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 300;
     z-index: 3;
     border-bottom: 3px solid black;
@@ -142,7 +156,7 @@ font-family: 'Arimo', sans-serif;
     max-height: 33vh;
     color: rgb(1, 39, 39);
     text-align: left;
-    font-family: 'OswaldLight', sans-serif;
+    font-family: 'RobotoLight', sans-serif;
     font-size: 0.95em;
     line-height: 1.33em;
     visibility: hidden;
@@ -160,7 +174,7 @@ font-family: 'Arimo', sans-serif;
     position: absolute;
     top: 2.25em;
     left: 64%;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 1.33em;
     visibility: hidden;
     z-index: 3;
@@ -173,7 +187,7 @@ font-family: 'Arimo', sans-serif;
     right: 1.5em;
     color: rgba(0, 46, 46, 0.5);
     text-align: right;
-    font-family: 'Oswald', serif;
+    font-family: 'Roboto', serif;
     font-size: 1.0em;
     visibility: hidden;
 }
@@ -188,7 +202,7 @@ a:active {
     color: #01a3a3;
 }
 h3 {
-	font-family: 'OswaldLight', sans-serif;
+	font-family: 'RobotoLight', sans-serif;
 	font-size: 2em;
 }
 

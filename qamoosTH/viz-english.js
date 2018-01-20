@@ -51,7 +51,7 @@ function setup() {
     strokeWeight(1);
     //textAlign(LEFT, CENTER);
     textSize(12);
-    textFont('OswaldLight');
+    textFont('RobotoLight');
     pal = [color(74, 139, 115, 175), color(37, 93, 108, 175), color(92, 93, 136, 175), color(59, 137, 201, 175)];
     // prepare data
     N = words.length;
@@ -73,7 +73,7 @@ function setup() {
     for (var i = 0; i < N; i++) {
         //words[i]['term'] = words[i]['term'].trim();
         t[i] = words[i]['English'];
-        t[i] = t[i].charAt(0).toUpperCase() + t[i].slice(1);
+       // t[i] = t[i].charAt(0).toUpperCase() + t[i].slice(1);
         theta[i] = i * TWO_PI / N;
         x[i] = Cx + 1.1 * R * cos(theta[i]);
         y[i] = (height / 2) + 1.1 * R * sin(theta[i]);
@@ -183,7 +183,7 @@ function chordAllSelect() {
         text(t[hoverTerm], 0, 0);
         text(t[hoverTerm], 0, 0);
         fill(0);
-        textFont('Oswald');
+        textFont('Roboto');
         text(t[hoverTerm], 0, 0);
         pop();
         push();
@@ -262,7 +262,7 @@ function chordOneDraw() {
         if (nNew > 25) {
             textSize(10);
         }
-        textFont('OswaldLight');
+        textFont('RobotoLight');
         background(255);
         noFill();
         for (var j = 0; j < nNew; j++) {
@@ -300,7 +300,8 @@ function chordOneDraw() {
             fill(0);
             translate(0.1 * R1, 0);
             textAlign(LEFT, CENTER);
-            if (thetaMove[j] > (TWO_PI / 4) && thetaMove[j] < (3 * TWO_PI / 4)) {
+
+            if (thetaMove[j] > PI/2 || thetaMove[j] < -PI/2  ) {
                 translate(0, 2);
                 rotate(PI);
                 textAlign(RIGHT, CENTER);
